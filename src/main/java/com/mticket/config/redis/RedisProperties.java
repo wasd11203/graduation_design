@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @ConfigurationProperties("redis")
 @EnableConfigurationProperties
-public class RedisSettings {
+public class RedisProperties {
 	private int maxTotal;
 	private int maxIdle;
 	private int maxWaitMillis;

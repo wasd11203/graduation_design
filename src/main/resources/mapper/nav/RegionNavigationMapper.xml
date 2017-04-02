@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mticket.mapper.nav.RegionNavigationMapper">
+	
+	<resultMap id="THIRD_NAV_RESULT" type="com.mticket.entity.nav.region.RegionNavigationThird">
+		<id column="THIRD_ID" property="thirdId" jdbcType="DECIMAL"/>
+		<result column="THIRD_NAME" property="thirdName" jdbcType="VARCHAR"/>
+		<result column="SEC_ID" property="secId" jdbcType="DECIMAL"/>
+	</resultMap>
+	
+	<resultMap id="SEC_NAV_RESULT" type="com.mticket.entity.nav.region.RegionNavigationSec" >
+		<id column="SEC_ID" property="secId" jdbcType="DECIMAL"/>
+		<result column="SEC_NAME" property="secName" jdbcType="VARCHAR"/>
+		<result column="TOP_ID" property="topId" jdbcType="DECIMAL"/>
+		<collection property="navThird" resultMap="THIRD_NAV_RESULT">
+		</collection>
+	</resultMap>
+	
+	<resultMap id="ALL_NAV_RESULT" type="com.mticket.entity.nav.region.RegionNavigation" >
+		<id column="TOP_ID" property="topId"  jdbcType="DECIMAL"/>
+		<result column="TOP_NAME" property="topName"  jdbcType="VARCHAR"/>
+		<collection property="navSec" resultMap="SEC_NAV_RESULT">
+		</collection>
+	</resultMap>
+
+<!-- 基本类型：当参数参与到if 判断中，必须使用_parameter -->
+	<select id="loadRegionNavListByResourceTopId" parameterType="int" resultMap="ALL_NAV_RESULT">
+		SELECT * 
+		FROM region_top_category region_top LEFT JOIN region_sec_category region_sec ON region_top.TOP_ID = region_sec.TOP_ID
+											LEFT JOIN region_third_category region_third ON region_sec.SEC_ID = region_third.SEC_ID
+											LEFT JOIN association_region_resource ass ON region_third.THIRD_ID = ass.REGION_THIRD_ID
+		<where>
+			<if test=" _parameter != null and _parameter != '' ">
+				ass.RESOURCE_TOP_ID = #{resourceTopId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</select>
+
+	<select id="loadSecNavList" parameterType="int" resultMap="SEC_NAV_RESULT">
+		SELECT * 
+		from region_sec_category region_sec LEFT JOIN region_third_category region_third ON region_sec.SEC_ID = region_third.SEC_ID
+		<where>
+			<if test=" _parameter != null and _parameter != '' ">
+				region_sec.TOP_ID = #{regionTopId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</select>
+
+	<select id="loadThirdNavListByResourceTopId" parameterType="int" resultMap="THIRD_NAV_RESULT">
+		SELECT * 
+		from association_region_resource ass LEFT JOIN region_third_category region_third ON ass.REGION_THIRD_ID = region_third.THIRD_ID
+		<where>
+			<if test=" _parameter != null and _parameter != '' ">
+				ass.RESOURCE_TOP_ID = #{resourceTopId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</select>
+
+</mapper>

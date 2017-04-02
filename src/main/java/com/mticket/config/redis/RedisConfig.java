@@ -15,20 +15,20 @@ import com.alibaba.druid.util.StringUtils;
 import redis.clients.jedis.JedisPoolConfig;  
 
 @Configuration  
-@EnableConfigurationProperties({ RedisSettings.class })
+@EnableConfigurationProperties({ RedisProperties.class })
 @EnableCaching
 public class RedisConfig{
 	
 	@Autowired
-	private RedisSettings settings;
+	private RedisProperties properties;
 	
 	@Bean(name = "jedisPoolConfig")
 	public JedisPoolConfig jedisPoolConfig(){
 		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-		jedisPoolConfig.setMaxTotal(settings.getMaxTotal());
-		jedisPoolConfig.setMaxIdle(settings.getMaxIdle());
-		jedisPoolConfig.setMaxWaitMillis(settings.getMaxWaitMillis());
-		jedisPoolConfig.setTestOnBorrow(settings.getTestOnBorrow());
+		jedisPoolConfig.setMaxTotal(properties.getMaxTotal());
+		jedisPoolConfig.setMaxIdle(properties.getMaxIdle());
+		jedisPoolConfig.setMaxWaitMillis(properties.getMaxWaitMillis());
+		jedisPoolConfig.setTestOnBorrow(properties.getTestOnBorrow());
 		
 		return jedisPoolConfig;
 	}
@@ -36,14 +36,14 @@ public class RedisConfig{
 	@Bean(name = "jedisFactory")
 	public JedisConnectionFactory jedisConnectionFactory(@Qualifier("jedisPoolConfig") JedisPoolConfig jedisPoolConfig){
 		JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
-		jedisConnectionFactory.setHostName(settings.getHost());
-		jedisConnectionFactory.setPort(settings.getPort());
-		if(!StringUtils.isEmpty(settings.getPassword())){
-			jedisConnectionFactory.setPassword(settings.getPassword());
+		jedisConnectionFactory.setHostName(properties.getHost());
+		jedisConnectionFactory.setPort(properties.getPort());
+		if(!StringUtils.isEmpty(properties.getPassword())){
+			jedisConnectionFactory.setPassword(properties.getPassword());
 		}
 		jedisConnectionFactory.setUsePool(true);
 		jedisConnectionFactory.setPoolConfig(jedisPoolConfig);
-		jedisConnectionFactory.setDatabase(Integer.parseInt(settings.getDatabase()));
+		jedisConnectionFactory.setDatabase(Integer.parseInt(properties.getDatabase()));
 		return jedisConnectionFactory;
 	}	
 	

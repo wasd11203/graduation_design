@@ -1,7 +1,5 @@
 package com.mticket.test;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,24 +7,26 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mticket.WebApplicationConfiguration;
-import com.mticket.util.redis.RedisRepository;
+import com.mticket.mapper.nav.RegionNavigationMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = WebApplicationConfiguration.class)
 @WebAppConfiguration
-public class TestRedis {
+public class TestRegionMapper {
 
 	@Autowired
-	private RedisRepository redisRepository;
+	private RegionNavigationMapper navMapper;
 	
 	@Test
-	public void test(){
-		
-//		redisRepository.saveToRedis("a", "b");
-//		redisRepository.saveToRedis("a", "c", 60L, TimeUnit.SECONDS);
-		redisRepository.saveToRedis("a", new Object());
+	public void testRegionNav(){
+		Object jobj = JSONObject.toJSON(navMapper.loadRegionNavListByResourceTopId(1));
+		System.out.println(jobj);
+		jobj = JSONObject.toJSON(navMapper.loadSecNavList(1));
+		System.out.println(jobj);
+		jobj = JSONObject.toJSON(navMapper.loadThirdNavListByResourceTopId(1));
+		System.out.println(jobj);
 	}
-	
 	
 }

@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mticket.mapper.ResourceSearchOperationMapper">
 
-<!-- 基本类型：当参数参与到if 判断中，必须使用_parameter -->
+	<!-- 待查出所有的资源后再分页 -->
 	<select id="searchResourceByMark" parameterType="Map" resultType="Map">
 		SELECT
 			*
 		FROM
 			(
 				SELECT
-					*
+					region_third.THIRD_ID,region_third.THIRD_NAME,showvenue_info.VENUE_NAME,showvenue_info.VENUE_ID
 				FROM
 					(
 						SELECT
@@ -21,15 +21,17 @@
 				INNER JOIN showvenue_info ON region_third.THIRD_ID = showvenue_info.REGION_THIRD_ID
 			) ass_regoin_venue
 		LEFT JOIN (
-		-- 此处添加分页
 			SELECT
 				resource_info.*, ass_r_s_s.VENUE_ID,
 				MIN(site_info.SITE_TIME) AS MIN_Time,
-				MAX(site_info.SITE_TIME) AS MAX_Time
+				MAX(site_info.SITE_TIME) AS MAX_Time,
+				MIN(ticket_info.TICKET_PRICE) AS MIN_PRICE
 			FROM
 				resource_info
 			LEFT JOIN association_resource_showvenue_site ass_r_s_s ON resource_info.RESOURCE_ID = ass_r_s_s.RESOURCE_ID
 			LEFT JOIN site_info ON ass_r_s_s.SITE_ID = site_info.SITE_ID
+			LEFT JOIN association_site_ticket ass_s_t ON site_info.SITE_ID = ass_s_t.SITE_ID
+			LEFT JOIN ticket_info ON ass_s_t.TICKET_ID = ticket_info.TICKET_ID
 			GROUP BY
 				resource_info.RESOURCE_ID,
 				ass_r_s_s.VENUE_ID

@@ -1,6 +1,5 @@
 package com.mticket.test;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,8 +29,8 @@ public class TestSearchOperationMapper {
 		map.put("resourceTopId", 1);
 		map.put("resourceSecId", 1);
 		map.put("resourceThirdId", 1001);
-		map.put("minTime", new Date());
-		map.put("maxTime", new Date());
+//		map.put("minTime", new Date());
+//		map.put("maxTime", new Date());
 		
 		Object jobj = JSONObject.toJSON(resourceSearchOperationMapper.searchResourceByMark(map));
 		System.out.println(jobj);

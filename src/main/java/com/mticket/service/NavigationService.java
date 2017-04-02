@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.mticket.entity.nav.region.RegionNavigation;
 import com.mticket.entity.nav.region.RegionNavigationThird;
-import com.mticket.entity.nav.resource.ResourceNavigation;
 import com.mticket.entity.nav.resource.ResourceNavigationSec;
 
 /**

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.mticket.entity.nav.region.RegionNavigation;
 import com.mticket.entity.nav.region.RegionNavigationThird;
-import com.mticket.entity.nav.resource.ResourceNavigation;
 import com.mticket.entity.nav.resource.ResourceNavigationSec;
 import com.mticket.mapper.nav.RegionNavigationMapper;
 import com.mticket.mapper.nav.ResourceNavigationMapper;

@@ -5,22 +5,86 @@
 	<resultMap id="TICKET_DETAIL_MAP" type="com.mticket.entity.TicketDetail">
 		<id column="TICKET_ID" property="ticketId" jdbcType="DECIMAL"/>
 		<result column="TICKET_NAME" property="ticketName" jdbcType="VARCHAR"/>
-		<result column="TICKET_COUNTS" property="ticketCounts"/>
-		<result column="TICKET_PRICE" property="ticketPrice"/>
-		<result column="TICKET_OLD_PRICE" property="ticketOldPrice"/>
+		<result column="TICKET_COUNTS" property="ticketCounts" jdbcType="DECIMAL"/>
+		<result column="TICKET_PRICE" property="ticketPrice" jdbcType="FLOAT"/>
+		<result column="TICKET_OLD_PRICE" property="ticketOldPrice" jdbcType="FLOAT"/>
 	</resultMap>
 	
 	<resultMap id="SITE_DETAIL_MAP" type="com.mticket.entity.SiteDetail" >
-		
+		<id column="SITE_ID" property="siteId" jdbcType="DECIMAL"/>
+		<result column="SITE_NAME" property="siteName" jdbcType="VARCHAR"/>
+		<result column="LIMIT_COUNTS" property="limitCounts" jdbcType="DECIMAL"/>
+		<result column="TYPE_ID" property="typeId" jdbcType="DECIMAL"/>
+		<collection property="tickets" resultMap="TICKET_DETAIL_MAP">
+		</collection>		
 	</resultMap>
 	
 	<resultMap id="VENUE_DETAIL_MAP" type="com.mticket.entity.ShowVenueDetail" >
-	
+		<id column="VENUE_ID" property="venueId" jdbcType="DECIMAL"/>
+		<result column="VENUE_PIC" property="venuePic" jdbcType="VARCHAR"/>
+		<result column="VENUE_NAME" property="venueName" jdbcType="VARCHAR"/>
+		<result column="VENUE_ADDRESS" property="venueAddress" jdbcType="VARCHAR"/>
+		<result column="VENUE_PHONE" property="venuePhone" jdbcType="VARCHAR"/>
+		<result column="VENUE_INTRODUCE" property="venueIntroduce" jdbcType="VARCHAR"/>
+		
+		<result column="THIRD_ID" property="regionThirdId" jdbcType="DECIMAL"/>
+		<result column="THIRD_NAME" property="regionThirdName" jdbcType="VARCHAR"/>
+		
+		<collection property="sites" resultMap="SITE_DETAIL_MAP">
+		</collection>
 	</resultMap>
 	
 	<resultMap id="RESOURCE_DETAIL_MAP" type="com.mticket.entity.ResourceDetail">
 		
+		<id column="RESOURCE_ID" property="resourceId" jdbcType="DECIMAL"/>
+		<result column="RESOURCE_NAME" property="resourceName" jdbcType="VARCHAR"/>
+		<result column="RESOURCE_PIC" property="resourcePic" jdbcType="VARCHAR"/>
+		<result column="RESOURCE_SHORT_DESC" property="resourceShortDesc" jdbcType="VARCHAR"/>
+		<result column="RESOURCE_INTRODUCE" property="resourceIntroduce" jdbcType="VARCHAR"/>
+		<result column="THIRD_ID" property="thirdId" jdbcType="DECIMAL"/>
+		<result column="CONCERNS_COUNTS" property="concernsCounts" jdbcType="DECIMAL"/>
+		
+		<collection property="venues" resultMap="VENUE_DETAIL_MAP">
+		</collection>
+		
 	</resultMap>
 	
-
+	<select id="selectResourceDetail" parameterType="int" resultMap="RESOURCE_DETAIL_MAP">
+		SELECT
+			resource_info.*, ass_region_venue.*, ass_site_ticket.*, (
+				SELECT
+					COUNT(USER_ID)
+				FROM
+					user_concerns
+				<where>
+					<if test="resourceId != null and resourceId != ''">
+						resource_info.RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}	
+					</if>
+				</where>
+			) CONCERNS_COUNTS
+		FROM
+			resource_info
+		LEFT JOIN association_resource_showvenue_site ass_r_s_s ON resource_info.RESOURCE_ID = ass_r_s_s.RESOURCE_ID
+		LEFT JOIN (
+			SELECT
+				*
+			FROM
+				region_third_category region_third
+			INNER JOIN showvenue_info ON region_third.THIRD_ID = showvenue_info.REGION_THIRD_ID
+		) ass_region_venue ON ass_r_s_s.VENUE_ID = ass_region_venue.VENUE_ID
+		LEFT JOIN (
+			SELECT
+				site_info.*, ticket_info.*
+			FROM
+				site_info
+			LEFT JOIN association_site_ticket ass_s_t ON site_info.SITE_ID = ass_s_t.SITE_ID
+			LEFT JOIN ticket_info ON ass_s_t.TICKET_ID = ticket_info.TICKET_ID
+		) ass_site_ticket ON ass_r_s_s.SITE_ID = ass_site_ticket.SITE_ID
+		<where>
+			<if test="resourceId != null and resourceId != ''">
+				resource_info.RESOURCE_ID = #{resourceId,jdbcType=DECIMAL}	
+			</if>
+		</where>
+	</select>
+	
 </mapper>

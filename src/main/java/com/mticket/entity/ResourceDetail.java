@@ -18,6 +18,7 @@ public class ResourceDetail implements Serializable{
 	private String resourceIntroduce;
 	private Integer isEnable;
 	private Integer thirdId;
+	private Integer concernsCounts;
 	
 	private List<ShowVenueDetail> venues;
 	
@@ -88,10 +89,19 @@ public class ResourceDetail implements Serializable{
 		this.venues = venues;
 	}
 
+	public Integer getConcernsCounts() {
+		return concernsCounts;
+	}
+
+	public void setConcernsCounts(Integer concernsCounts) {
+		this.concernsCounts = concernsCounts;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((concernsCounts == null) ? 0 : concernsCounts.hashCode());
 		result = prime * result + ((isEnable == null) ? 0 : isEnable.hashCode());
 		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
 		result = prime * result + ((resourceIntroduce == null) ? 0 : resourceIntroduce.hashCode());
@@ -112,6 +122,11 @@ public class ResourceDetail implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ResourceDetail other = (ResourceDetail) obj;
+		if (concernsCounts == null) {
+			if (other.concernsCounts != null)
+				return false;
+		} else if (!concernsCounts.equals(other.concernsCounts))
+			return false;
 		if (isEnable == null) {
 			if (other.isEnable != null)
 				return false;
@@ -159,6 +174,7 @@ public class ResourceDetail implements Serializable{
 	public String toString() {
 		return "ResourceDetail [resourceId=" + resourceId + ", resourceName=" + resourceName + ", resourcePic="
 				+ resourcePic + ", resourceShortDesc=" + resourceShortDesc + ", resourceIntroduce=" + resourceIntroduce
-				+ ", isEnable=" + isEnable + ", thirdId=" + thirdId + ", venues=" + venues + "]";
+				+ ", isEnable=" + isEnable + ", thirdId=" + thirdId + ", concernsCounts=" + concernsCounts + ", venues="
+				+ venues + "]";
 	}
 }

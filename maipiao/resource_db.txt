@@ -1,0 +1,24 @@
+地区一级分类：region_top_category
+地区二级分类：region_sec_category
+地区三级分类：region_third_category
+
+地区三级分类与资源的一级分类关系表：association_region_resource
+
+资源一级分类：resource_top_category
+资源二级分类：resource_sec_category
+资源三级分类：resource_third_category
+
+资源：resource_info  =====>> 特惠资源：discount_resource
+		     =====>> 热销资源：hot_resource
+
+资源,演出场馆，场次 的关系表： association_resource_showvenue_site
+
+演出场馆：showvenue_info
+
+场次表：site_info
+
+场次的类型：site_type
+
+场次与票价的关系表：association_site_ticket
+
+票价：ticket_info

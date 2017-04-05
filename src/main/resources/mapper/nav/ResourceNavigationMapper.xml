@@ -24,7 +24,6 @@
 		</collection>
 	</resultMap>
 
-<!-- 基本类型：当参数参与到if 判断中，必须使用_parameter -->
 	<select id="loadNavListByRegionThirdAndResourceTop" parameterType="map" resultMap="SEC_NAV_RESULT">
 		SELECT * 
 		FROM association_region_resource ass LEFT JOIN resource_top_category resource_top ON ass.RESOURCE_TOP_ID = resource_top.TOP_ID 

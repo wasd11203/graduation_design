@@ -1,5 +1,8 @@
 package com.mticket.test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +25,9 @@ public class TestResourceMapper {
 	
 	@Test
 	public void testResourceDetail(){
-		Object jobj = JSONObject.toJSON(resourceDetailMapper.selectResourceDetail(8));
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("resourceId", 1);
+		Object jobj = JSONObject.toJSON(resourceDetailMapper.selectResourceDetail(map));
 		System.out.println(jobj);
 
 	}

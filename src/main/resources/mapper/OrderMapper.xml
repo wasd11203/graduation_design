@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mticket.mapper.OrderMapper">
+	
+	<select id="getPreOrderInfo" parameterType="Map" resultType="Map">
+		SELECT
+			resource_info.RESOURCE_ID,
+			resource_info.RESOURCE_NAME,
+			resource_info.ISENABLE,
+			ass_region_venue.*, ass_site_ticket.*
+		FROM
+			resource_info
+		LEFT JOIN association_resource_showvenue_site ass_r_s_s ON resource_info.RESOURCE_ID = ass_r_s_s.RESOURCE_ID
+		LEFT JOIN (
+			SELECT
+				region_third.THIRD_ID,
+				region_third.THIRD_NAME,
+				showvenue_info.VENUE_ID,
+				showvenue_info.VENUE_NAME
+			FROM
+				region_third_category region_third
+			INNER JOIN showvenue_info ON region_third.THIRD_ID = showvenue_info.REGION_THIRD_ID
+			<where>
+				<if test="thirdId != null and thirdId != ''">
+					region_third.THIRD_ID = #{thirdId,jdbcType=DECIMAL}
+				</if>
+				<if test="venueId != null and venueId != ''">
+					AND showvenue_info.VENUE_ID = #{venueId,jdbcType=DECIMAL}
+				</if>	
+			</where>
+		) ass_region_venue ON ass_r_s_s.VENUE_ID = ass_region_venue.VENUE_ID
+		INNER JOIN (
+			SELECT
+				site_info.SITE_ID,
+				site_info.SITE_NAME,
+				site_info.SITE_TIME,
+				ticket_info.TICKET_ID,
+				ticket_info.TICKET_PRICE,
+		
+			IF (
+				ISNULL(ass_t_s.TICKET_COUNTS),
+				1,
+				ass_t_s.TICKET_COUNTS
+			) AS TICKET_COUNTS
+			FROM
+				site_info
+			LEFT JOIN association_site_ticket ass_s_t ON site_info.SITE_ID = ass_s_t.SITE_ID
+			LEFT JOIN ticket_info ON ass_s_t.TICKET_ID = ticket_info.TICKET_ID
+			LEFT JOIN association_ticket_suit ass_t_s ON ass_t_s.SUIT_TICKET_ID = ticket_info.TICKET_ID
+			<where>
+				<if test="ticketId != null and ticketId != ''">
+					ticket_info.TICKET_ID = #{ticketId ,jdbcType=DECIMAL}
+				</if>
+			</where>
+		) ass_site_ticket ON ass_r_s_s.SITE_ID = ass_site_ticket.SITE_ID
+		<where>
+			<if test="resourceId != null and resourceId != ''">
+				resource_info.RESOURCE_ID = #{resourceId ,jdbcType=DECIMAL}
+			</if>
+			<if test="siteId != null and siteId != '' ">
+				AND ass_r_s_s.SITE_ID = #{siteId,jdbcType=DECIMAL}
+			</if>
+		</where>
+			
+	</select>
+	
+	<update id="updateTicketById" parameterType="Map">
+		UPDATE ticket_info
+		SET TICKET_COUNTS = TICKET_COUNTS + #{counts,jdbcType=DECIMAL}
+		WHERE
+			TICKET_ID = #{ticketId,jdbcType=DECIMAL}
+	</update>
+	
+	<select id="getTicketCountsById" parameterType="int" resultType="Map">
+		SELECT TICKET_COUNTS
+		FROM ticket_info
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+	 			TICKET_ID = #{ticketId,jdbcType=DECIMAL}
+			</if>
+		</where> 
+	</select>
+	
+	<insert id="createOrderBaseInfo" parameterType="com.mticket.entity.OrderInfo">
+		INSERT INTO order_base_info 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orderId != null and orderId != '' ">
+				ORDER_ID,
+			</if>
+			<if test="orderType != null and orderType != '' ">
+				ORDER_TYPE,
+			</if>
+			<if test="disCountCode != null and disCountCode != ''">
+				DISCOUNT_CODE,
+			</if>
+			<if test="total != null and total != '' ">
+				TOTAL,
+			</if>
+			<if test="buyerPhone != null and buyerPhone != ''">
+				BUYER_PHONE,
+			</if>
+			<if test="province != null and province != ''">
+				RECEIVE_LOCATION_PROVINCE,
+			</if>
+			<if test="city != null and city != ''">
+				RECEIVE_LOCATION_CITY,
+			</if>
+			<if test="area != null and area != ''">
+				RECEIVE_LOCATION_AREA,
+			</if>
+			<if test="more != null and more != ''">
+				RECEIVE_LOCATION_MORE,
+			</if>
+			<if test="receiveName != null and receiveName != ''">
+				RECEIVE_NAME,
+			</if>
+			<if test="receivePhone != null and receivePhone != ''">
+				RECEIVE_PHONE,
+			</if>
+			<if test="isFinish != null and isFinish != ''">
+				ISFINISH,
+			</if>
+			<if test="inTime != null and inTime != ''">
+				INTIME,
+			</if>
+			<if test="receiveType != null and receiveType != ''">
+				RECEIVE_TYPE
+			</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="orderId != null and orderId != '' ">
+				#{orderId,jdbcType=DECIMAL},
+			</if>
+			<if test="orderType != null and orderType != '' ">
+				#{orderType,jdbcType=DECIMAL},
+			</if>
+			<if test="disCountCode != null and disCountCode != ''">
+				#{disCountCode,jdbcType=VARCHAR},
+			</if>
+			<if test="total != null and total != '' ">
+				#{total,jdbcType=FLOAT},
+			</if>
+			<if test="buyerPhone != null and buyerPhone != ''">
+				#{buyerPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null and province != ''">
+				#{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null and city != ''">
+				#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null and area != ''">
+				#{area,jdbcType=VARCHAR},
+			</if>
+			<if test="more != null and more != ''">
+				#{more,jdbcType=VARCHAR},
+			</if>
+			<if test="receiveName != null and receiveName != ''">
+				#{receiveName,jdbcType=VARCHAR},
+			</if>
+			<if test="receivePhone != null and receivePhone != ''">
+				#{receivePhone,jdbcType=VARCHAR},
+			</if>
+			<if test="isFinish != null and isFinish != ''">
+				#{isFinish,jdbcType=DECIMAL},
+			</if>
+			<if test="inTime != null and inTime != ''">
+				#{inTime,jdbcType=DECIMAL},
+			</if>
+			<if test="receiveType != null and receiveType != ''">
+				#{receiveType,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+	
+	<insert id="createAssociationOrderWithResource" parameterType="com.mticket.entity.OrderInfo">
+		INSERT INTO association_order_resource 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orderId != null and orderId != '' ">
+				ORDER_ID,
+			</if>
+			<if test="resourceId != null and resourceId != '' ">
+				RESOURCE_ID,
+			</if>
+			<if test="regionThirdId != null and regionThirdId != ''">
+				REGION_THIRD_ID,
+			</if>
+			<if test="venueId != null and venueId != ''">
+				VENUE_ID,
+			</if>
+			<if test="siteId != null and siteId != ''">
+				SITE_ID,
+			</if>
+			<if test="ticketId != null and ticketId != ''">
+				TICKET_ID,
+			</if>
+			<if test="ticketCounts != null and ticketCounts != ''">
+				TICKET_COUNTS,
+			</if>
+			<if test="ticketPrice != null and ticketPrice != ''">
+				TICKET_PRICE,
+			</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="orderId != null and orderId != '' ">
+				#{orderId,jdbcType=DECIMAL},
+			</if>
+			<if test="resourceId != null and resourceId != '' ">
+				#{resourceId,jdbcType=DECIMAL},
+			</if>
+			<if test="regionThirdId != null and regionThirdId != ''">
+				#{regionThirdId,jdbcType=DECIMAL},
+			</if>
+			<if test="venueId != null and venueId != ''">
+				#{venueId,jdbcType=DECIMAL},
+			</if>
+			<if test="siteId != null and siteId != ''">
+				#{siteId,jdbcType=DECIMAL},
+			</if>
+			<if test="ticketId != null and ticketId != ''">
+				#{ticketId,jdbcType=DECIMAL},
+			</if>
+			<if test="ticketCounts != null and ticketCounts != ''">
+				#{ticketCounts,jdbcType=DECIMAL},
+			</if>
+			<if test="ticketPrice != null and ticketPrice != ''">
+				#{ticketPrice,jdbcType=FLOAT},
+			</if>
+		</trim>
+	</insert>
+	
+	<insert id="createAssociationOrderWithUser" parameterType="com.mticket.entity.OrderInfo">
+		INSERT INTO association_user_order 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orderId != null and orderId != ''">
+				ORDER_ID,
+			</if> 
+			<if test="userId != null and userId != ''">
+				USER_ID,
+			</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="orderId != null and orderId != ''">
+				#{orderId,jdbcType=DECIMAL},
+			</if> 
+			<if test="userId != null and userId != ''">
+				#{userId,jdbcType=DECIMAL},
+			</if>
+		</trim>
+			
+	</insert>
+	
+</mapper>

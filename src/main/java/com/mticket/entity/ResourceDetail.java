@@ -17,10 +17,10 @@ public class ResourceDetail implements Serializable{
 	private String resourceShortDesc;
 	private String resourceIntroduce;
 	private Integer isEnable;
-	private Integer thirdId;
+	private Integer resourceThirdId;
 	private Integer concernsCounts;
 	
-	private List<ShowVenueDetail> venues;
+	private List<ThirdRegion> thirdRegions;
 	
 	public ResourceDetail(){
 	}
@@ -73,20 +73,12 @@ public class ResourceDetail implements Serializable{
 		this.isEnable = isEnable;
 	}
 
-	public Integer getThirdId() {
-		return thirdId;
+	public Integer getResourceThirdId() {
+		return resourceThirdId;
 	}
 
-	public void setThirdId(Integer thirdId) {
-		this.thirdId = thirdId;
-	}
-
-	public List<ShowVenueDetail> getVenues() {
-		return venues;
-	}
-
-	public void setVenues(List<ShowVenueDetail> venues) {
-		this.venues = venues;
+	public void setResourceThirdId(Integer resourceThirdId) {
+		this.resourceThirdId = resourceThirdId;
 	}
 
 	public Integer getConcernsCounts() {
@@ -95,6 +87,18 @@ public class ResourceDetail implements Serializable{
 
 	public void setConcernsCounts(Integer concernsCounts) {
 		this.concernsCounts = concernsCounts;
+	}
+
+	public List<ThirdRegion> getThirdRegions() {
+		return thirdRegions;
+	}
+
+	public void setThirdRegions(List<ThirdRegion> thirdRegions) {
+		this.thirdRegions = thirdRegions;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -108,8 +112,8 @@ public class ResourceDetail implements Serializable{
 		result = prime * result + ((resourceName == null) ? 0 : resourceName.hashCode());
 		result = prime * result + ((resourcePic == null) ? 0 : resourcePic.hashCode());
 		result = prime * result + ((resourceShortDesc == null) ? 0 : resourceShortDesc.hashCode());
-		result = prime * result + ((thirdId == null) ? 0 : thirdId.hashCode());
-		result = prime * result + ((venues == null) ? 0 : venues.hashCode());
+		result = prime * result + ((resourceThirdId == null) ? 0 : resourceThirdId.hashCode());
+		result = prime * result + ((thirdRegions == null) ? 0 : thirdRegions.hashCode());
 		return result;
 	}
 
@@ -157,15 +161,15 @@ public class ResourceDetail implements Serializable{
 				return false;
 		} else if (!resourceShortDesc.equals(other.resourceShortDesc))
 			return false;
-		if (thirdId == null) {
-			if (other.thirdId != null)
+		if (resourceThirdId == null) {
+			if (other.resourceThirdId != null)
 				return false;
-		} else if (!thirdId.equals(other.thirdId))
+		} else if (!resourceThirdId.equals(other.resourceThirdId))
 			return false;
-		if (venues == null) {
-			if (other.venues != null)
+		if (thirdRegions == null) {
+			if (other.thirdRegions != null)
 				return false;
-		} else if (!venues.equals(other.venues))
+		} else if (!thirdRegions.equals(other.thirdRegions))
 			return false;
 		return true;
 	}
@@ -174,7 +178,7 @@ public class ResourceDetail implements Serializable{
 	public String toString() {
 		return "ResourceDetail [resourceId=" + resourceId + ", resourceName=" + resourceName + ", resourcePic="
 				+ resourcePic + ", resourceShortDesc=" + resourceShortDesc + ", resourceIntroduce=" + resourceIntroduce
-				+ ", isEnable=" + isEnable + ", thirdId=" + thirdId + ", concernsCounts=" + concernsCounts + ", venues="
-				+ venues + "]";
+				+ ", isEnable=" + isEnable + ", resourceThirdId=" + resourceThirdId + ", concernsCounts="
+				+ concernsCounts + ", thirdRegions=" + thirdRegions + "]";
 	}
 }

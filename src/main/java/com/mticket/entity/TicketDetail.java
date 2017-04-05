@@ -15,6 +15,7 @@ public class TicketDetail implements Serializable{
 	private Integer ticketCounts;
 	private Float ticketPrice;
 	private Float ticketOldPrice;
+	private Integer ticketTypeId;
 	
 	public TicketDetail(){
 		
@@ -60,6 +61,18 @@ public class TicketDetail implements Serializable{
 		this.ticketOldPrice = ticketOldPrice;
 	}
 
+	public Integer getTicketTypeId() {
+		return ticketTypeId;
+	}
+
+	public void setTicketTypeId(Integer ticketTypeId) {
+		this.ticketTypeId = ticketTypeId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -69,6 +82,7 @@ public class TicketDetail implements Serializable{
 		result = prime * result + ((ticketName == null) ? 0 : ticketName.hashCode());
 		result = prime * result + ((ticketOldPrice == null) ? 0 : ticketOldPrice.hashCode());
 		result = prime * result + ((ticketPrice == null) ? 0 : ticketPrice.hashCode());
+		result = prime * result + ((ticketTypeId == null) ? 0 : ticketTypeId.hashCode());
 		return result;
 	}
 
@@ -106,12 +120,19 @@ public class TicketDetail implements Serializable{
 				return false;
 		} else if (!ticketPrice.equals(other.ticketPrice))
 			return false;
+		if (ticketTypeId == null) {
+			if (other.ticketTypeId != null)
+				return false;
+		} else if (!ticketTypeId.equals(other.ticketTypeId))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "TicketDetail [ticketId=" + ticketId + ", ticketName=" + ticketName + ", ticketCounts=" + ticketCounts
-				+ ", ticketPrice=" + ticketPrice + ", ticketOldPrice=" + ticketOldPrice + "]";
+				+ ", ticketPrice=" + ticketPrice + ", ticketOldPrice=" + ticketOldPrice + ", ticketTypeId="
+				+ ticketTypeId + "]";
 	}
+	
 }

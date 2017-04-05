@@ -1,5 +1,7 @@
 package com.mticket.mapper;
 
+import java.util.Map;
+
 import com.mticket.entity.ResourceDetail;
 
 /**
@@ -8,5 +10,5 @@ import com.mticket.entity.ResourceDetail;
  * 时间：2017年4月3日 上午9:45:17
  */
 public interface ResourceDetailMapper {
-	public ResourceDetail selectResourceDetail(Integer resourceId);
+	public ResourceDetail selectResourceDetail(Map<String, Object> map);
 }

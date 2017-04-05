@@ -8,15 +8,20 @@
 		<result column="TICKET_COUNTS" property="ticketCounts" jdbcType="DECIMAL"/>
 		<result column="TICKET_PRICE" property="ticketPrice" jdbcType="FLOAT"/>
 		<result column="TICKET_OLD_PRICE" property="ticketOldPrice" jdbcType="FLOAT"/>
+		<result column="TICKET_TYPE_ID" property="ticketTypeId" jdbcType="DECIMAL"/>
+		
 	</resultMap>
 	
 	<resultMap id="SITE_DETAIL_MAP" type="com.mticket.entity.SiteDetail" >
 		<id column="SITE_ID" property="siteId" jdbcType="DECIMAL"/>
 		<result column="SITE_NAME" property="siteName" jdbcType="VARCHAR"/>
+		<result column="SITE_TIME" property="siteTime" jdbcType="DECIMAL"/>
 		<result column="LIMIT_COUNTS" property="limitCounts" jdbcType="DECIMAL"/>
-		<result column="TYPE_ID" property="typeId" jdbcType="DECIMAL"/>
+		<result column="SITE_TYPE_ID" property="siteTypeId" jdbcType="DECIMAL"/>
+		
 		<collection property="tickets" resultMap="TICKET_DETAIL_MAP">
 		</collection>		
+		
 	</resultMap>
 	
 	<resultMap id="VENUE_DETAIL_MAP" type="com.mticket.entity.ShowVenueDetail" >
@@ -27,11 +32,19 @@
 		<result column="VENUE_PHONE" property="venuePhone" jdbcType="VARCHAR"/>
 		<result column="VENUE_INTRODUCE" property="venueIntroduce" jdbcType="VARCHAR"/>
 		
-		<result column="THIRD_ID" property="regionThirdId" jdbcType="DECIMAL"/>
-		<result column="THIRD_NAME" property="regionThirdName" jdbcType="VARCHAR"/>
-		
 		<collection property="sites" resultMap="SITE_DETAIL_MAP">
 		</collection>
+		
+	</resultMap>
+	
+	<resultMap id="REGION_THIRD_MAP" type="com.mticket.entity.ThirdRegion">
+		
+		<result column="THIRD_ID" property="regionThirdId" jdbcType="DECIMAL"/>
+		<result column="THIRD_NAME" property="regionName" jdbcType="VARCHAR"/>
+		
+		<collection property="venues" resultMap="VENUE_DETAIL_MAP">
+		</collection>
+		
 	</resultMap>
 	
 	<resultMap id="RESOURCE_DETAIL_MAP" type="com.mticket.entity.ResourceDetail">
@@ -41,15 +54,16 @@
 		<result column="RESOURCE_PIC" property="resourcePic" jdbcType="VARCHAR"/>
 		<result column="RESOURCE_SHORT_DESC" property="resourceShortDesc" jdbcType="VARCHAR"/>
 		<result column="RESOURCE_INTRODUCE" property="resourceIntroduce" jdbcType="VARCHAR"/>
-		<result column="THIRD_ID" property="thirdId" jdbcType="DECIMAL"/>
+		<result column="ISENABLE" property="isEnable" jdbcType="DECIMAL"/>
+		<result column="RESOURCE_THIRD_ID" property="resourceThirdId" jdbcType="DECIMAL"/>
 		<result column="CONCERNS_COUNTS" property="concernsCounts" jdbcType="DECIMAL"/>
 		
-		<collection property="venues" resultMap="VENUE_DETAIL_MAP">
+		<collection property="thirdRegions" resultMap="REGION_THIRD_MAP">
 		</collection>
 		
 	</resultMap>
 	
-	<select id="selectResourceDetail" parameterType="int" resultMap="RESOURCE_DETAIL_MAP">
+	<select id="selectResourceDetail" parameterType="Map" resultMap="RESOURCE_DETAIL_MAP">
 		SELECT
 			resource_info.*, ass_region_venue.*, ass_site_ticket.*, (
 				SELECT
@@ -71,10 +85,16 @@
 			FROM
 				region_third_category region_third
 			INNER JOIN showvenue_info ON region_third.THIRD_ID = showvenue_info.REGION_THIRD_ID
+			<where>
+				<if test="regionThirdId != null and regionThirdId != ''">
+					region_third.THIRD_ID = #{regoinThirdId,jdbcType=DECIMAL}
+				</if>
+			</where>
 		) ass_region_venue ON ass_r_s_s.VENUE_ID = ass_region_venue.VENUE_ID
 		LEFT JOIN (
 			SELECT
-				site_info.*, ticket_info.*
+				site_info.*, 
+				ticket_info.*
 			FROM
 				site_info
 			LEFT JOIN association_site_ticket ass_s_t ON site_info.SITE_ID = ass_s_t.SITE_ID

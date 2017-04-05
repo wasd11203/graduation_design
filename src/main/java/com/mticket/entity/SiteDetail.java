@@ -17,7 +17,7 @@ public class SiteDetail implements Serializable{
 	private String siteName;
 	private Date siteTime;
 	private Integer limitCounts;
-	private Integer typeId;
+	private Integer siteTypeId;
 	
 	private List<TicketDetail> tickets;
 	
@@ -56,12 +56,12 @@ public class SiteDetail implements Serializable{
 		this.limitCounts = limitCounts;
 	}
 
-	public Integer getTypeId() {
-		return typeId;
+	public Integer getSiteTypeId() {
+		return siteTypeId;
 	}
 
-	public void setTypeId(Integer typeId) {
-		this.typeId = typeId;
+	public void setSiteTypeId(Integer siteTypeId) {
+		this.siteTypeId = siteTypeId;
 	}
 
 	public List<TicketDetail> getTickets() {
@@ -72,6 +72,10 @@ public class SiteDetail implements Serializable{
 		this.tickets = tickets;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -80,8 +84,8 @@ public class SiteDetail implements Serializable{
 		result = prime * result + ((siteId == null) ? 0 : siteId.hashCode());
 		result = prime * result + ((siteName == null) ? 0 : siteName.hashCode());
 		result = prime * result + ((siteTime == null) ? 0 : siteTime.hashCode());
+		result = prime * result + ((siteTypeId == null) ? 0 : siteTypeId.hashCode());
 		result = prime * result + ((tickets == null) ? 0 : tickets.hashCode());
-		result = prime * result + ((typeId == null) ? 0 : typeId.hashCode());
 		return result;
 	}
 
@@ -114,15 +118,15 @@ public class SiteDetail implements Serializable{
 				return false;
 		} else if (!siteTime.equals(other.siteTime))
 			return false;
+		if (siteTypeId == null) {
+			if (other.siteTypeId != null)
+				return false;
+		} else if (!siteTypeId.equals(other.siteTypeId))
+			return false;
 		if (tickets == null) {
 			if (other.tickets != null)
 				return false;
 		} else if (!tickets.equals(other.tickets))
-			return false;
-		if (typeId == null) {
-			if (other.typeId != null)
-				return false;
-		} else if (!typeId.equals(other.typeId))
 			return false;
 		return true;
 	}
@@ -130,7 +134,6 @@ public class SiteDetail implements Serializable{
 	@Override
 	public String toString() {
 		return "SiteDetail [siteId=" + siteId + ", siteName=" + siteName + ", siteTime=" + siteTime + ", limitCounts="
-				+ limitCounts + ", typeId=" + typeId + ", tickets=" + tickets + "]";
+				+ limitCounts + ", siteTypeId=" + siteTypeId + ", tickets=" + tickets + "]";
 	}
-	
 }

@@ -1,5 +1,7 @@
 package com.mticket.service;
 
+import java.util.Map;
+
 import com.mticket.entity.ResourceDetail;
 
 /**
@@ -14,6 +16,6 @@ public interface DetailInfoService {
 	 * @param resourceId
 	 * @return
 	 */
-	public ResourceDetail getResourceDetailInfo(Integer resourceId);
+	public ResourceDetail getResourceDetailInfo(Map<String, Object> map);
 	
 }

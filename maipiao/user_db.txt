@@ -1,0 +1,15 @@
+用户：user_base_info
+
+用户的绑定信息表：user_bind_info
+
+用户的收货地址 与用户 的关系表：association_user_receiveaddresses
+
+用户的关注表：user_concerns
+
+用户与订单的关系表 ：association_user_order
+
+订单的固有信息：order_base_info
+
+订单与资源的关系表：association_order_resource
+
+取票类型：receive_type

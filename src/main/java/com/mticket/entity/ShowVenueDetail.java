@@ -19,7 +19,6 @@ public class ShowVenueDetail implements Serializable{
 	private String venueIntroduce;
 	
 	private Integer regionThirdId;
-	private String regionThirdName;
 	
 	private List<SiteDetail> sites;
 	
@@ -83,14 +82,6 @@ public class ShowVenueDetail implements Serializable{
 		this.regionThirdId = regionThirdId;
 	}
 
-	public String getRegionThirdName() {
-		return regionThirdName;
-	}
-
-	public void setRegionThirdName(String regionThirdName) {
-		this.regionThirdName = regionThirdName;
-	}
-
 	public List<SiteDetail> getSites() {
 		return sites;
 	}
@@ -99,12 +90,15 @@ public class ShowVenueDetail implements Serializable{
 		this.sites = sites;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((regionThirdId == null) ? 0 : regionThirdId.hashCode());
-		result = prime * result + ((regionThirdName == null) ? 0 : regionThirdName.hashCode());
 		result = prime * result + ((sites == null) ? 0 : sites.hashCode());
 		result = prime * result + ((venueAddress == null) ? 0 : venueAddress.hashCode());
 		result = prime * result + ((venueId == null) ? 0 : venueId.hashCode());
@@ -128,11 +122,6 @@ public class ShowVenueDetail implements Serializable{
 			if (other.regionThirdId != null)
 				return false;
 		} else if (!regionThirdId.equals(other.regionThirdId))
-			return false;
-		if (regionThirdName == null) {
-			if (other.regionThirdName != null)
-				return false;
-		} else if (!regionThirdName.equals(other.regionThirdName))
 			return false;
 		if (sites == null) {
 			if (other.sites != null)
@@ -176,8 +165,7 @@ public class ShowVenueDetail implements Serializable{
 	public String toString() {
 		return "ShowVenueDetail [venueId=" + venueId + ", venuePic=" + venuePic + ", venueName=" + venueName
 				+ ", venueAddress=" + venueAddress + ", venuePhone=" + venuePhone + ", venueIntroduce=" + venueIntroduce
-				+ ", regionThirdId=" + regionThirdId + ", regionThirdName=" + regionThirdName + ", sites=" + sites
-				+ "]";
+				+ ", regionThirdId=" + regionThirdId + ", sites=" + sites + "]";
 	}
-	
+
 }

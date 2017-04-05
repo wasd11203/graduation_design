@@ -31,6 +31,7 @@
 		<result column="VENUE_ADDRESS" property="venueAddress" jdbcType="VARCHAR"/>
 		<result column="VENUE_PHONE" property="venuePhone" jdbcType="VARCHAR"/>
 		<result column="VENUE_INTRODUCE" property="venueIntroduce" jdbcType="VARCHAR"/>
+		<result column="REGION_THIRD_ID" property="regionThirdId" jdbcType="DECIMAL"/>
 		
 		<collection property="sites" resultMap="SITE_DETAIL_MAP">
 		</collection>

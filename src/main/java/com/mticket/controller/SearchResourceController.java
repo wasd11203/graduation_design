@@ -38,7 +38,7 @@ public class SearchResourceController extends BasicController {
 	public JSONObject searchResourceByMark(String keywords, String regionThirdId, String resourceTopId,
 			String resourceSecId, String resourceThirdId, String minTime, String maxTime) {
 		
-		logger.debug("当前访问的url:/resource/searchByMark,params:" + keywords + "," + regionThirdId + ","
+		logger.debug("CONTROLLER -- 当前访问的url:/resource/searchByMark,params:" + keywords + "," + regionThirdId + ","
 				+ resourceTopId + "," + resourceSecId + "," + resourceThirdId+","+minTime+","+maxTime);
 
 		JSONObject jobj = new JSONObject();
@@ -67,7 +67,7 @@ public class SearchResourceController extends BasicController {
 
 	private Map<String, Object> transforArgs(String regionThirdId, String resourceSecId, String resourceThirdId,
 			String minTime, String maxTime, SimpleDateFormat sdf) {
-		logger.debug("当前访问的方法:com.mticket.controller.nav.NavigationController.transforArgs,params:" + regionThirdId + ","
+		logger.debug("CONTROLLER -- 当前访问的方法:com.mticket.controller.nav.NavigationController.transforArgs,params:" + regionThirdId + ","
 				+ "," + resourceSecId + "," + resourceThirdId+","+minTime+","+maxTime);
 		Integer regionThird = null;
 		Integer resourceSec = null;

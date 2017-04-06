@@ -12,10 +12,12 @@ public class UserConcern implements Serializable{
 
 	private static final long serialVersionUID = 4155126534468816865L;
 
+	private Integer concernId;
 	private Integer userId;
 	
 	private Integer resourceId;
 	private String resourceName;
+	private String resourcePic;
 	private Integer isEnable;
 	
 	private Integer regionThirdId;
@@ -32,6 +34,7 @@ public class UserConcern implements Serializable{
 	private String ticketName;
 	
 	private Date inTime;
+	private Integer isDel;
 	
 	public UserConcern(){
 		
@@ -263,6 +266,30 @@ public class UserConcern implements Serializable{
 				+ ", venueId=" + venueId + ", venueName=" + venueName + ", siteId=" + siteId + ", siteName=" + siteName
 				+ ", siteTime=" + siteTime + ", ticketId=" + ticketId + ", ticketName=" + ticketName + ", inTime="
 				+ inTime + "]";
+	}
+
+	public Integer getIsDel() {
+		return isDel;
+	}
+
+	public void setIsDel(Integer isDel) {
+		this.isDel = isDel;
+	}
+
+	public Integer getConcernId() {
+		return concernId;
+	}
+
+	public void setConcernId(Integer concernId) {
+		this.concernId = concernId;
+	}
+
+	public String getResourcePic() {
+		return resourcePic;
+	}
+
+	public void setResourcePic(String resourcePic) {
+		this.resourcePic = resourcePic;
 	}
 	
 }

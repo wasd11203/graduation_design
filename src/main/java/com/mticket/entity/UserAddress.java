@@ -11,6 +11,8 @@ public class UserAddress implements Serializable{
 
 	private static final long serialVersionUID = -4992439024664880068L;
 
+	private Integer addressId;
+	
 	private Integer userId;
 	private String province;
 	private String city;
@@ -163,5 +165,13 @@ public class UserAddress implements Serializable{
 		return "UserAddress [userId=" + userId + ", province=" + province + ", city=" + city + ", area=" + area
 				+ ", more=" + more + ", receiveName=" + receiveName + ", receivePhone=" + receivePhone + ", isDefault="
 				+ isDefault + "]";
+	}
+
+	public Integer getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
 	}
 }

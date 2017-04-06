@@ -16,13 +16,15 @@ public class UserDetail implements Serializable {
 	private Integer userId;
 	private String icon;
 	private String nickname;
-	private String passwrod;
+	private String name;
+	private String password;
 	private Date birth;
 	private int gender;
 	
 	private List<OrderDetailInfo> orders;
 	private List<UserConcern> concerns;
 	private List<UserAddress> addresses;
+	private UserBindInfo bindInfo;
 	
 	public UserDetail(){
 		
@@ -52,12 +54,20 @@ public class UserDetail implements Serializable {
 		this.nickname = nickname;
 	}
 
-	public String getPasswrod() {
-		return passwrod;
+	public String getName() {
+		return name;
 	}
 
-	public void setPasswrod(String passwrod) {
-		this.passwrod = passwrod;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Date getBirth() {
@@ -100,6 +110,14 @@ public class UserDetail implements Serializable {
 		this.addresses = addresses;
 	}
 
+	public UserBindInfo getBindInfo() {
+		return bindInfo;
+	}
+
+	public void setBindInfo(UserBindInfo bindInfo) {
+		this.bindInfo = bindInfo;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -109,13 +127,15 @@ public class UserDetail implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((addresses == null) ? 0 : addresses.hashCode());
+		result = prime * result + ((bindInfo == null) ? 0 : bindInfo.hashCode());
 		result = prime * result + ((birth == null) ? 0 : birth.hashCode());
 		result = prime * result + ((concerns == null) ? 0 : concerns.hashCode());
 		result = prime * result + gender;
 		result = prime * result + ((icon == null) ? 0 : icon.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
 		result = prime * result + ((orders == null) ? 0 : orders.hashCode());
-		result = prime * result + ((passwrod == null) ? 0 : passwrod.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
@@ -134,6 +154,11 @@ public class UserDetail implements Serializable {
 				return false;
 		} else if (!addresses.equals(other.addresses))
 			return false;
+		if (bindInfo == null) {
+			if (other.bindInfo != null)
+				return false;
+		} else if (!bindInfo.equals(other.bindInfo))
+			return false;
 		if (birth == null) {
 			if (other.birth != null)
 				return false;
@@ -151,6 +176,11 @@ public class UserDetail implements Serializable {
 				return false;
 		} else if (!icon.equals(other.icon))
 			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
 		if (nickname == null) {
 			if (other.nickname != null)
 				return false;
@@ -161,10 +191,10 @@ public class UserDetail implements Serializable {
 				return false;
 		} else if (!orders.equals(other.orders))
 			return false;
-		if (passwrod == null) {
-			if (other.passwrod != null)
+		if (password == null) {
+			if (other.password != null)
 				return false;
-		} else if (!passwrod.equals(other.passwrod))
+		} else if (!password.equals(other.password))
 			return false;
 		if (userId == null) {
 			if (other.userId != null)
@@ -176,8 +206,8 @@ public class UserDetail implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UserDetail [userId=" + userId + ", icon=" + icon + ", nickname=" + nickname + ", passwrod=" + passwrod
-				+ ", birth=" + birth + ", gender=" + gender + ", orders=" + orders + ", concerns=" + concerns
-				+ ", addresses=" + addresses + "]";
+		return "UserDetail [userId=" + userId + ", icon=" + icon + ", nickname=" + nickname + ", name=" + name
+				+ ", password=" + password + ", birth=" + birth + ", gender=" + gender + ", orders=" + orders
+				+ ", concerns=" + concerns + ", addresses=" + addresses + ", bindInfo=" + bindInfo + "]";
 	}
 }

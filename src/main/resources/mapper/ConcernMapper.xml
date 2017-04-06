@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mticket.mapper.ConcernMapper">
+
+	
+	<insert id="createConcernByUserId" parameterType="Map">
+		INSERT INTO user_concerns 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="concernId != null and concernId != ''">
+				CONCERN_ID,
+			</if>
+			<if test="userId != null and userId != ''">
+				USER_ID,
+			</if>
+			<if test="resourceId != null and resourceId != ''">
+				RESOURCE_ID,
+			</if>
+			<if test="regionId != null and regionId != ''">
+				REGION_ID,
+			</if>
+			<if test="venueId != null and venueId != ''">
+				VENUE_ID,
+			</if>
+			<if test="siteId != null and siteId != ''">
+				SITE_ID,
+			</if>
+			<if test="ticketId != null and ticketId != ''">
+				TICKET_ID,
+			</if>
+			<if test="inTime != null and inTime != ''">
+				INTIME,
+			</if>
+			<if test="isDel != null and isDel != ''">
+				ISDEL,
+			</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="concernId != null and concernId != ''">
+				#{concernId,jdbcType=DECIMAL},
+			</if>
+			<if test="userId != null and userId != ''">
+				#{userId,jdbcType=DECIMAL},
+			</if>
+			<if test="resourceId != null and resourceId != ''">
+				#{resourceId,jdbcType=DECIMAL},
+			</if>
+			<if test="regionId != null and regionId != ''">
+				#{regionId,jdbcType=DECIMAL},
+			</if>
+			<if test="venueId != null and venueId != ''">
+				#{venueId,jdbcType=DECIMAL},
+			</if>
+			<if test="siteId != null and siteId != ''">
+				#{siteId,jdbcType=DECIMAL},
+			</if>
+			<if test="ticketId != null and ticketId != ''">
+				#{ticketId,jdbcType=DECIMAL},
+			</if>
+			<if test="inTime != null and inTime != ''">
+				#{inTime,jdbcType=DECIMAL},
+			</if>
+			<if test="isDel != null and isDel != ''">
+				#{isDel,jdbcType=DECIMAL},
+			</if>
+		</trim>
+		
+	</insert>
+	
+	<update id="updateUserConcernByConcernId" parameterType="Map">
+		UPDATE user_concerns
+		<set>
+			<if test="isDel != null and isDel != ''">
+				ISDEL = #{isDel,jdbcType=DECIMAL}
+			</if>
+		</set>
+		<where>
+			<if test="concernId != null and concernId != ''">
+				CONCERN_ID = #{concernId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</update>
+
+</mapper>
+
+
+

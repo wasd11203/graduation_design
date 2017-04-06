@@ -28,7 +28,7 @@ public class NavigationController extends BasicController {
 	@RequestMapping("/region")
 	@ResponseBody
 	public List<RegionNavigation> getRegionNavByResourceTopId(String resourceTopId){
-		logger.debug("当前访问的url:/nav/region,params:"+resourceTopId);
+		logger.debug("CONTROLLER -- 当前访问的url:/nav/region,params:"+resourceTopId);
 		Integer resourceTop = null;
 		if(resourceTopId != null && !resourceTopId.trim().isEmpty()){
 			resourceTop = new Integer(resourceTopId);
@@ -39,14 +39,14 @@ public class NavigationController extends BasicController {
 	@RequestMapping("/resource_top")
 	@ResponseBody
 	public List<Map<String, Object>> getResourceTopNav(){
-		logger.debug("当前访问的url:/nav/resource_top,无参");
+		logger.debug("CONTROLLER --当前访问的url:/nav/resource_top,无参");
 		return navigationService.getTopResourceList();
 	}
 	
 	@RequestMapping("/resource_nav")
 	@ResponseBody
 	public List<ResourceNavigationSec> getResourceNav(String resourceTopId){
-		logger.debug("当前访问的url:/nav/resource_nav,params:"+resourceTopId);
+		logger.debug("CONTROLLER --当前访问的url:/nav/resource_nav,params:"+resourceTopId);
 		Integer resourceTop = null;
 		if(resourceTopId != null && !resourceTopId.trim().isEmpty()){
 			resourceTop = new Integer(resourceTopId);

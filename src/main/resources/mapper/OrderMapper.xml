@@ -250,4 +250,51 @@
 			
 	</insert>
 	
+	<select id="getOrderTotal" parameterType="int" resultType="Map">
+		SELECT
+			TOTAL
+		FROM
+			order_base_info
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				ORDER_ID = #{orderId,jdbcType=DECIMAL}
+			</if>		
+		</where>
+	</select>
+	
+	<update id="updateOrderSta" parameterType="Map">
+		UPDATE order_base_info
+		<trim prefix="SET " suffix="" suffixOverrides=",">
+			<if test="isFinish != null ">
+				ISFINISH = #{isFinish,jdbcType=DECIMAL} ,
+			</if>
+			<if test="isDel != null ">
+				ISDEL = #{isDel,jdbcType=DECIMAL} ,
+			</if>
+		</trim>
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				ORDER_ID = #{orderId,jdbcType=DECIMAL}
+			</if>		
+		</where>
+	</update>
+	
+	<select id="getOrderBaseInfoByOrderId" parameterType="int" resultType="Map">
+		SELECT
+			order_base_info.TOTAL,
+			order_base_info.ORDER_ID,
+			order_base_info.ISFINISH,
+			ass_u_o.USER_ID,
+			ass_o_r.TICKET_ID,
+			ass_o_r.TICKET_COUNTS
+		FROM
+			order_base_info
+		LEFT JOIN association_user_order ass_u_o ON order_base_info.ORDER_ID = ass_u_o.ORDER_ID
+		LEFT JOIN association_order_resource ass_o_r ON ass_o_r.ORDER_ID = order_base_info.ORDER_ID
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				order_base_info.ORDER_ID = #{orderId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</select>
 </mapper>

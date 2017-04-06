@@ -14,6 +14,8 @@ public class AssociationOrderWithResource implements Serializable{
 
 	private Integer resourceId;
 	private String resourceName;
+	private String resourcePic;
+	private Integer isEnable;
 	
 	private Integer regionThirdId;
 	private String regionThirdName;
@@ -28,7 +30,9 @@ public class AssociationOrderWithResource implements Serializable{
 	private Integer ticketId;
 	private String ticketName;
 	private Integer ticketCounts;
+	private Integer realTicketCounts;
 	private Float ticketPrice;
+	
 	
 	public AssociationOrderWithResource(){
 		
@@ -48,6 +52,14 @@ public class AssociationOrderWithResource implements Serializable{
 
 	public void setResourceName(String resourceName) {
 		this.resourceName = resourceName;
+	}
+
+	public String getResourcePic() {
+		return resourcePic;
+	}
+
+	public void setResourcePic(String resourcePic) {
+		this.resourcePic = resourcePic;
 	}
 
 	public Integer getRegionThirdId() {
@@ -150,6 +162,7 @@ public class AssociationOrderWithResource implements Serializable{
 		result = prime * result + ((regionThirdName == null) ? 0 : regionThirdName.hashCode());
 		result = prime * result + ((resourceId == null) ? 0 : resourceId.hashCode());
 		result = prime * result + ((resourceName == null) ? 0 : resourceName.hashCode());
+		result = prime * result + ((resourcePic == null) ? 0 : resourcePic.hashCode());
 		result = prime * result + ((siteId == null) ? 0 : siteId.hashCode());
 		result = prime * result + ((siteName == null) ? 0 : siteName.hashCode());
 		result = prime * result + ((siteTime == null) ? 0 : siteTime.hashCode());
@@ -190,6 +203,11 @@ public class AssociationOrderWithResource implements Serializable{
 			if (other.resourceName != null)
 				return false;
 		} else if (!resourceName.equals(other.resourceName))
+			return false;
+		if (resourcePic == null) {
+			if (other.resourcePic != null)
+				return false;
+		} else if (!resourcePic.equals(other.resourcePic))
 			return false;
 		if (siteId == null) {
 			if (other.siteId != null)
@@ -242,10 +260,26 @@ public class AssociationOrderWithResource implements Serializable{
 	@Override
 	public String toString() {
 		return "AssociationOrderWithResource [resourceId=" + resourceId + ", resourceName=" + resourceName
-				+ ", regionThirdId=" + regionThirdId + ", regionThirdName=" + regionThirdName + ", venueId=" + venueId
-				+ ", venueName=" + venueName + ", siteId=" + siteId + ", siteName=" + siteName + ", siteTime="
-				+ siteTime + ", ticketId=" + ticketId + ", ticketName=" + ticketName + ", ticketCounts=" + ticketCounts
-				+ ", ticketPrice=" + ticketPrice + "]";
+				+ ", resourcePic=" + resourcePic + ", regionThirdId=" + regionThirdId + ", regionThirdName="
+				+ regionThirdName + ", venueId=" + venueId + ", venueName=" + venueName + ", siteId=" + siteId
+				+ ", siteName=" + siteName + ", siteTime=" + siteTime + ", ticketId=" + ticketId + ", ticketName="
+				+ ticketName + ", ticketCounts=" + ticketCounts + ", ticketPrice=" + ticketPrice + "]";
+	}
+
+	public Integer getIsEnable() {
+		return isEnable;
+	}
+
+	public void setIsEnable(Integer isEnable) {
+		this.isEnable = isEnable;
+	}
+
+	public Integer getRealTicketCounts() {
+		return realTicketCounts;
+	}
+
+	public void setRealTicketCounts(Integer realTicketCounts) {
+		this.realTicketCounts = realTicketCounts;
 	}
 	
 }

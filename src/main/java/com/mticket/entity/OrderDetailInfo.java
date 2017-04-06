@@ -13,8 +13,8 @@ public class OrderDetailInfo implements Serializable{
 
 	private static final long serialVersionUID = -8069110786479554835L;
 
-	private Integer userId;
 	private Integer orderId;
+	private Integer userId;
 	private Integer orderType;
 	private String disCountCode;
 	private Float total;

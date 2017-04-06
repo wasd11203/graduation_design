@@ -13,7 +13,7 @@ import com.mticket.service.DetailInfoService;
 
 @Controller
 @RequestMapping("/detail")
-public class ResourceDetailController {
+public class ResourceDetailController extends BasicController {
 
 	@Autowired
 	private DetailInfoService detailInfoService;
@@ -21,7 +21,7 @@ public class ResourceDetailController {
 	@RequestMapping("/resource")
 	@ResponseBody
 	public ResourceDetail loadResourceDetailInfo(String resourceId,String regionThirdId){
-		
+		logger.debug("CONTROLLER-- 获取资源的详细信息: [{}],[{}]",resourceId,regionThirdId);
 		Integer resource = null;
 //		Integer regionThird = null;
 		if(resourceId != null && !resourceId.trim().isEmpty()){

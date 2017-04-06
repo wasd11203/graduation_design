@@ -2,6 +2,7 @@ package com.mticket.service;
 
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mticket.entity.OrderInfo;
 
 /**
@@ -38,4 +39,21 @@ public interface OrderService {
 	 */
 	public int createOrder(OrderInfo order);
 	
+	/**
+	 * 获取订单的总额
+	 * @param orderId
+	 * @return
+	 */
+	public Map<String, Object> getOrderTotal(Integer orderId);
+	
+	/**
+	 * 更新订单的状态
+	 * @param orderId
+	 * @return
+	 */
+	public int updateOrderSta(Map<String, Object> map);
+	
+	public JSONObject cancelOrder(Map<String, Object> map);
+	
+	public int delOrder(Map<String, Object> map);
 }

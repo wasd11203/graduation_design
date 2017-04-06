@@ -51,4 +51,20 @@ public interface OrderMapper {
 	 */
 	public int createAssociationOrderWithUser(OrderInfo order);
 	
+	/**
+	 * 根据 订单id 获取订单的总额
+	 * @param orderId
+	 * @return
+	 */
+	public Map<String, Object> getOrderTotal(Integer orderId);
+	
+	/**
+	 * 更新订单的状态
+	 * @param orderId
+	 * @return
+	 */
+	public int updateOrderSta(Map<String, Object> map);
+	
+	public Map<String, Object> getOrderBaseInfoByOrderId(Integer orderId);
+	
 }

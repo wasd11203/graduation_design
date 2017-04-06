@@ -1,6 +1,442 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mticket.mapper.UserMapper">
+
+
+	<resultMap type="com.mticket.entity.AssociationOrderWithResource"
+		id="ASSOCIATION_ORDER_RESOURCE_MAP">
+
+		<result column="ORDER_RESOURCE_ID" property="resourceId" jdbcType="DECIMAL" />
+		<result column="ORDER_RESOURCE_NAME" property="resourceName"
+			jdbcType="VARCHAR" />
+		<result column="ORDER_RESOURCE_PIC" property="resourcePic" jdbcType="VARCHAR" />
+		<result column="ORDER_ISENABLE" property="isEnable" jdbcType="DECIMAL" />
+
+		<result column="ORDER_THIRD_ID" property="regionThirdId" jdbcType="DECIMAL" />
+		<result column="ORDER_THIRD_NAME" property="regionThirdName"
+			jdbcType="VARCHAR" />
+
+		<result column="ORDER_VENUE_ID" property="venueId" jdbcType="DECIMAL" />
+		<result column="ORDER_VENUE_NAME" property="venueName" jdbcType="VARCHAR" />
+
+		<result column="ORDER_SITE_ID" property="siteId" jdbcType="DECIMAL" />
+		<result column="ORDER_SITE_NAME" property="siteName" jdbcType="VARCHAR" />
+		<result column="ORDER_SITE_TIME" property="siteTime" jdbcType="DECIMAL" />
+		
+		<result column="ORDER_TICKET_COUNTS" property="ticketCounts" jdbcType="DECIMAL"/>
+		<result column="ORDER_REAL_COUNTS" property="realTicketCounts" jdbcType="DECIMAL"/>
+		
+	</resultMap>
+
+	<resultMap id="ORDER_DETAIL_MAP" type="com.mticket.entity.OrderDetailInfo">
+
+		<id column="ORDER_ID" property="orderId" jdbcType="DECIMAL" />
+		<result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+		<result column="ORDER_TYPE" property="orderType" jdbcType="DECIMAL" />
+		<result column="DISCOUNT_CODE" property="disCountCode"
+			jdbcType="VARCHAR" />
+		<result column="TOTAL" property="total" jdbcType="FLOAT" />
+		<result column="BUYER_PHONE" property="buyerPhone" jdbcType="VARCHAR" />
+		<result column="RECEIVE_LOCATION_PROVINCE" property="province"
+			jdbcType="VARCHAR" />
+		<result column="RECEIVE_LOCATION_CITY" property="city"
+			jdbcType="VARCHAR" />
+		<result column="RECEIVE_LOCATION_AREA" property="area"
+			jdbcType="VARCHAR" />
+		<result column="RECEIVE_LOCATION_MORE" property="more"
+			jdbcType="VARCHAR" />
+		<result column="RECEIVE_NAME" property="receiveName" jdbcType="VARCHAR" />
+		<result column="RECEIVE_PHONE" property="receivePhone"
+			jdbcType="VARCHAR" />
+
+		<result column="ISFINISH" property="isFinish" jdbcType="DECIMAL" />
+		<result column="INTIME" property="inTime" jdbcType="DECIMAL" />
+		<result column="RECEIVE_TYPE" property="receiveType" jdbcType="DECIMAL" />
+
+		<collection property="resources" resultMap="ASSOCIATION_ORDER_RESOURCE_MAP"></collection>
+
+	</resultMap>
+
+	<resultMap id="USER_CONCERN_MAP" type="com.mticket.entity.UserConcern">
+
+		<id column="CONCERN_ID" property="concernId" jdbcType="DECIMAL"/>
+		<result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+		<result column="INTIME" property="inTime" jdbcType="DECIMAL" />
+
+		<result column="CONCERN_RESOURCE_ID" property="resourceId" jdbcType="DECIMAL" />
+		<result column="CONCERN_RESOURCE_NAME" property="resourceName"
+			jdbcType="VARCHAR" />
+		<result column="CONCERN_RESOURCE_PIC" property="resourcePic" jdbcType="VARCHAR" />
+		<result column="CONCERN_ISENABLE" property="isEnable" jdbcType="DECIMAL" />
+
+		<result column="CONCERN_THIRD_ID" property="regionThirdId" jdbcType="DECIMAL" />
+		<result column="CONCERN_THIRD_NAME" property="regionThirdName"
+			jdbcType="VARCHAR" />
+
+		<result column="CONCERN_VENUE_ID" property="venueId" jdbcType="DECIMAL" />
+		<result column="CONCERN_VENUE_NAME" property="venueName" jdbcType="VARCHAR" />
+
+		<result column="CONCERN_SITE_ID" property="siteId" jdbcType="DECIMAL" />
+		<result column="CONCERN_SITE_NAME" property="siteName" jdbcType="VARCHAR" />
+		<result column="CONCERN_SITE_TIME" property="siteTime" jdbcType="DECIMAL" />
+
+		<result column="CONCERN_TICKET_ID" property="ticketId" jdbcType="DECIMAL" />
+		<result column="CONCERN_TICKET_NAME" property="ticketName" jdbcType="VARCHAR" />
+		<result column="CONCERN_ISDEL" property="isDel" jdbcType="DECIMAL"/>
+		
+	</resultMap>
+
+	<resultMap id="USER_ADDRESS_MAP" type="com.mticket.entity.UserAddress">
+
+		<id column="ADDRESS_ID" property="addressId" jdbcType="DECIMAL"/>
+		<result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+
+		<result column="LOCATION_PROVINCE" property="province"
+			jdbcType="VARCHAR" />
+		<result column="LOCATION_CITY" property="city"
+			jdbcType="VARCHAR" />
+		<result column="LOCATION_AREA" property="area"
+			jdbcType="VARCHAR" />
+		<result column="LOCATION_MORE" property="more"
+			jdbcType="VARCHAR" />
+
+		<result column="RECEIVE_NAME" property="receiveName" jdbcType="VARCHAR" />
+		<result column="RECEIVE_PHONE" property="receivePhone"
+			jdbcType="VARCHAR" />
+
+		<result column="ISDEFAULT" property="isDefault" jdbcType="DECIMAL" />
+
+	</resultMap>
+
+	<resultMap id="USER_BIND_MAP" type="com.mticket.entity.UserBindInfo" >
+		<result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+		<result column="PHONE" property="phone" jdbcType="VARCHAR" />
+
+	</resultMap>
+
+	<resultMap id="USER_DETAIL_MAP" type="com.mticket.entity.UserDetail">
+
+		<id column="USER_ID" property="userId" jdbcType="DECIMAL" />
+		<result column="ICON" property="icon" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="BIRTH" property="birth" jdbcType="DECIMAL" />
+		<result column="GENDER" property="gender" jdbcType="DECIMAL" />
+
+		<association property="bindInfo" column="USER_ID" resultMap="USER_BIND_MAP"></association> 
+
+		<collection property="orders" resultMap="ORDER_DETAIL_MAP"></collection>
+
+		<collection property="concerns" resultMap="USER_CONCERN_MAP"></collection>
+
+		<collection property="addresses" resultMap="USER_ADDRESS_MAP"></collection>
+
+	</resultMap>
+
+	<sql id="ColumnList">
+		user_base_info.*,
+		user_bind_info.*,
+		
+		user_concerns.USER_ID,
+		user_concerns.CONCERN_ID,
+		user_concerns.INTIME,
+		user_concerns.RESOURCE_ID AS CONCERN_RESOURCE_ID,
+		user_concerns.RESOURCE_NAME AS CONCERN_RESOURCE_NAME,
+		user_concerns.RESOURCE_PIC AS CONCERN_RESOURCE_PIC,
+		user_concerns.ISENABLE AS CONCERN_ISENABLE,
+		user_concerns.THIRD_ID AS CONCERN_THIRD_ID,
+		user_concerns.THIRD_NAME AS CONCERN_THIRD_NAME,
+		user_concerns.VENUE_ID AS CONCERN_VENUE_ID,
+		user_concerns.VENUE_NAME AS CONCERN_VENUE_NAME,
+		user_concerns.SITE_ID AS CONCERN_SITE_ID,
+		user_concerns.SITE_NAME AS CONCERN_SITE_NAME,
+		user_concerns.SITE_TIME AS CONCERN_SITE_TIME,
+		user_concerns.TICKET_ID AS CONCERN_TICKET_ID,
+		user_concerns.TICKET_NAME AS CONCERN_TICKET_NAME,
+		user_concerns.ISDEL AS CONCERN_ISDEL,
+		
+		receiveaddresses.ADDRESS_ID,
+		receiveaddresses.USER_ID,
+		receiveaddresses.LOCATION_PROVINCE,
+		receiveaddresses.LOCATION_CITY,
+		receiveaddresses.LOCATION_AREA,
+		receiveaddresses.LOCATION_MORE,
+		receiveaddresses.RECEIVE_NAME,
+		receiveaddresses.RECEIVE_PHONE,
+		receiveaddresses.ISDEFAULT,
+		
+		ass_order_resource.USER_ID,
+		ass_order_resource.ORDER_ID,
+		ass_order_resource.ORDER_TYPE,
+		ass_order_resource.DISCOUNT_CODE,
+		ass_order_resource.TOTAL,
+		ass_order_resource.BUYER_PHONE,
+		ass_order_resource.RECEIVE_LOCATION_PROVINCE,
+		ass_order_resource.RECEIVE_LOCATION_CITY,
+		ass_order_resource.RECEIVE_LOCATION_AREA,
+		ass_order_resource.RECEIVE_LOCATION_MORE,
+		ass_order_resource.RECEIVE_NAME,
+		ass_order_resource.RECEIVE_PHONE,
+		ass_order_resource.ISFINISH,
+		ass_order_resource.INTIME,
+		ass_order_resource.RECEIVE_TYPE,
+		
+		ass_order_resource.RESOURCE_ID AS ORDER_RESOURCE_ID,
+		ass_order_resource.TICKET_COUNTS AS ORDER_TICKET_COUNTS,
+		ass_order_resource.RESOURCE_NAME AS ORDER_RESOURCE_NAME,
+		ass_order_resource.RESOURCE_PIC AS ORDER_RESOURCE_PIC,
+		ass_order_resource.ISENABLE AS ORDER_ISENABLE,
+		ass_order_resource.THIRD_ID AS ORDER_THIRD_ID,
+		ass_order_resource.THIRD_NAME AS ORDER_THIRD_NAME,
+		ass_order_resource.VENUE_ID AS ORDER_VENUE_ID,
+		ass_order_resource.VENUE_NAME AS ORDER_VENUE_NAME,
+		ass_order_resource.SITE_ID AS ORDER_SITE_ID,
+		ass_order_resource.SITE_NAME AS ORDER_SITE_NAME,
+		ass_order_resource.SITE_TIME AS ORDER_SITE_TIME,
+		ass_order_resource.REAL_COUNTS AS ORDER_REAL_COUNTS
+		
+	</sql>
+
+	<select id="getUserDetailInfo" parameterType="int" resultMap="USER_DETAIL_MAP">
+		SELECT
+			<include refid="ColumnList"></include>
+		FROM
+			user_base_info
+		LEFT JOIN user_bind_info ON user_base_info.USER_ID = user_bind_info.USER_ID
+		LEFT JOIN (
+			SELECT
+				user_concerns.USER_ID,
+				user_concerns.INTIME,
+				user_concerns.CONCERN_ID,
+				user_concerns.ISDEL,
+				
+				resource_info.RESOURCE_ID,
+				resource_info.RESOURCE_NAME,
+				resource_info.RESOURCE_PIC,
+				resource_info.ISENABLE,
+				region_third.THIRD_ID,
+				region_third.THIRD_NAME,
+				showvenue_info.VENUE_ID,
+				showvenue_info.VENUE_NAME,
+				site_info.SITE_ID,
+				site_info.SITE_NAME,
+				site_info.SITE_TIME,
+				ticket_info.TICKET_ID,
+				ticket_info.TICKET_NAME
+			FROM
+				user_concerns
+			LEFT JOIN resource_info ON user_concerns.RESOURCE_ID = resource_info.RESOURCE_ID
+			LEFT JOIN showvenue_info ON showvenue_info.VENUE_ID = user_concerns.VENUE_ID
+			LEFT JOIN region_third_category region_third ON region_third.THIRD_ID = user_concerns.REGION_ID
+			LEFT JOIN site_info ON user_concerns.SITE_ID = site_info.SITE_ID
+			LEFT JOIN ticket_info ON ticket_info.TICKET_ID = user_concerns.TICKET_ID
+		) user_concerns ON user_base_info.USER_ID = user_concerns.USER_ID
+		LEFT JOIN receiveaddresses ON user_base_info.USER_ID = receiveaddresses.USER_ID
+		LEFT JOIN (
+			SELECT
+				ass_u_o.USER_ID,
+				order_base_info.*, resource_info.RESOURCE_ID,
+				resource_info.RESOURCE_NAME,
+				resource_info.RESOURCE_PIC,
+				resource_info.ISENABLE,
+				region_third.THIRD_ID,
+				region_third.THIRD_NAME,
+				showvenue_info.VENUE_ID,
+				showvenue_info.VENUE_NAME,
+				site_info.SITE_ID,
+				site_info.SITE_NAME,
+				site_info.SITE_TIME,
+				ass_o_r.TICKET_COUNTS,
+				IF (
+					ISNULL(ass_t_s.TICKET_COUNTS),
+					1,
+					ass_t_s.TICKET_COUNTS
+				) AS REAL_COUNTS
+			FROM
+				association_user_order ass_u_o
+			LEFT JOIN order_base_info ON ass_u_o.ORDER_ID = order_base_info.ORDER_ID
+			LEFT JOIN association_order_resource ass_o_r ON ass_o_r.ORDER_ID = order_base_info.ORDER_ID
+			LEFT JOIN resource_info ON ass_o_r.RESOURCE_ID = resource_info.RESOURCE_ID
+			LEFT JOIN showvenue_info ON showvenue_info.VENUE_ID = ass_o_r.VENUE_ID
+			LEFT JOIN region_third_category region_third ON region_third.THIRD_ID = ass_o_r.REGION_THIRD_ID
+			LEFT JOIN site_info ON ass_o_r.SITE_ID = site_info.SITE_ID
+			LEFT JOIN ticket_info ON ticket_info.TICKET_ID = ass_o_r.TICKET_ID
+			LEFT JOIN association_ticket_suit ass_t_s ON ass_t_s.SUIT_TICKET_ID = ticket_info.TICKET_ID
+			 
+		) ass_order_resource ON user_base_info.USER_ID = ass_order_resource.USER_ID
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				user_base_info.USER_ID = #{userId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</select>
+
+	<update id="updateUserInfo" parameterType="Map">
+		UPDATE user_base_info
+		<trim prefix="SET " suffix="" suffixOverrides=",">
+			
+			<if test="icon != null and icon != ''">
+				ICON = #{icon,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="nickname != null and nickname != ''">
+				NICKNAME = #{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null and name != ''">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null and password != ''">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="birth != null and birth != ''">
+				BIRTH = #{birth,jdbcType=DECIMAL},
+			</if>
+			<if test="gender != null and gender != ''">
+				GENDER = #{gender,jdbcType=VARCHAR},
+			</if>
+			
+		</trim>
+		<where>
+			<if test="userId != null and userId != ''">
+				USER_ID = #{userId,jdbcType=DECIMAL}
+			</if>
+		</where>
+			
+	</update>
+
+	<update id="updateAddressByUserId" parameterType="Map">
+		UPDATE receiveaddresses
+		<trim prefix="SET " suffix="" suffixOverrides=",">
+			<if test="isDefault != null ">
+				ISDEFAULT = #{isDefault,jdbcType=DECIMAL} ,
+			</if>
+		</trim>
+		<where>
+			<if test="userId != null and userId != ''">
+				USER_ID = #{userId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</update>
+
+	<update id="updateAddressByAddressId" parameterType="Map">
+		UPDATE receiveaddresses
+		<trim prefix="SET " suffix="" suffixOverrides=",">
+		
+			<if test="province != null and province !=''">
+				LOCATION_PROVINCE = #{province,jdbcType=VARCHAR} ,
+			</if>
+			<if test="city != null and city != ''">
+				LOCATION_CITY = #{city,jdbcType=VARCHAR} ,
+			</if>
+			<if test="area != null and area != ''">
+				LOCATION_AREA = #{area,jdbcType=VARCHAR} ,
+			</if>
+			<if test="more != null and more != ''">
+				LOCATION_MORE = #{more,jdbcType=VARCHAR} ,
+			</if>
+			<if test="receiveName != null and receiveName != ''">
+				RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="receivePhone != null and receivePhone != ''">
+				RECEIVE_PHONE = #{receivePhone,jdbcType=VARCHAR} ,
+			</if>
+			<if test="isDefault != null and isDefault != ''">
+				ISDEFAULT = #{isDefault,jdbcType=DECIMAL} ,
+			</if>
+		</trim>
+		<where>
+			<if test="addressId != null and address != ''">
+				ADDRESS_ID = #{addressId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</update>
+
+	<insert id="createAddress" parameterType="Map">
+		INSERT INTO receiveaddresses 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="addressId != null and address != ''">
+				ADDRESS_ID ,
+			</if>
+			<if test="userId != null and userId !=''">
+				USER_ID,
+			</if>
+			<if test="province != null and province !=''">
+				LOCATION_PROVINCE,
+			</if>
+			<if test="city != null and city != ''">
+				LOCATION_CITY,
+			</if>
+			<if test="area != null and area != ''">
+				LOCATION_AREA,
+			</if>
+			<if test="more != null and more != ''">
+				LOCATION_MORE,
+			</if>
+			<if test="receiveName != null and receiveName != ''">
+				RECEIVE_NAME,
+			</if>
+			<if test="receivePhone != null and receivePhone != ''">
+				RECEIVE_PHONE,
+			</if>
+			<if test="isDefault != null and isDefault != ''">
+				ISDEFAULT,
+			</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="addressId != null and address != ''">
+				#{addressId,jdbcType=DECIMAL},
+			</if>
+			<if test="userId != null and userId !=''">
+				#{userId,jdbcType=DECIMAL},
+			</if>
+			<if test="province != null and province !=''">
+				 #{province,jdbcType=VARCHAR} ,
+			</if>
+			<if test="city != null and city != ''">
+				#{city,jdbcType=VARCHAR} ,
+			</if>
+			<if test="area != null and area != ''">
+				#{area,jdbcType=VARCHAR},
+			</if>
+			<if test="more != null and more != ''">
+				#{more,jdbcType=VARCHAR},
+			</if>
+			<if test="receiveName != null and receiveName != ''">
+				#{receiveName,jdbcType=VARCHAR},
+			</if>
+			<if test="receivePhone != null and receivePhone != ''">
+				#{receivePhone,jdbcType=VARCHAR},
+			</if>
+			<if test="isDefault != null and isDefault != ''">
+				#{isDefault,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
 	
+	<delete id="deleteAddressByAddressId" parameterType="int">
+		DELETE
+		FROM
+			receiveaddresses
+		WHERE
+			ADDRESS_ID = #{addressId,jdbcType=DECIMAL}
+	</delete>
+
+	<update id="updateUserConcernByConcernId" parameterType="Map">
+		UPDATE user_concerns
+		<set>
+			<if test="isDel != null and isDel != ''">
+				ISDEL = #{isDel,jdbcType=DECIMAL}
+			</if>
+		</set>
+		<where>
+			<if test="concernId != null and concernId != ''">
+				CONCERN_ID = #{concernId,jdbcType=DECIMAL}
+			</if>
+		</where>
+	</update>
 
 </mapper>
+
+
+

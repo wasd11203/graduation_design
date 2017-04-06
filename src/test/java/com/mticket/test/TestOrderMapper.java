@@ -11,12 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mticket.WebApplicationConfiguration;
 import com.mticket.entity.OrderInfo;
 import com.mticket.mapper.OrderMapper;
-import com.mticket.mapper.ResourceDetailMapper;
-import com.mticket.mapper.nav.ResourceNavigationMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = WebApplicationConfiguration.class)
@@ -94,6 +93,52 @@ public class TestOrderMapper {
 
 		jobj = JSONObject.toJSON(orderMapper.createAssociationOrderWithUser(order));
 		System.out.println(jobj);
+	}
+	
+	@Test
+	public void testCancelOrder(){
+		Object jobj ;
+		jobj = JSON.toJSON(orderMapper.getOrderBaseInfoByOrderId(1029053142));
+		Map<String, Object> baseInfo = null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		baseInfo = orderMapper.getOrderBaseInfoByOrderId(1029053142);
+		map.put("orderId", 1029053142);
+		map.put("ticketId", baseInfo.get("TICKET_ID"));
+		map.put("counts", baseInfo.get("TICKET_COUNTS"));
+
+		int res = orderMapper.updateTicketById(map);
+		if (res > 0) {
+			if (baseInfo.get("ISFINISH") != null && (Integer) baseInfo.get("ISFINISH") == 1) {
+				map.put("isFinish", 0);
+				orderMapper.updateOrderSta(map);
+			}
+		} else {
+			
+		}
+
+		System.out.println(jobj);
+	}
+	
+	@Test
+	public void testDelOrder(){
+		Integer order = null;
+		Map<String, Object> baseInfo = null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("orderId", 1029053142);
+		order = (Integer) map.get("orderId");
+		
+		baseInfo = orderMapper.getOrderBaseInfoByOrderId(order);
+
+		if (baseInfo.get("ISFINISH") == null || (Integer) baseInfo.get("ISFINISH") != 1) {
+			map.put("ticketId", baseInfo.get("TICKET_ID"));
+			map.put("counts", baseInfo.get("TICKET_COUNTS"));
+			int res = orderMapper.updateTicketById(map);
+			
+		}
+		map.put("isDel", 1);
+		
+		orderMapper.updateOrderSta(map);
 	}
 	
 }

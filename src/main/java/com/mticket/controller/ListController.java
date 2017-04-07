@@ -17,7 +17,7 @@ import com.mticket.service.ListService;
  */
 @Controller
 @RequestMapping("/list")
-public class ListController {
+public class ListController extends BasicController{
 
 	@Autowired
 	private ListService listService;
@@ -25,30 +25,35 @@ public class ListController {
 	@RequestMapping("/adv")
 	@ResponseBody
 	public List<Map<String, Object>> listAdvertising(){
+		logger.debug("CONTROLLER -- 获取广告列表资源");
 		return listService.getAdvertisingResourceList();
 	}
 	
 	@RequestMapping("/discount")
 	@ResponseBody
 	public List<Map<String, Object>> listDiscount(){
+		logger.debug("CONTROLLER -- 获取特惠看列表资源");
 		return listService.getDiscountResourceList();
 	}
 	
 	@RequestMapping("/nearHost")
 	@ResponseBody
 	public List<Map<String, Object>> listNearHost(){
+		logger.debug("CONTROLLER -- 获取 最新资讯 列表资源");
 		return listService.getNearHostResourceList();
 	}
 	
 	@RequestMapping("/hostSell")
 	@ResponseBody
 	public List<Map<String, Object>> listHostSell(){
+		logger.debug("CONTROLLER -- 获取 热销资源 列表资源");
 		return listService.getHotSellResourceList();
 	}
 	
 	@RequestMapping("/recommendList")
 	@ResponseBody
 	public List<Map<String, Object>> listRecommendList(){
+		logger.debug("CONTROLLER -- 获取 推荐场馆 列表资源");
 		return listService.getRecommendVenueList();
 	}
 	

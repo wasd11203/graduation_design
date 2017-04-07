@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mticket.controller.BasicController;
 import com.mticket.security.service.AccountService;
 
 @Controller
 @RequestMapping("/account")
-public class AccountController {
+public class AccountController extends BasicController{
 
 	@Autowired
 	private AccountService accountService;
@@ -21,6 +22,7 @@ public class AccountController {
 	@RequestMapping("/regist")
 	@ResponseBody
 	public JSONObject registAccount(String phone,String password){
+		logger.debug("CONTROLLER-- 注册用户:[{}],[{}]",phone,password);
 		JSONObject jobj = new JSONObject();
 		Map<String, Object> map = new HashMap<String, Object>(); 
 		
@@ -44,6 +46,7 @@ public class AccountController {
 	@RequestMapping("/login")
 	@ResponseBody
 	public JSONObject loginAccount(String phone,String password){
+		logger.debug("CONTROLLER-- 登陆用户:[{}],[{}]",phone,password);
 		JSONObject jobj = new JSONObject();
 		Map<String, Object> map = new HashMap<String, Object>(); 
 		

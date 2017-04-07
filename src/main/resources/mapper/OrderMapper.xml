@@ -64,6 +64,10 @@
 			
 	</select>
 	
+	<select id="loadReciveType" resultType="Map">
+		SELECT * FROM receive_type
+	</select>
+	
 	<update id="updateTicketById" parameterType="Map">
 		UPDATE ticket_info
 		SET TICKET_COUNTS = TICKET_COUNTS + #{counts,jdbcType=DECIMAL}
@@ -297,4 +301,5 @@
 			</if>
 		</where>
 	</select>
+
 </mapper>

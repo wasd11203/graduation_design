@@ -35,17 +35,17 @@ public class SearchResourceController extends BasicController {
 
 	@RequestMapping("/searchByMark")
 	@ResponseBody
-	public JSONObject searchResourceByMark(String keywords, String regionThirdId, String resourceTopId,
+	public JSONObject searchResourceByMark(String keywords, String regionThirdId,String venueId, String resourceTopId,
 			String resourceSecId, String resourceThirdId, String minTime, String maxTime) {
 		
-		logger.debug("CONTROLLER -- 当前访问的url:/resource/searchByMark,params:" + keywords + "," + regionThirdId + ","
+		logger.debug("CONTROLLER -- 当前访问的url:/resource/searchByMark,params:" + keywords + "," + regionThirdId + "," +venueId+","
 				+ resourceTopId + "," + resourceSecId + "," + resourceThirdId+","+minTime+","+maxTime);
 
 		JSONObject jobj = new JSONObject();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 		Integer resourceTop = null;
-		Map<String, Object> map = transforArgs(regionThirdId, resourceSecId, resourceThirdId, minTime, maxTime, sdf);
+		Map<String, Object> map = transforArgs(regionThirdId,venueId, resourceSecId, resourceThirdId, minTime, maxTime, sdf);
 
 		if (resourceTopId != null && !resourceTopId.trim().isEmpty()) {
 			resourceTop = new Integer(resourceTopId);
@@ -65,13 +65,14 @@ public class SearchResourceController extends BasicController {
 		return jobj;
 	}
 
-	private Map<String, Object> transforArgs(String regionThirdId, String resourceSecId, String resourceThirdId,
+	private Map<String, Object> transforArgs(String regionThirdId,String venueId, String resourceSecId, String resourceThirdId,
 			String minTime, String maxTime, SimpleDateFormat sdf) {
 		logger.debug("CONTROLLER -- 当前访问的方法:com.mticket.controller.nav.NavigationController.transforArgs,params:" + regionThirdId + ","
 				+ "," + resourceSecId + "," + resourceThirdId+","+minTime+","+maxTime);
 		Integer regionThird = null;
 		Integer resourceSec = null;
 		Integer resourceThird = null;
+		Integer venue = null;
 		Date min = null;
 		Date max = null;
 
@@ -80,7 +81,11 @@ public class SearchResourceController extends BasicController {
 		if (regionThirdId != null && !regionThirdId.trim().isEmpty()) {
 			regionThird = new Integer(regionThirdId);
 		}
-
+		
+		if (venueId != null && !venueId.trim().isEmpty()) {
+			venue = new Integer(venueId);
+		}
+		
 		if (resourceSecId != null && !resourceSecId.trim().isEmpty()) {
 			resourceSec = new Integer(resourceSecId);
 		}
@@ -101,11 +106,40 @@ public class SearchResourceController extends BasicController {
 		}
 
 		map.put("regionThirdId", regionThird);
+		map.put("venueId", venue);
 		map.put("resourceSecId", resourceSec);
 		map.put("resourceThirdId", resourceThird);
 		map.put("minTime", min);
 		map.put("maxTime", max);
 		return map;
 	}
+	
+	@RequestMapping("/roughlyList")
+	@ResponseBody
+	public JSONObject searchResource(String resourceTopId,String resourceSecId){
+		
+		logger.debug("CONTROLLER -- 当前访问的url:/resource/roughlyList,params:" + "," + resourceTopId + "," + resourceSecId );
+		
+		JSONObject jobj = new JSONObject();
+		Integer resourceTop = null;
+		Integer resourceSec = null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(resourceTopId != null && !resourceTopId.trim().isEmpty()){
+			resourceTop = new Integer(resourceTopId);
+		}
+		if(resourceSecId != null && !resourceSecId.trim().isEmpty()){
+			resourceSec = new Integer(resourceSecId);
+		}
+		map.put("resourceTopId", resourceTop);
+		map.put("resourceSecId", resourceSec);
+		List<Map<String, Object>> res = resourceSearchOperationService.searchResource(map);
+		jobj.put("code", 0);
+		jobj.put("data", res);
+		
+		return jobj;
+	}
+	
+	
 
 }

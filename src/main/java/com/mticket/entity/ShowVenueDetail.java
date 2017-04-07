@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 场馆 实体
+ * 场馆信息 实体
  * @author ganzhigang
  * 时间：2017年4月2日 下午5:40:55
  */

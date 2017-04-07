@@ -18,4 +18,11 @@ public interface ResourceSearchOperationMapper {
 	 */
 	public List<Map<String, Object>> searchResourceByMark(Map<String, Object> map);
 	
+	/**
+	 * 根据传入的条件查询该条件下的资源的大致信息列表
+	 * @param map
+	 * @return
+	 */
+	public List<Map<String, Object>> searchResource(Map<String, Object> map);
+	
 }

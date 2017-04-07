@@ -38,6 +38,13 @@ public interface ResourceNavigationMapper {
 	public List<ResourceNavigationSec> loadSecResourceNavList(Integer resourceTopId);
 	
 	/**
+	 * 获取指定的资源一级导航下的二级导航菜单(不包含其子菜单)
+	 * @param resourceTopId
+	 * @return
+	 */
+	public List<Map<String, Object>> loadSecResource(Integer resourceTopId);
+	
+	/**
 	 * 获取 资源的 指定的二级导航下的三级导航菜单
 	 * @param secId
 	 * @return

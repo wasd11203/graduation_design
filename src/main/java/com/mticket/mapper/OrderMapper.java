@@ -1,5 +1,6 @@
 package com.mticket.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import com.mticket.entity.OrderInfo;
@@ -65,6 +66,17 @@ public interface OrderMapper {
 	 */
 	public int updateOrderSta(Map<String, Object> map);
 	
+	/**
+	 * 获取订单的基本信息
+	 * @param orderId
+	 * @return
+	 */
 	public Map<String, Object> getOrderBaseInfoByOrderId(Integer orderId);
+	
+	/**
+	 * 获取订单可选择的配送方式
+	 * @return
+	 */
+	public List<Map<String, Object>> loadReciveType();
 	
 }

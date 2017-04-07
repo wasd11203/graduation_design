@@ -37,7 +37,7 @@
 				ass_r_s_s.VENUE_ID
 		) ass_resource_site_venue ON ass_regoin_venue.VENUE_ID = ass_resource_site_venue.VENUE_ID
 		<where>
-			ass_resource_site_venue.THIRD_ID IN (
+			ass_resource_site_venue.RESOURCE_THIRD_ID IN (
 				SELECT
 					resource_third.THIRD_ID
 				FROM
@@ -60,6 +60,10 @@
 				AND ass_regoin_venue.THIRD_ID = #{regionThirdId,jdbcType=DECIMAL}
 			</if>
 			
+			<if test="venueId != null and venueId != '' ">
+				AND ass_resource_site_venue.VENUE_ID = #{venueId,jdbcType=DECIMAL}
+			</if>
+			
 			<if test="minTime != null and minTime != ''">
 				AND DATE_FORMAT(MAX_Time, '%Y年%c月%d日') &gt;= DATE_FORMAT(#{minTime,jdbcType=DECIMAL},'%Y年%c月%d日')
 			</if>
@@ -67,6 +71,59 @@
 				AND DATE_FORMAT(MIN_Time, '%Y年%c月%d日') &lt;= DATE_FORMAT(#{maxTime,jdbcType=DECIMAL},'%Y年%c月%d日')
 			</if>
 		</where>
+	</select>
+
+	<select id="searchResource" parameterType="Map" resultType="Map">
+		SELECT
+			*
+		FROM
+			(
+				SELECT
+					region_third.THIRD_ID,region_third.THIRD_NAME,showvenue_info.VENUE_ID
+				FROM
+					(
+						SELECT
+							region_third.*
+						FROM
+							association_region_resource ass_r_r
+						LEFT JOIN region_third_category region_third ON ass_r_r.REGION_THIRD_ID = region_third.THIRD_ID
+					) region_third
+				INNER JOIN showvenue_info ON region_third.THIRD_ID = showvenue_info.REGION_THIRD_ID
+			) ass_regoin_venue
+		LEFT JOIN (
+			SELECT
+				resource_info.*, ass_r_s_s.VENUE_ID,
+				MIN(ticket_info.TICKET_PRICE) AS MIN_PRICE
+			FROM
+				resource_info
+			LEFT JOIN association_resource_showvenue_site ass_r_s_s ON resource_info.RESOURCE_ID = ass_r_s_s.RESOURCE_ID
+			LEFT JOIN site_info ON ass_r_s_s.SITE_ID = site_info.SITE_ID
+			LEFT JOIN association_site_ticket ass_s_t ON site_info.SITE_ID = ass_s_t.SITE_ID
+			LEFT JOIN ticket_info ON ass_s_t.TICKET_ID = ticket_info.TICKET_ID
+			GROUP BY
+				resource_info.RESOURCE_ID,
+				ass_r_s_s.VENUE_ID
+		) ass_resource_site_venue ON ass_regoin_venue.VENUE_ID = ass_resource_site_venue.VENUE_ID
+		<where>
+			ass_resource_site_venue.RESOURCE_THIRD_ID IN (
+				SELECT
+					resource_third.THIRD_ID
+				FROM
+					resource_top_category resource_top
+				LEFT JOIN resource_sec_category resource_sec ON resource_top.TOP_ID = resource_sec.TOP_ID
+				LEFT JOIN resource_third_category resource_third ON resource_third.SEC_ID = resource_sec.SEC_ID
+				<where>
+					<if test="resourceTopId != null and resourceTopId != ''">
+						resource_top.TOP_ID = #{resourceTopId ,jdbcType=DECIMAL}
+					</if>
+					<if test="resourceSecId != null and resourceSecId != ''">
+						AND resource_sec.SEC_ID = #{resourceSecId ,jdbcType=DECIMAL}
+					</if>
+					
+				</where>
+			)
+		</where>
+		LIMIT 0,8
 	</select>
 
 </mapper>

@@ -63,5 +63,15 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="loadSecResource" parameterType="int" resultType="Map">
+		SELECT * 
+		FROM resource_sec_category 
+		<where>
+			<if test="_parameter != null and _parameter != ''">
+				TOP_ID=#{resourceTopId,jdbcType=DECIMAL}
+			</if>
+		</where> 
+	</select>
 
 </mapper>

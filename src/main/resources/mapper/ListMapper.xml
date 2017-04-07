@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mticket.mapper.ListMapper">
+
+	<select id="getAdvertisingResourceList" resultType="Map">
+		
+		SELECT
+			resource_advertising.ADV_ID,
+			resource_advertising.ADV_PIC,
+			resource_info.RESOURCE_ID,
+			region_third_category.THIRD_ID
+		FROM
+			resource_advertising
+		LEFT JOIN resource_info ON resource_advertising.RESOURCE_ID = resource_info.RESOURCE_ID
+		LEFT JOIN region_third_category ON resource_advertising.REGION_THIRD_ID = region_third_category.THIRD_ID
+		
+	</select>
+	
+	<select id="getDiscountResourceList" resultType="Map">
+		
+		SELECT
+			discount_resource.DISCOUNT_ID,
+			discount_resource.DISCOUNT_PIC,
+			resource_info.RESOURCE_ID,
+			resource_info.RESOURCE_NAME,
+			region_third_category.THIRD_ID,
+			region_third_category.THIRD_NAME
+		FROM
+			discount_resource
+		LEFT JOIN resource_info ON discount_resource.RESOURCE_ID = resource_info.RESOURCE_ID
+		LEFT JOIN region_third_category ON discount_resource.REGION_THIRD_ID = region_third_category.THIRD_ID
+		ORDER BY 
+			discount_resource.DISCOUNT_ID ASC
+	</select>
+	
+	<select id="getNearHostResourceList" resultType="Map">
+		
+		SELECT
+			near_hot_resource.NEAR_ID,
+			near_hot_resource.NEAR_PIC,
+			resource_info.RESOURCE_ID,
+			resource_info.RESOURCE_NAME,
+			region_third_category.THIRD_ID,
+			region_third_category.THIRD_NAME
+		FROM
+			near_hot_resource
+		LEFT JOIN resource_info ON near_hot_resource.RESOURCE_ID = resource_info.RESOURCE_ID
+		LEFT JOIN region_third_category ON near_hot_resource.REGION_THIRD_ID = region_third_category.THIRD_ID
+		ORDER BY 
+			near_hot_resource.NEAR_ID ASC
+	</select>
+	
+	<select id="getHotSellResourceList" resultType="Map">
+		
+		SELECT
+			hot_sell_resource.HOT_ID,
+			resource_info.RESOURCE_ID,resource_info.RESOURCE_NAME,resource_info.RESOURCE_PIC,region_third_category.*,
+			ass_site_price.*,
+			showvenue_info.VENUE_ID,showvenue_info.VENUE_NAME
+		FROM
+			hot_sell_resource
+		LEFT JOIN resource_info ON hot_sell_resource.RESOURCE_ID = resource_info.RESOURCE_ID
+		LEFT JOIN region_third_category ON hot_sell_resource.REGION_THIRD_ID = region_third_category.THIRD_ID
+		LEFT JOIN showvenue_info ON showvenue_info.VENUE_ID = hot_sell_resource.VENUE_ID
+		LEFT JOIN (
+			SELECT
+				site_info.SITE_ID,site_info.SITE_NAME,site_info.SITE_TIME,
+				MIN(ticket_info.TICKET_PRICE) AS MIN_PRICE
+			FROM
+				site_info
+			LEFT JOIN association_site_ticket ON site_info.SITE_ID = association_site_ticket.SITE_ID
+			LEFT JOIN ticket_info ON association_site_ticket.TICKET_ID = ticket_info.TICKET_ID
+			GROUP BY
+				site_info.SITE_ID
+		) ass_site_price ON hot_sell_resource.SITE_ID = ass_site_price.SITE_ID
+		ORDER BY hot_sell_resource.HOT_ID ASC
+	</select>
+
+	<select id="getRecommendVenueList" resultType="Map">
+		SELECT
+			showvenue_info.VENUE_ID,showvenue_info.VENUE_NAME,showvenue_info.VENUE_PIC,showvenue_info.VENUE_ADDRESS,showvenue_info.VENUE_PHONE
+		FROM
+			showvenue_info
+		WHERE showvenue_info.ISRECOMMEND = 1
+		
+	</select>
+	
+	<select id="getNearResourceInVenueList" parameterType="int" resultType="Map">
+		SELECT 
+			region_third.THIRD_ID,region_third.THIRD_NAME,resource_info.RESOURCE_ID,resource_info.RESOURCE_NAME,resource_info.ISENABLE
+		FROM 
+			showvenue_info
+		LEFT JOIN association_resource_showvenue_site ass_r_s_s ON showvenue_info.VENUE_ID = ass_r_s_s.VENUE_ID
+		LEFT JOIN site_info ON site_info.SITE_ID = ass_r_s_s.SITE_ID
+		LEFT JOIN region_third_category region_third ON showvenue_info.REGION_THIRD_ID = region_third.THIRD_ID
+		LEFT JOIN resource_info ON ass_r_s_s.RESOURCE_ID = resource_info.RESOURCE_ID
+		WHERE 
+			showvenue_info.VENUE_ID = #{venueId,jdbcType=DECIMAL}
+			AND 
+			site_info.SITE_TIME > SYSDATE()
+	</select>
+	
+
+</mapper>
+
+
+

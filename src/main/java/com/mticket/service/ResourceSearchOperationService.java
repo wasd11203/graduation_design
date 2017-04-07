@@ -15,5 +15,11 @@ public interface ResourceSearchOperationService {
 	 * @return
 	 */
 	public List<Map<String, Object>> searchResourceByMark(Map<String, Object> map);
-	
+
+	/**
+	 * 根据不同的条件，查询资源列表(大致信息)
+	 * @param map
+	 * @return
+	 */
+	public List<Map<String, Object>> searchResource(Map<String, Object> map);
 }

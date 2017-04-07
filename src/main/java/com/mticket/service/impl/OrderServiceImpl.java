@@ -1,6 +1,7 @@
 package com.mticket.service.impl;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -116,6 +117,11 @@ public class OrderServiceImpl implements OrderService {
 		map.put("isDel", 1);
 		
 		return orderMapper.updateOrderSta(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> loadReceiveType() {
+		return orderMapper.loadReciveType();
 	}
 
 }

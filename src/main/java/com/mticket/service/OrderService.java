@@ -1,5 +1,6 @@
 package com.mticket.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
@@ -56,4 +57,7 @@ public interface OrderService {
 	public JSONObject cancelOrder(Map<String, Object> map);
 	
 	public int delOrder(Map<String, Object> map);
+	
+	public List<Map<String, Object>> loadReceiveType();
+	
 }

@@ -1,6 +1,7 @@
 package com.mticket.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class OrderController extends BasicController {
 	@Autowired
 	private OrderService orderService;
 
-	@RequestMapping("/confirm")
+	@RequestMapping("/toConfirm")
 	@ResponseBody
 	public JSONObject confirmOrder(String thirdId, String venueId, String siteId, String ticketId, String resourceId,
 			String counts) {
@@ -36,6 +37,7 @@ public class OrderController extends BasicController {
 		Float payMoney = null;
 		Map<String, Object> preOrderInfo = null;
 		JSONObject jobj = new JSONObject();
+		JSONObject jobjDataTmp = new JSONObject();
 
 		if (counts != null && !counts.trim().isEmpty()) {
 			buyCounts = new Integer(counts);
@@ -49,7 +51,8 @@ public class OrderController extends BasicController {
 			int update_res = orderService.updateTicketById(map);
 			if (update_res > 0) {
 				preOrderInfo = orderService.getPreOrderInfo(map);
-
+				List<Map<String, Object>> receiveType = orderService.loadReceiveType();
+				
 				if (preOrderInfo != null) {
 					suitCounts = ((Long)preOrderInfo.get("TICKET_COUNTS")).intValue();
 					realBuyCounts = suitCounts * buyCounts;
@@ -58,9 +61,11 @@ public class OrderController extends BasicController {
 					preOrderInfo.put("TICKET_COUNTS", buyCounts);
 					preOrderInfo.put("TICKET_REAL_COUNTS", realBuyCounts);
 					preOrderInfo.put("TOTAL_PRICE", payMoney);
-					
+					jobjDataTmp.put("orderInfo", preOrderInfo);
+					jobjDataTmp.put("receiveType", receiveType);
 					jobj.put("code", 0);
-					jobj.put("data", preOrderInfo);
+					
+					jobj.put("data", jobjDataTmp);
 				}
 			}
 
@@ -149,6 +154,7 @@ public class OrderController extends BasicController {
 		String regionThirdName = order.getRegionThirdName();
 		String resourceName = order.getResourceName();
 		Integer isEnable = order.getIsEnable();
+		// TODO ... ... 未考虑优惠码的存在
 		Float total = order.getTicketPrice()*order.getTicketCounts();
 		jobj.put("code", 0);
 		jobj.put("orderId", orderId);
@@ -196,6 +202,7 @@ public class OrderController extends BasicController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("orderId", order);
+		// TODO ... ... 未考虑优惠码的存在
 		jobj = orderService.cancelOrder(map);
 		return jobj;
 	}

@@ -436,6 +436,31 @@
 		</where>
 	</update>
 
+	<insert id="createUserBase" parameterType="Map">
+		INSERT INTO user_base_info (USER_ID, PASSWORD,BIRTH)
+		VALUES
+			(#{userId,jdbcType=DECIMAL}, #{password,jdbcType=VARCHAR},#{birth,jdbcType=DECIMAL});
+	</insert>
+	
+	<insert id="createUserBind" parameterType="Map">
+		INSERT INTO user_bind_info (USER_ID, PHONE)
+		VALUES
+			(#{userId,jdbcType=DECIMAL}, #{phone,jdbcType=VARCHAR});
+	</insert>
+
+	<select id="loadUserInfoByPhone" parameterType="Map" resultType="Map">
+		SELECT
+			user_base_info.*
+		FROM
+			user_base_info
+		LEFT JOIN user_bind_info ON user_base_info.USER_ID = user_bind_info.USER_ID
+		<where>
+			<if test="phone != null and phone != ''">
+				user_bind_info.PHONE = #{phone,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
 </mapper>
 
 

@@ -1,0 +1,516 @@
+<script>
+	// 定义一个日历 变量
+	var oCal = null;
+	
+	$(function() {
+		alert(1);
+		initCalendar();
+	});
+
+	/**
+	 * 初始化日历插件
+	 */
+	function initCalendar() {
+		/* demo --> var root = 'http://fgm.cc/learn/calendar/trip-calendar/';*/
+		YUI({
+			modules: {
+				'trip-calendar': {
+					fullpath: 'static/plugins/javascript/trip-calendar.js',
+					type: 'js',
+					requires: ['trip-calendar-css']
+				},
+				'trip-calendar-css': {
+					fullpath: 'static/plugins/styles/trip-calendar.css',
+					type: 'css'
+				}
+			}
+		}).use('trip-calendar', function(Y) {
+
+			/**
+			 * 非弹出式日历实例
+			 * 直接将日历插入到页面指定容器内
+			 */
+			oCal = new Y.TripCalendar({
+				container: '#J_Calendar', //非弹出式日历时指定的容器（必选）
+				selectedDate: new Date, //指定日历选择的日期
+				count: 1
+			});
+			//日期点击事件
+			//            oCal.on('dateclick', function() {
+			//                var selectedDate = this.get('selectedDate');
+			//                alert(selectedDate + '\u3010' + this.getDateInfo(selectedDate) + '\u3011');
+			//            })
+
+		})
+	}
+
+	/**
+	 * 回到顶部
+	 */
+	function pageScroll() {
+		//把内容滚动指定的像素数（第一个参数是向右滚动的像素数，第二个参数是向下滚动的像素数）
+		window.scrollBy(0, -100);
+		//延时递归调用，模拟滚动向上效果
+		scrolldelay = setTimeout('pageScroll()', 10);
+		var sTop = document.documentElement.scrollTop + document.body.scrollTop;
+		//判断当页面到达顶部，取消延时代码（否则页面滚动到顶部会无法再向下正常浏览页面）
+		if(sTop == 0) clearTimeout(scrolldelay);
+	}
+
+</script>
+
+<!--todo 主广告区-->
+<div id="ad-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-9">
+				<div class="carousel slide" id="advs">
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-md-3">
+
+				<div id="ad-container-right">
+					<div class="adv-right-top">
+						<h2>特惠看</h2>
+						<a href="#">
+							<img class="img-responsive" src="static/images/kufu.jpg">
+						</a>
+						<p></p>
+						<a href=""><span></span>和熊猫们一起玩转功夫！</a>
+					</div>
+					<hr>
+					<div class="adv-right-bottom">
+						<ul>
+							<li>
+								<a href="#">[上海舞台剧]《阮玲玉》</a>
+							</li>
+							<li>
+								<a href="#">[上海]加拿大影像互动戏剧《机器人小白和女孩》</a>
+							</li>
+							<li>
+								<a href="#">[西安]赵雷2016【无法长大】全国巡回演唱会[预售]</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--todo 回到顶部-->
+<div id="back_top">
+	<a onclick="pageScroll()"><img src="static/images/top.png"></a>
+</div>
+
+<!--todo 最新更新区-->
+<div id="show-new-container">
+	<div class="container">
+		<h3>近期热门</h3>
+		<div class="row">
+			<div class="col-md-9">
+				<div class="row hot" id="hotsort">
+					<div class="col-md-3 col-xs-6">
+						<a href="#"><img width="190" src="static/images/hot_1.jpg" alt=""></a>
+						<div>
+							<a href="#">[上海]两只狗的生活意见</a>
+						</div>
+					</div>
+					<div class="col-md-3 col-xs-6">
+						<a href="#"><img width="190" src="static/images/hot_2.jpg" alt=""></a>
+						<div>
+							<a href="#">[太原]天空之城-久石让宫崎骏动漫作品视听音乐会</a>
+						</div>
+					</div>
+					<div class="col-md-3 col-xs-6">
+						<a href="#"><img width="190" src="static/images/hot_3.jpg" alt=""></a>
+						<div>
+							<a href="#">[武汉]朴树"好好地II"2017中国巡回演唱会—武汉站{预订}</a>
+						</div>
+					</div>
+					<div class="col-md-3 col-xs-6">
+						<a href="#"><img width="190" src="static/images/hot_4.jpg" alt=""></a>
+						<div>
+							<a href="#">[沈阳]陈奕迅Another Eason's Life演唱会 沈阳站</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 hotbar">
+				<ul class="row">
+					<li class="col-md-6 col-xs-12">
+						<a href="#">最新资讯</a>
+					</li>
+					<li class="col-md-6 col-xs-12">
+						<a href="#">精彩专题</a>
+					</li>
+				</ul>
+				<div class="news">
+					<ul>
+						<li>
+							<a href="detail.html?id=3">
+								<img class="img-responsive" src="static/images/lirouhao.jpg" alt="">
+								<div>[上海]星际迷航50周年特展</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="" alt="">
+								<div>[杭州]2016李荣浩「有 理想」世界巡回演唱会</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="" alt="">
+								<div>[北京]陈奕迅 ANOTHER EASON'S LIFE演唱会北京站加场</div>
+							</a>
+						</li>
+					</ul>
+					<ul class="unchoseed">
+						<li>
+							<a href="#">
+								<img class="img-responsive" src="static/images/yanchanghui.jpg" alt="">
+								<div>到乌镇，邂逅文艺</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--todo 热销榜单和推荐-->
+<div class="container" id="adv_isNotTop">
+	
+</div>
+
+<div id="venue-recommend-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-xs-12 navbar">
+						<div class="container">
+							<ul class="venuebar nav navbar-nav navbar-left">
+								<li class="active">
+									<a href="#">演唱会</a>
+								</li>
+								<li>
+									<a href="#">话剧音乐剧</a>
+								</li>
+								<li>
+									<a href="#">儿童亲子</a>
+								</li>
+								<li>
+									<a href="#">音乐会</a>
+								</li>
+								<li>
+									<a href="#">展览活动</a>
+								</li>
+								<li>
+									<a href="#">全部演出></a>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div id="cate-item-list-container" class="row">
+							<div class="col-md-3 col-sm-3 col-xs-12">
+								<dl>
+									<a href="#">
+										<img class="img-responsive" src="static/images/sing_1.jpg">
+										<div class="buy-btn">立即购买</div>
+
+										<dt>[上海]2016 JZ Festival第十二届爵士上海音乐节</dt>
+										<dd>
+											<p>
+												<span class="price">260</span>
+												<span>元起</span>
+											</p>
+
+										</dd>
+									</a>
+								</dl>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">
+								<dl>
+									<a href="#">
+										<img class="img-responsive" src="static/images/sing_2.jpg">
+										<div class="buy-btn">立即购买</div>
+
+										<dt>[上海]2016 JZ Festival第十二届爵士上海音乐节</dt>
+										<dd>
+											<p>
+												<span class="price">50</span>
+												<span>元起</span>
+											</p>
+										</dd>
+									</a>
+								</dl>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">
+								<dl>
+									<a href="#">
+										<img class="img-responsive" src="static/images/sing_3.jpg">
+										<div class="buy-btn">立即购买</div>
+										<dt>[上海]2016 JZ Festival第十二届爵士上海音乐节</dt>
+										<dd>
+											<p>
+												<span class="price">380</span>
+												<span>元起</span>
+											</p>
+										</dd>
+									</a>
+								</dl>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">
+								<dl>
+									<a href="#">
+										<img class="img-responsive" src="static/images/sing_4.jpg">
+										<div class="buy-btn">立即购买</div>
+										<dt>[上海]2016 JZ Festival第十二届爵士上海音乐节</dt>
+										<dd>
+											<p>
+												<span class="price">280</span>
+												<span>元起</span>
+											</p>
+										</dd>
+									</a>
+								</dl>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">
+								<dl>
+									<a href="#">
+										<img class="img-responsive" src="static/images/sing_5.jpg">
+										<div class="buy-btn">立即购买</div>
+
+										<dt>[上海]2016 JZ Festival第十二届爵士上海音乐节</dt>
+										<dd>
+											<p>
+												<span class="price">380</span>
+												<span>元起</span>
+											</p>
+
+										</dd>
+									</a>
+								</dl>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">
+								<dl>
+									<a href="#">
+										<img class="img-responsive" src="static/images/sing_6.jpg">
+										<div class="buy-btn">立即购买</div>
+
+										<dt>[上海]2016 JZ Festival第十二届爵士上海音乐节</dt>
+										<dd>
+											<p>
+												<span class="price">280</span>
+												<span>元起</span>
+											</p>
+										</dd>
+									</a>
+								</dl>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">
+								<dl>
+									<a href="#">
+										<img class="img-responsive" src="static/images/sing_7.jpg">
+										<div class="buy-btn">立即购买</div>
+										<dt>[上海]2016 JZ Festival第十二届爵士上海音乐节</dt>
+										<dd>
+											<p>
+												<span class="price">380</span>
+												<span>元起</span>
+											</p>
+										</dd>
+									</a>
+								</dl>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">
+								<dl>
+									<a href="#">
+										<img class="img-responsive" src="static/images/sing_8.jpg">
+										<div class="buy-btn">立即购买</div>
+										<dt>[上海]2016 JZ Festival第十二届爵士上海音乐节</dt>
+										<dd>
+											<p>
+												<span class="price">380</span>
+												<span>元起</span>
+											</p>
+										</dd>
+									</a>
+								</dl>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-xs-12">
+										<ul class=" place">
+											<li>场馆推荐</li>
+											<li>
+												<a href="#">全部场馆&gt;</a>
+											</li>
+										</ul>
+									</div>
+									<div class="col-xs-12">
+										<div id="hall" class="row ">
+											<div class="col-md-6 col-xs-12 ">
+												<div class="where">
+													<img src="static/images/place_1.jpg ">
+													<div class="venue-detail-container">
+														<div class="venue-title">北京保利剧院</div>
+														<div>地址：东直门南大街14号保利大厦</div>
+														<div>电话：010 &nbsp; &nbsp;65065345</div>
+													</div>
+												</div>
+												<div class="text">
+													<p>近期演出</p>
+													<p>
+														<a href="#">[北京]第十九届北京国际音乐节 捷克之音指挥大师基里.贝洛拉维克执棒捷克爱乐乐团交响音乐会之一</a>
+													</p>
+													<p>
+														<a href="#">[北京]第十九届北京国际音乐节 凯歌——柴可夫斯基交响音乐会系列之二</a>
+													</p>
+													<p>
+														<a href="#">[北京]音乐人生 何塞·卡雷拉斯世界告别巡演</a>
+													</p>
+													<p>
+														<a href="#">[北京]舞台剧《仙剑奇侠传·叁》</a>
+													</p>
+												</div>
+											</div>
+											<div class="col-md-6 col-xs-12 ">
+												<div class="where">
+													<img src="static/images/place_2.jpg ">
+													<div class="venue-detail-container">
+														<div class="venue-title">北京保利剧院</div>
+														<div>地址：东直门南大街14号保利大厦</div>
+														<div>电话：010 &nbsp; &nbsp;65065345</div>
+													</div>
+												</div>
+
+												<div class="text">
+													<p>近期演出</p>
+													<p>
+														<a href="#">[北京]陈奕迅 ANOTHER EASON'S LIFE演唱会北京站加场</a>
+													</p>
+													<p>
+														<a href="#">[北京]中国新歌声巅峰之夜</a>
+													</p>
+													<p>
+														<a href="#">[北京]陈奕迅 ANOTHER EASON 'S LIFE演唱会北京站</a>
+													</p>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-3" id="right">
+				<div class="row">
+					<ul class="up col-xs-12">
+						<li>
+							<h4 class="data-title">
+                            <span>历历在目</span>
+                            <span>-尽享每天不一样的精彩</span>
+                        </h4>
+						</li>
+						<li class="data">
+							<div id="J_Calendar" class="calendar"></div>
+						</li>
+						<li class="data-total">
+							<p>今天共<span>98场</span>演出</p>
+						</li>
+						<li class="data-items row">
+							<a href="#" class="col-xs-4"><img src="static/images/hot_2.jpg" alt=""></a>
+							<ul class="col-xs-8">
+								<li>
+									<a href="#">[上海]大鸭软陶屋</a>
+								</li>
+								<li>2016年8月22日~2018年4月30日</li>
+								<li>【大鸭软陶屋静安寺店】</li>
+								<li><span>39</span>元起</li>
+							</ul>
+						</li>
+						<li class="data-items row">
+							<a href="#" class="col-xs-4"><img src="static/images/hot_2.jpg" alt=""></a>
+							<ul class="col-xs-8">
+								<li>
+									<a href="#">[上海]大鸭软陶屋</a>
+								</li>
+								<li>2016年8月22日~2018年4月30日</li>
+								<li>【大鸭软陶屋静安寺店】</li>
+								<li><span>39</span>元起</li>
+							</ul>
+						</li>
+						<li class="data-items row">
+							<a href="#" class="col-xs-4"><img src="static/images/hot_2.jpg" alt=""></a>
+							<ul class="col-xs-8">
+								<li>
+									<a href="#">[上海]大鸭软陶屋</a>
+								</li>
+								<li>2016年8月22日~2018年4月30日</li>
+								<li>【大鸭软陶屋静安寺店】</li>
+								<li><span>39</span>元起</li>
+							</ul>
+						</li>
+					</ul>
+
+				</div>
+				<ul class="down row">
+					<li class="hot col-xs-12">热销榜单</li>
+					<li class="all cd col-xs-12">
+						<div class="row ">
+							<div class="pic col-md-3 ">
+								<img src="static/images/flower.jpg ">
+							</div>
+							<div class="col-md-9 hidden-xs">
+								<p>
+									<a href="#">[成都]风靡亚洲的SAVOUR美食节</a>
+								</p>
+								<p>
+									<a href="#">2016年10月20日~23日</a>
+								</p>
+								<p>
+									<a href="#">成都远洋太古里</a>
+								</p>
+
+								<p class="price">
+									<span class="num">200</span>
+									<span>元起</span>
+								</p>
+								</a>
+							</div>
+						</div>
+					</li>
+					<li class="all col-xs-12">
+						<a href="#">[武汉]朴树"好好地II"2017中国巡回演唱会—武汉站{预订}</a>
+					</li>
+					<li class="all col-xs-12">
+						<a href="#">[太原]天空之城-久石让宫崎骏动漫作品视听音乐会</a>
+					</li>
+					<li class="all col-xs-12">
+						<a href="#">[北京]陈奕迅 ANOTHER EASON'S LIFE演唱会北京站加场</a>
+					</li>
+					<li class="all col-xs-12">
+						<a href="#">[广州]《奇幻积木艺术》展览－广州站</a>
+					</li>
+					<li class="all col-xs-12">
+						<a href="#">[沈阳]陈奕迅Another Eason's Life演唱会 沈阳站</a>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+
+</div>

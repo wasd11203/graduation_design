@@ -7,6 +7,7 @@
 		SELECT
 			resource_advertising.ADV_ID,
 			resource_advertising.ADV_PIC,
+			resource_advertising.ISTOP,
 			resource_info.RESOURCE_ID,
 			region_third_category.THIRD_ID
 		FROM

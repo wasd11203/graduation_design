@@ -1,0 +1,637 @@
+
+
+
+.container{
+    min-height: 30px;
+}
+
+.row>div{
+    min-height:30px;
+}
+ul,li,body{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+
+/*todo 页面顶部小栏*/
+.shortcut{
+    background:#f3f3f3 ;
+}
+.shortcut>.container{
+    height:30px;
+}
+.sitenav{
+    margin: 0;
+    list-style: none;
+    float:left;
+    line-height: 30px;
+}
+.sitenav>li{
+    float:left;
+    margin-right:3px;
+}
+.sitenav>.active{
+    background: #f97da3;
+}
+.sitenav>.active >a{
+    color:#fff;
+}
+.sitenav>li a{
+    height: 30px;
+    padding:0 19px;
+    display: block;
+    color:#262626;
+}
+.sitenav>li a:hover{
+    background: #f97da3;
+    color: #fff;
+    text-decoration: none;
+}
+
+#short-nav{
+    height: 30px;
+    float:right;
+}
+#short-nav>a,#short-nav>span{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#short-nav ul.right li{
+    float:left;
+    margin-right:5px;
+}
+
+#short-nav li.phoneapp .top-qr{
+    position:absolute;
+    display:none;
+    width:185px;
+    height:300px;
+    border:1px solid #cfcfcf;
+    background:#f3f3f3;
+    right:-60px;
+    top:30px;
+    text-align: center;
+    padding:10px 0 0 0;
+    border-top: hidden;
+}
+#short-nav li.phoneapp{
+    position:relative;
+}
+#short-nav li.phoneapp:hover .top-qr{
+    display:block;
+    z-index:222;
+}
+.container .row{
+    z-index:223;
+}
+#short-nav li.phoneapp .top-qr img{
+    width:60px;
+    height:60px;
+}
+/*todo 页面头部*/
+#logo{
+    margin: 0;
+    float: left;
+    padding: 25px 0px 0 22px;
+}
+#logo img.two_x{
+    float:left;
+    width: 50px;
+    height: 58px;
+}
+#logo img.one_x{
+    float:left;
+    width:77px;
+    height: 44px;
+    margin-top:4px;
+}
+.gloal{
+    height: 100px;
+    float: left;
+    width: auto;
+    position: relative;
+    margin-left:10px ;
+}
+.gloal>a{
+    text-align: center;
+    line-height: 100px;
+    display: block;
+    width:100%;
+}
+.searchbar {
+    float: left;
+    width: 100%;
+    margin-top: 32px;
+    font-size: 12px;
+}
+.searchbar .searchBox {
+    height: 34px;
+    border: 1px solid #f97da3;
+    overflow: hidden;
+}
+.searchbar .inputbox {
+    border: 0 none;
+    width: 84%;
+    line-height: 32px;
+    padding: 0px 0px 0px 20px;
+    float: left;
+    height: 32px;
+}
+.searchbar .searchBtn {
+    cursor: pointer;
+    width: 16%;
+    background-color: #f97da3;
+    text-align: center;
+    color: #ffffff;
+    display: inline-block;
+    line-height: 32px;
+    font-size: 14px;
+    float: right;
+}
+.user{
+    margin-top:32px ;
+    float: right;
+}
+.user>b{
+    display: inline-block;
+    width:32px;
+    height:32px;
+    background-size: 400px 700px;
+    background-image:url('../images/head/header_new_2x.png');
+}
+.user>a{
+    vertical-align: top;
+    font-size: 24px;
+
+}
+.user>span{
+    vertical-align: top;
+    margin: 0 3px;
+}
+/*todo 页面主导航*/
+.mainnav{
+    background: #4acbd6;
+}
+#mainnav>li>a{
+    color:#fff;
+    background: #4acbd6;
+}
+#mainnav>li>a:first-child{
+    background:transparent !important;
+}
+#mainnav>li:hover{
+    color:#fff;
+    background:#f97da3;
+}
+#mainnav>li>a:hover{
+    color:#fff;
+    background:#f97da3;
+}
+
+.togglenav{
+    width: 180px;
+    position: relative;
+    padding-left: 48px;
+    cursor: pointer;
+}
+.hamburger{
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/head/header_new_2x.png) no-repeat;
+    background-size: 400px auto;
+
+    position: absolute;
+    width: 21px;
+    height: 14px;
+    top: 18px;
+    left: -14px;
+    background-position: -60px 0px;
+}
+.togglenav>div{
+    position:absolute;
+    top:50px;
+    left:0;
+    z-index: 100000;
+    display: block;
+    width:180px;
+    display: none;
+}
+.togglenav:hover .dropnav{
+    display: block;
+}
+.dropnav{
+
+}
+.dropnav>ul{
+    list-style: none;
+}
+.dropnav>ul>li{
+    background: #ddd;
+}
+.dropnav>ul>li:hover{
+    background:#fff;
+}
+.dropnav>ul>li>a{
+    display: block;
+    padding-left:60px;
+    height: 50px;
+    line-height: 50px;
+}
+.icon_sort{
+    background: url(../images/head/header_new_2x.png);
+    background-repeat: no-repeat;
+    background-size: 400px auto;
+    background-position: 0 -135px;
+    height: 400px;
+    width: 20px;
+    position: absolute;
+    left: 30px;
+    z-index: 2;
+}
+.sort-right{
+
+
+    top:0px;
+    left:180px;
+    position:absolute;
+}
+.sort-right >div> .if{
+    width:50%;
+}
+.sort-right>div{
+    display: none;
+    width: 400px;
+    height: 400px;
+    background-size: 400px 400px;
+}
+.sort-right>.concert{
+    background-image: url("../images/head/concert.jpg");
+}
+.sort-right>.opera{
+    background-image: url("../images/head/opera.jpg");
+}
+.sort-right>.children{
+    background-image: url("../images/head/children.jpg");
+}
+.sort-right>.exhibitions{
+    background-image: url("../images/head/exhibitions.jpg");
+}
+.sort-right>.music{
+    background-image: url("../images/head/music.jpg");
+}
+.sort-right>.dance{
+    background-image: url("../images/head/dance.jpg");
+}
+.sort-right>.folkArt{
+    background-image: url("../images/head/folkArt.jpg");
+}
+.sort-right>.entertainment{
+    background-image: url("../images/head/entertainment.jpg");
+}
+.sort-right  a{
+    display:block;
+    height: 50px;
+    width: 50%;
+    line-height: 50px;
+    padding-left:30px ;
+}
+
+
+
+/* todo 页面底部*/
+#footer {
+    width:100%;
+    height: 300px;
+    background: #333;
+    margin-top: 20px;
+}
+#footer .main {
+    width: 1170px;
+    min-height:200px;
+    margin:50px auto;
+    position: relative ;
+    /*border: 1px solid red;*/
+}
+#footer .main ul li{
+    float: left;
+    margin-top: 100px;
+    margin-left: 15px;
+    color:#ababab;
+}
+#footer .main ul li:first-child img{
+    width:150px;
+    height:90px;
+    margin-top:-17px;
+}
+#footer .main ul li .first_line {
+    font-size: 24px;
+}
+#footer .main ul .wx{
+    margin-left: 50px;
+    position:relative;
+}
+
+
+#footer .main ul .wx .down_wx{
+    position:absolute;
+    display:none;
+    right:-17px;
+    top:-102px;
+    text-align: center;
+    padding:10px 0 0 0;
+}
+
+#footer .main ul .wx:hover .down_wx{
+    display:block;
+    z-index:222;
+}
+#footer .main ul .wpr .down_wpr{
+    position:absolute;
+    display:none;
+    right:398px;
+    top:-2px;
+    text-align: center;
+    padding:10px 0 0 0;
+}
+
+#footer .main ul .wpr:hover .down_wpr{
+    display:block;
+    z-index:222;
+}
+.container .row{
+    z-index:223;
+}
+
+
+
+
+#footer .main ul .one {
+    display: inline-block ;
+    width: 1px;
+    height:60px;
+    background: #ababab;
+    position: absolute ;
+    top:100px;
+    left:380px;
+}
+#footer .main ul .two  {
+    display: inline-block ;
+    width: 1px;
+    height:60px;
+    background: #ababab;
+    position: absolute ;
+    top:100px;
+    left:640px;
+}
+#footer .main ul .gap .wpr{
+    margin-left: 20px;
+}
+#footer .main .bq{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 285px;
+    margin-top:91px;
+}
+.buy-btn{
+    opacity: 0.90;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    padding: 10%;
+    width: 197px;
+    margin:0 10px;
+    height: 60px;
+    line-height: 25px;
+    background: #4acbd6;
+    text-decoration: none;
+    position: absolute;
+    left: 5px;
+    bottom:102px;
+    font-weight: bold;
+    display: none;
+}
+
+
+
+
+
+/*todo 登录注册摸态框*/
+.modal-dialog{
+    margin-top: 130px;
+}
+#mainlogin{
+    position: relative;
+    text-align: center;
+    padding: 30px  70px;
+}
+#mainlogin .form-group>input{
+    height: 50px;
+    margin: 15px 0;
+
+}
+#mainlogin .form-group>button{
+    height: 50px;
+    background:#4acbd6;
+    color: #fff;
+}
+#mainlogin>p{
+    margin-top:120px;
+}
+.md_close{
+    position:absolute;
+    top:0;
+    right:0;
+    width: 26px;
+    height: 26px;
+}
+
+
+/*todo 登录提示css*/
+.alert_warning{
+    color:#d9534f;
+    font-size:8px;
+    position:absolute;
+    display: none;
+}
+.phone{
+    top:209px;
+    left:75px;
+}
+.upwd{
+    top:274px;
+    left:75px;
+}
+.submit{
+    font-size: 14px;
+    top:346px;
+    left:210px;
+}
+.succ{
+    display: none;
+    width:19px;
+    height:19px;
+    background-image:url(../images/sign/okIcon.png);
+    position:absolute;
+
+}
+.usucc{
+    top:173px;
+    right: 29px;
+}
+.psucc{
+    top:240px;
+    right: 29px;
+}
+.lsucc{
+    top:369px;
+    right: 29px;
+}
+/*todo 用户下拉小块*/
+#user-nav{
+    position: relative;
+}
+.myul{
+    position:absolute;
+    top:20px;
+    left:17px;
+    padding:12px 8px;
+    border-radius:5px;
+    background-color: #fff;
+    border:1px solid #ddd;
+    /*display: inline-block;*/
+    display: none;
+    z-index: 10000;
+    width:130px;
+}
+.myul li{
+    padding-left:10px;
+    margin:5px 20px 0 0;
+}
+
+
+/*todo 场地*/
+.location{
+    position: absolute;
+    width: 895px;
+    z-index: 100000;
+    top:66px;
+    left: -45px;
+    display: none;
+
+}
+.panel-heading span{
+    font-size: 20px;
+    margin: 0 4px;
+    vertical-align: -2px;
+
+}
+.panel-heading{
+    padding-top:0;
+    padding-bottom:0;
+}
+.panel-heading a{
+    padding: 0 6px;
+    color: #4acbd6;
+}
+.panel-heading{
+    line-height: 58px;
+    background: #eeeeee;
+    padding-left: 45px;
+    font-size: 16px;
+
+
+}
+.panel-body div ul{
+    overflow: hidden;
+}
+.panel-body div span{
+    float: left;
+    width: 44px;
+    line-height: 46px;
+    font-size: 18px;
+    margin-left: 44px;
+    color: #565656;
+
+}
+.panel-body div ul li a{
+    width: 85px;
+    line-height: 46px;
+    margin-left: 10px;
+}
+.panel-body div ul li{
+    float: left;
+    margin-left: 10px;
+}
+
+/*todo 最近热门区*/
+#show-new-container{
+    margin-bottom:20px;
+}
+
+#show-new-container>div>div>h3{
+    padding-left:13px;
+}
+.hot>div>div{
+    margin-top: 10px;
+}
+
+.hotbar{
+    padding: 10px 10px;
+    border:1px solid #ddd;
+}
+.hotbar .row{
+    margin: 0;
+}
+.hotbar>ul>li{
+    list-style: none;
+    float: left;
+    padding: 20px 10px;
+    background: #f1f1f1;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 2px solid #fff;
+}
+.news ul li{
+    margin: 8px 0;
+}
+.news ul li>div{
+    margin-top:5px;
+}
+.news>.unchoseed{
+    display: none;
+}
+.news>.unchoseed div{
+    padding: 10px  4px 0 4px;
+}
+
+
+
+
+
+
+
+/*todo 响应式布局 768 950 1170*/
+@media screen and (max-width:992px){
+    #ad-container-right{
+        display: none;
+    }
+}
+@media screen and (max-width:768px){
+    #short-nav{
+        display:none;
+    }
+}
+@media screen and (max-width:992px){
+    #search_bar{
+        display: none;
+    }
+}
+
+
+
+
+

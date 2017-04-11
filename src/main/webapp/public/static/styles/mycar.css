@@ -1,0 +1,173 @@
+/*todo 页面个人资料*/
+.my_warp_container{
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+    background: url("../images/bannar02.jpg") center center / cover no-repeat;
+    margin: 0px auto 40px;
+    padding: 0px
+}
+.my_warp_container .thumbnail {
+    background-color: transparent;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-repeat: initial;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    padding: 20px 0px 30px;
+}
+.thumbnail>img {
+    margin-right: auto;
+    margin-left: auto;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.thumbnail .caption {
+    padding: 9px 0px;
+}
+.text-center {
+    text-align: center;
+}
+.user-top .un {
+    font-size: 28px;
+}
+.my_warp_container .btn-default {
+    background-color: transparent;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    color: #4acbd6;
+    font-size: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #4acbd6;
+    border-radius: 3px;
+    padding: 6px 25px;
+}
+
+/*// todo 个人中心部分*/
+.my_center_sidenav{
+    margin-top:55px;
+    padding-top:20px;
+}
+.my_center_sidenav li {
+    font-size: 16px;
+    border-bottom: 2px dotted rgb(240, 240, 240);
+}
+.active a{
+    color: #4acbd6;
+    font-weight: 700;
+    padding-left: 18px;
+}
+.ucentertab{
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(226, 226, 226);
+    margin: 0px 0px 30px;
+}
+.ucentertab .on{
+    color: #4acbd6;
+    background: rgb(245, 245, 245);
+    border-top: 6px solid #4acbd6;
+
+}
+.ucentertab li{
+    float: left;
+    font-size: 18px;
+    color: rgb(86, 86, 86);
+    font-weight: bold;
+    cursor: pointer;
+    padding: 20px 30px;
+    border-top: 6px solid rgb(255, 255, 255);
+}
+.info_header {
+    line-height: 45px;
+    color: rgb(162, 162, 162);
+}
+.infobox .info_header {
+    height: 45px;
+    background: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(237, 237, 237);
+}
+
+.info_header{
+    line-height: 45px;
+    color: rgb(162, 162, 162);
+
+}
+.order_info .o_i_des {
+    padding-right: 20px;
+    border-right: 1px dashed rgb(240, 240, 240);
+}
+.order_info dt {
+    float: left;
+}
+.order_list .order_info dd {
+    margin-left: 140px;
+}
+.order_info dt img{
+    width: 117px;
+    height: 160px;
+}
+#ucenterbox .order_list {
+    margin-bottom: 30px;
+}
+.infobox > div {
+    margin: 0px;
+}
+.infobox {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(226, 226, 226);
+}
+.order_info {
+    padding: 10px 5px;
+}
+.order_list .order_info dd p {
+    margin: 5px 0px;
+}
+.order_info .o_i_des .s{
+    font-weight: normal;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+}
+
+.order_info .o_i_des .s .l {
+    float: left;
+}
+.order_info .o_i_des .s .r {
+    float: right;
+}
+.order_info .o_i_piao {
+    margin-top: 10px;
+    color: rgb(162, 162, 162);
+}
+.order_info .o_i_piao li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+.order_info .o_i_piao .op {
+    padding-left: 20px;
+}
+.order_info .o_i_piao .op a {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 5px;
+    background-color: rgb(226, 226, 226);
+    color: rgb(86, 86, 86);
+    margin-right: 20px;
+}
+
+
+
+
+/*//todo 测试下拉小块*/
+
+
+
+

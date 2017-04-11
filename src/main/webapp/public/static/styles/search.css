@@ -1,0 +1,53 @@
+/*todo 搜索结果区*/
+.message{
+    margin-left: 12px;
+}
+.items{
+    margin-top: 30px;
+    padding:10px 50px 10px 20px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+.items img{
+    float: left;
+    width: 160px;
+    height: 218px;
+}
+.message{
+    float: left;
+}
+.message a h3{
+    max-width: 520px;
+    margin-top: 20px;
+    margin-bottom:110px;
+}
+.items_r{
+    float:right;
+
+}
+.items_r span{
+    display: inline-block;
+    margin-top: 20px;
+    color:#fff;
+    background-color: #719DE9;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+.items_r p{
+    margin-top:80px;
+
+}
+.items_r strong{
+    font-size:24px;
+    color:#4acbd6;
+}
+.items_r a{
+    display: inline-block;
+    color:#fff;
+    padding:8px 12px;
+    border-radius: 5px;
+    background-color: #4acbd6;
+}
+
+
+

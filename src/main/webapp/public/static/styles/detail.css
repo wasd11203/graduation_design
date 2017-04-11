@@ -1,0 +1,291 @@
+/*todo 大广告*/
+#banner_warp{
+    height: 588px;
+    background: url(../images/banner_bg2.jpg) no-repeat center top;
+    margin: 0 auto 40px;
+    padding: 0;
+}
+.banner_main{
+    padding: 52px 23px;
+}
+.banner-left img{
+   margin:10px 0 0 -5px;
+}
+.title{
+    height: 78px;
+    overflow: hidden;
+    font-size: 18px;
+    line-height: 5.4em;
+}
+.banner-left{
+    width:350px;
+    height:470px;
+    border: 1px solid #d5d5d5;
+    background: rgba(200,194,196,0.2);
+}
+.banner-right{
+    float: left;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 10px;
+    margin-top:10% ;
+    border: 1px solid #d5d5d5;
+    background: rgba(200,194,196,0.2);
+}
+#banner_warp .banner-right li {
+     margin: 3% 4% 3%;
+ }
+.sub_title{
+    font-size: 14px;
+    margin-bottom: 3%;
+    color: #666;
+    margin-top: 12px;
+}
+.time{
+    margin-top: 2%;
+    font-size: 18px;
+    color: #666;
+}
+.bottom .price{
+    font-size: 30px;
+    color: #4acbd6;
+    margin-right: 10px;
+    position: relative;
+    bottom: -2px;
+}
+.seat{
+    background: #4acbd6;
+    margin-left: 10px;
+    padding: 2px 6px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-right: 0px;
+}
+
+
+/*todo 选择详情区*/
+.top_bar{
+    border-bottom: 1px solid #f0f0f0;
+}
+.top_bar li{
+    border-right: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+    height: 22px;
+    font-size: 16px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.buy{
+    float:left;
+    text-align: center;
+    color:#4acbd6;
+}
+.buy span{
+    border-bottom: 5px solid #4acbd6;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+.ticked_own{
+    display:none;
+}
+.ticked_box{
+    height: auto;
+    clear: both;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+.tab_l{
+    margin-top: 20px;
+    color: #333;
+    font-size: 18px;
+
+}
+.times li{
+    border-radius: 5px;
+}
+.times li a{
+    border: 1px solid #4acbd6;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+    padding: 10px 3px;
+    min-height: 66px;
+    display: block;
+    color:#4acbd6;
+    background:#fff;
+    font-size: 14px;
+
+}
+
+
+
+.ticked_detial li a{
+    border: 1px solid #4acbd6;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+    padding: 10px 3px;
+    min-height: 66px;
+    color:#4acbd6;
+    background:#fff;
+    font-size: 14px;
+
+    width: 108px;
+    height: 66px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.times .active>a,.ticked_detial .active>a{
+    background: #4acbd6;
+    color: #fff;
+}
+.tab_r{
+    margin-top: 20px;
+}
+.num{
+    height: 60px;
+    line-height: 60px;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: normal;
+    text-indent: 5px;
+    background: #FAFAFA;
+}
+.num span{
+    color:#4acbd6;
+}
+.num .sub{
+    float: left;
+    background: #4acbd6 url(../images/sub.png) center center no-repeat;
+}
+.num .add{
+    float: right;
+    background: #4acbd6 url(../images/add.png) center center no-repeat;
+}
+.pro-inpNum{
+    bottom: 5px;
+    height: 36px;
+    display: inline-block;
+    margin-bottom: -10px;
+    border: 1px solid #4acbd6;
+}
+.pro-inpNum b{
+    height: 100%;
+    float: left;
+    width: 40px;
+    margin: 0 !important;
+    padding: 0;
+    border: 1px solid #e3e3e3;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+    color: inherit !important;
+    text-align: center;
+    line-height: 35px;
+}
+.pro-inpNum a{
+    display: inline-block;
+    text-align: center;
+    background: #4acbd6;
+    width: 36px;
+    height: 100%;
+}
+.pay_box{
+    background: #fafafa;
+    padding: 0 30px;
+    height: 100px;
+    line-height: 90px;
+    margin-top:20px;
+}
+.pay_box .btn{
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #61d8bf;
+    color: #fff;
+}
+.pay_box span{
+    margin-left: 40px;
+    color: #b6b3b1;
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    bottom: -10px;
+}
+.pay_box span big{
+    color: #2ed2c3;
+    font-size: 30px;
+    font-weight: normal;
+    margin-right: 3px;
+}
+
+/*todo 右侧小栏*/
+.code_r {
+    position: relative;
+    cursor: pointer;
+    padding-top: 12px;
+    background: #4acbd6;
+    height: 71px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+.code_r span{
+    display: inline-block;
+    margin-left: 20px;
+}
+.box_warp {
+    margin-bottom: 20px;
+    clear: both;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    height: auto;
+}
+.title_h3 {
+    color: #333;
+    border-bottom: 1px solid #e2e2e2;
+    font-size: 18px;
+    padding: 20px;
+    line-height: 1;
+    text-align: left;
+}
+.bd img {
+    margin: 0px auto;
+}
+.stadium_thumbnail {
+    border: none;
+    margin-bottom: 0px;
+    padding: 0 15px;
+}
+.thumbnail .caption {
+    padding: 9px 0;
+}
+.thumbnail .caption p {
+    margin-top: 5px;
+}
+.hot_top_one{
+    margin: 13px 10px 0!important;
+    border-bottom: 1px dashed #e2e2e2;
+    padding-bottom: 15px;
+}
+
+.hot_top ul {
+    padding: 0 15px;
+}
+.hot_top li {
+    list-style: none;
+    padding: 10px 0;
+    list-style-position: outside;
+    border-bottom: 1px dashed #e2e2e2;
+}
+#more{
+    text-align: center;
+}
+.left-ticket{
+    display:none;
+}
+.left-ticket big{
+    color:red;
+}

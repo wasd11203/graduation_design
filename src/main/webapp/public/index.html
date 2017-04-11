@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>weipiao</title>
+
+		<link href="static/bower_components/styles/bootstrap.css" rel="stylesheet">
+		<link href="static/styles/common.css" rel="stylesheet">
+		<link href="static/styles/index.css" rel="stylesheet">
+
+		<script src="static/bower_components/javascript/jquery-1.11.3.js"></script>
+		<script src="static/bower_components/javascript/bootstrap.min.js"></script>
+		<script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
+		
+		<script type="text/javascript" src="static/javascript/models/m_maincontent.js"></script>
+		
+		<!-- 引入头部相关js -->
+		<script type="text/javascript" src="static/javascript/models/m_home.js"></script>
+		<script type="text/javascript" src="static/javascript/indx.js"></script>
+		
+		
+	</head>
+
+	<body>
+		<div id="header">
+
+			<!--todo 页面顶部小栏-->
+			<div class="shortcut">
+				<div class="container">
+					
+					<ul class="sitenav" id="resourceNavTop">
+					</ul>
+					
+					<div class="navbar-collapse" id="short-nav">
+						<ul class="right">
+							<li class="phoneapp">
+								<a class="" href="#"><span class="glyphicon glyphicon-phone"></span>手机麦票&nbsp&nbsp&nbsp|</a>
+								<div class="top-qr">
+									<p>麦票客户端</p>
+									<img src="static/images/head/twoCode_app.png">
+									<p>微信购票入口</p>
+									<img src="static/images/head/twoCode_weixin.png">
+									<p>手机网页版</p>
+									<img src="static/images/head/twoCode_m.png">
+								</div>
+							</li>
+							<span class="">|</span>
+							<li>
+								<a class="" href="#">票品验证</a>
+							</li>
+							<li>
+								<a class="" href="#">演出场馆</a>
+							</li>
+							<li>
+								<a href="#" class="">|&nbsp&nbsp&nbsp服务热线:4001-338-888</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!--todo 页面头部-->
+			<div class="head">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3  col-xs-6">
+							<div id="logo">
+								<a href="index.html">
+									<img class="img-responsive two_x" src="static/images/head/wepiao_logo_2x.png" alt="">
+									<img class="one_x" src="static/images/head/logo_1x.jpg" alt="">
+								</a>
+							</div>
+							<div class="gloal">
+								<a href="#">全国<span class="caret"></span></a>
+								<!--todo 地址管理-->
+								<div class="location">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+
+											当前
+											<a href="#">全国</a>共有<span>1403</span>场演出，城市后数字代表演出场次
+										</div>
+										<div class="panel-body">
+											<div id="place">
+												<span>华东</span>
+												<ul>
+													<li>
+														<a href="#">北京(152)</a>
+													</li>
+													<li>
+														<a href="#">天津(91)</a>
+													</li>
+													<li>
+														<a href="#">太原(18)</a>
+													</li>
+													<li>
+														<a href="#">石家庄(2)</a>
+													</li>
+													<li>
+														<a href="#">秦皇岛(1)</a>
+													</li>
+													<li>
+														<a href="#">大同(6)</a>
+													</li>
+												</ul>
+											</div>
+											<div>
+												<span>东北</span>
+												<ul>
+													<li>
+														<a href="#">大连(32)</a>
+													</li>
+													<li>
+														<a href="#">沈阳(25)</a>
+													</li>
+													<li>
+														<a href="#">哈尔滨(22)</a>
+													</li>
+												</ul>
+											</div>
+											<div>
+												<span>华北</span>
+												<ul>
+													<li>
+														<a href="#">上海(152)</a>
+													</li>
+													<li>
+														<a href="#">南京(91)</a>
+													</li>
+													<li>
+														<a href="#">青岛(18)</a>
+													</li>
+													<li>
+														<a href="#">杭州(2)</a>
+													</li>
+													<li>
+														<a href="#">厦门(1)</a>
+													</li>
+													<li>
+														<a href="#">嘉兴(6)</a>
+													</li>
+													<li>
+														<a href="#">济南(152)</a>
+													</li>
+													<li>
+														<a href="#">南昌(91)</a>
+													</li>
+													<li>
+														<a href="#">扬州(18)</a>
+													</li>
+													<li>
+														<a href="#">杭州(2)</a>
+													</li>
+													<li>
+														<a href="#">厦门(1)</a>
+													</li>
+													<li>
+														<a href="#">嘉兴(6)</a>
+													</li>
+												</ul>
+											</div>
+											<div>
+												<span>华中</span>
+												<ul>
+													<li>
+														<a href="#">北京(152)</a>
+													</li>
+													<li>
+														<a href="#">天津(91)</a>
+													</li>
+													<li>
+														<a href="#">太原(18)</a>
+													</li>
+													<li>
+														<a href="#">石家庄(2)</a>
+													</li>
+													<li>
+														<a href="#">秦皇岛(1)</a>
+													</li>
+													<li>
+														<a href="#">大同(6)</a>
+													</li>
+												</ul>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6  col-xs-12" id="search_bar">
+							<div class="searchbar">
+								<div class="searchBox">
+									<input type="text" class="inputbox" placeholder="请输入艺人、演出、场馆...">
+									<a href="#" class="searchBtn">搜索</a>
+								</div>
+
+							</div>
+
+						</div>
+						<div class="col-md-3  col-xs-6">
+							<div class="user">
+								<b></b>
+								<a href="#" id="login" data-toggle="modal" data-target="#loginR">登录</a>
+								<span>|</span>
+								<a href="#" id="register" data-toggle="modal" data-target="#loginR">注册</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--todo 页面主导航-->
+			<div class="mainnav">
+				<div class="container" >
+					<div class="">
+						<ul class="nav navbar-nav" id="mainnav">
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="loginR" tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div id="mainlogin">
+								<span class="md_close">
+                        <img class="close" data-dismiss="modal" src="static/images/close-normal.png" alt="">
+                    </span>
+								<img width="160px" src="static/images/head/wepiao_logo_2x.png" alt="">
+								<h1></h1>
+								<form action="#">
+									<div class="form-group">
+										<input id="uname" class="form-control" type="text" placeholder="用户名"><b class="succ usucc"></b>
+										<div class="alert_warning phone"><span class="glyphicon glyphicon-alert"></span>手机号已被注册</div>
+										<input id="upwd" class="form-control" type="password" placeholder="密码"><b class="succ psucc"></b>
+										<div class="alert_warning upwd"><span class="glyphicon glyphicon-alert"></span>密码错误</div>
+										<button type="button" id="submit" class="btn btn-block btn-md">登录</button><b class="succ lsucc"></b>
+										<div class="alert_warning submit"><span class="glyphicon glyphicon-alert"></span>用户名或密码错误.</div>
+									</div>
+								</form>
+								<p></p>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--
+        	作者：ganzhigang
+        	时间：2017-04-11
+        	描述：主要内容区
+        -->
+		<div class="maincontent" id="maincontent">
+
+		</div>
+
+		<!--todo 页面底部-->
+		<div id="footer">
+			<div class="main container">
+				<div class="row ">
+					<div class="col-md-12 hidden-xs ">
+						<ul>
+							<li>
+								<img src="static/images/footer_logo.png">
+							</li>
+							<li>
+								<p class="first_line">微信电影票官网</p>
+								<p>在线占好座,覆盖影院全国第一</p>
+							</li>
+							<b class="one"></b>
+							<li class="gap">
+								<img src="static/images/phoneIcon.png">
+							</li>
+							<li>
+								<p class="first_line">4001-338-888</p>
+								<p>9:00-21:00|全年无休</p>
+							</li>
+							<b class="two"></b>
+							<li class="wx">
+								<img src="static/images/f_wx.png">
+								<p class="down_wx"><img src="static/images/f_wpr_ecode.png"></p>
+							</li>
+							<li class="wpr">
+								<img src="static/images/f_wpr.png">
+								<p class="down_wpr"><img src="static/images/f_app_ecode.png"></p>
+							</li>
+							<li>
+								<p class="first_line">打开微信扫一扫</p>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-12 bq_div">
+						<p class="bq">
+							<span>@2015北京微影时代科技有限公司版权所有</span>
+							<span>京ICP备14034406号-2</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--todo 登录的摸态框-->
+		<div class="modal fade" id="loginR" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div id="mainlogin">
+							<span class="md_close">
+                        <img class="close" data-dismiss="modal" src="static/images/close-normal.png" alt="">
+                    </span>
+							<img width="160px" src="static/images/head/wepiao_logo_2x.png" alt="">
+							<h1></h1>
+							<form action="#">
+								<div class="form-group">
+									<input id="uname" class="form-control" type="text" placeholder="用户名"><b class="succ usucc"></b>
+									<div class="alert_warning phone"><span class="glyphicon glyphicon-alert"></span>手机号已被注册</div>
+									<input id="upwd" class="form-control" type="password" placeholder="密码"><b class="succ psucc"></b>
+									<div class="alert_warning upwd"><span class="glyphicon glyphicon-alert"></span>密码错误</div>
+									<button type="submit" id="submit" class="btn btn-block btn-md">登录</button><b class="succ lsucc"></b>
+									<div class="alert_warning submit"><span class="glyphicon glyphicon-alert"></span>用户名或密码错误.</div>
+								</div>
+							</form>
+							<p></p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<script src="js/common.js"></script>-->
+		<!--<script src="js/index.js"></script>-->
+		
+		<script>
+			
+		</script>
+	</body>
+
+</html>

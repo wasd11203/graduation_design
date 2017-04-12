@@ -1,7 +1,6 @@
 var m_home = {
 	resourceNavTop : [],
 	curResourceNavTop:null,
-	
 	updateResourceNavTop : function(resourceNavTop) {
 		this.resourceNavTop = resourceNavTop;
 		this.updateResourceNavTopView();
@@ -26,7 +25,6 @@ var m_home = {
 				
 				m_home.updateResourceNavTopView();
 				listResourceSecNavAction(m_home.curResourceNavTop.TOP_ID);
-				
 				return false;
 			});
 			
@@ -48,6 +46,9 @@ var m_home = {
 	curResourceNavSec:null,
 	updateResourceNavSecAndThird:function(resourceNavSecAndThird){
 		this.resourceNavSecAndThird = resourceNavSecAndThird;
+		
+		m_maincontent.updateResourceSecNav(this.resourceNavSecAndThird);
+		
 		this.updateResourceNavSecAndThirdView();
 	},
 	updateResourceNavSecAndThirdView:function(){
@@ -132,8 +133,61 @@ var m_home = {
 		$main_li.append($resourceNavSecAndThird);
 		
 		$mainnav.prepend($main_li);
+	},
+	
+	regionNavSecAndThird:[],
+	curResourceNavSec:null,
+	updateRegionNavSecAndThird:function(regionNavSecAndThird){
+		this.regionNavSecAndThird = regionNavSecAndThird;
+		this.updateRegionNavSecAndThird();
+	},
+	updateRegionNavSecAndThird:function(){
+		var $region = $("#regionSecAndThird");
+		
+		var $curRegion_a = $('<a href="#">全国</a>');
+		var $curRegion_a_span = $('<span class="caret"></span>');
+		
+		var $region_list = $('<div class="location"></div>');
+		var $region_list_panel = $('<div class="panel panel-default">');
+		
+		var $region_list_panel_title_div = $('div class="panel-heading">当前</div>');
+		var $region_list_panel_title_div_a = $('<a href="javascript:void(0);">全国</a>共有<span>1403</span>场演出，城市后数字代表演出场次');
+		
+		var $region_list_panel_body = $('<div class="panel-body"></div>');
+		
+		for(var i=0;i<this.regionNavSecAndThird.length;i++){
+			var $region_list_body_item = $('<div id="place"></div>');
+			var $region_list_body_item_span = $('<span>华东</span>');
+			var $region_list_body_item_ul = $('<ul></ul>');
+			
+			for(var j= 0 ;j<this.regionNavSecAndThird[i].third.length;j++){
+				var $region_list_body_item_ul_li = $('<li></li>');
+				var $region_list_boty_item_ul_li_a = $('<a href="javascript:void(0);">北京(152)</a>');
+				
+				$region_list_body_item_ul_li.append($region_list_boty_item_ul_li_a);
+				$region_list_body_item_ul.append($region_list_body_item_ul_li);
+			}
+			
+			$region_list_body_item.append($region_list_body_item_span);
+			$region_list_body_item.append($region_list_body_item_ul);
+			
+			$region_list_panel_body.append($region_list_body_item);
+			
+		}
+		
+		$curRegion_a.append($curRegion_a_span);
+		
+		$region_list_panel_title_div.append($region_list_panel_title_div_a);
+		
+		$region_list_panel.append($region_list_panel_title_div);
+		$region_list_panel.append($region_list_panel_body);
+		
+		$region_list.append($region_list_panel);
+		
+		$region.append($curRegion_a);
+		$region.append($region_list);
+		
 	}
-
 };
 
 

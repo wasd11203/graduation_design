@@ -22,7 +22,7 @@ public interface ListService {
 	 * 获取最新资讯资源列表
 	 * @return
 	 */
-	public List<Map<String, Object>> getNearHostResourceList();
+	public List<Map<String, Object>> getLatestInfoResourceList();
 	/**
 	 * 获取热销资源列表
 	 * @return

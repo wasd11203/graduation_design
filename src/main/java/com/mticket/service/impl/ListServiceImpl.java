@@ -32,9 +32,9 @@ public class ListServiceImpl implements ListService{
 	}
 
 	@Override
-	public List<Map<String, Object>> getNearHostResourceList() {
-		logger.debug("获取 获取最新资讯 资源列表");
-		return advertisingMapper.getNearHostResourceList();
+	public List<Map<String, Object>> getLatestInfoResourceList() {
+		logger.debug("获取 最新资讯 资源列表");
+		return advertisingMapper.getLatestInfoResourceList();
 	}
 
 	@Override

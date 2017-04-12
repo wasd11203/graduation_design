@@ -34,21 +34,21 @@
 			discount_resource.DISCOUNT_ID ASC
 	</select>
 	
-	<select id="getNearHostResourceList" resultType="Map">
+	<select id="getLatestInfoResourceList" resultType="Map">
 		
 		SELECT
-			near_hot_resource.NEAR_ID,
-			near_hot_resource.NEAR_PIC,
+			latest_info_resource.LATEST_ID,
+			latest_info_resource.LATEST_PIC,
 			resource_info.RESOURCE_ID,
 			resource_info.RESOURCE_NAME,
 			region_third_category.THIRD_ID,
 			region_third_category.THIRD_NAME
 		FROM
-			near_hot_resource
-		LEFT JOIN resource_info ON near_hot_resource.RESOURCE_ID = resource_info.RESOURCE_ID
-		LEFT JOIN region_third_category ON near_hot_resource.REGION_THIRD_ID = region_third_category.THIRD_ID
+			latest_info_resource
+		LEFT JOIN resource_info ON latest_info_resource.RESOURCE_ID = resource_info.RESOURCE_ID
+		LEFT JOIN region_third_category ON latest_info_resource.REGION_THIRD_ID = region_third_category.THIRD_ID
 		ORDER BY 
-			near_hot_resource.NEAR_ID ASC
+			latest_info_resource.LATEST_ID ASC
 	</select>
 	
 	<select id="getHotSellResourceList" resultType="Map">

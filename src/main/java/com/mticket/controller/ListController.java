@@ -36,11 +36,11 @@ public class ListController extends BasicController{
 		return listService.getDiscountResourceList();
 	}
 	
-	@RequestMapping("/nearHost")
+	@RequestMapping("/latestInfo")
 	@ResponseBody
 	public List<Map<String, Object>> listNearHost(){
 		logger.debug("CONTROLLER -- 获取 最新资讯 列表资源");
-		return listService.getNearHostResourceList();
+		return listService.getLatestInfoResourceList();
 	}
 	
 	@RequestMapping("/hostSell")

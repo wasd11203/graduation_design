@@ -19,6 +19,12 @@ public interface ListService {
 	public List<Map<String, Object>> getDiscountResourceList();
 	
 	/**
+	 * 获取近期热门资源列表
+	 * @return
+	 */
+	public List<Map<String, Object>> getRecentResourceList();
+	
+	/**
 	 * 获取最新资讯资源列表
 	 * @return
 	 */

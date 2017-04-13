@@ -22,6 +22,8 @@ public interface ListMapper {
 	 */
 	public List<Map<String, Object>> getDiscountResourceList();
 	
+	public List<Map<String, Object>> getRecentResourceList();
+	
 	/**
 	 * 获取最新资讯资源列表
 	 * @return

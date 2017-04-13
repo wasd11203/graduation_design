@@ -34,6 +34,16 @@
 			discount_resource.DISCOUNT_ID ASC
 	</select>
 	
+	<select id="getRecentResourceList" resultType="Map">
+		SELECT
+			resource_info.RESOURCE_ID,RESOURCE_PIC,resource_info.RESOURCE_NAME,
+			region_third_category.THIRD_ID,region_third_category.THIRD_NAME
+		FROM
+			recent_hot_resource
+		LEFT JOIN resource_info ON recent_hot_resource.RESOURCE_ID = resource_info.RESOURCE_ID
+		LEFT JOIN region_third_category ON recent_hot_resource.REGION_THIRD_ID = region_third_category.THIRD_ID
+	</select>
+	
 	<select id="getLatestInfoResourceList" resultType="Map">
 		
 		SELECT

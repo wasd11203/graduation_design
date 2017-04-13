@@ -36,6 +36,14 @@ public class ListController extends BasicController{
 		return listService.getDiscountResourceList();
 	}
 	
+	@RequestMapping("/recent")
+	@ResponseBody
+	public List<Map<String, Object>> listRecent(){
+		logger.debug("CONTROLLER -- 获取近期热门列表");
+		
+		return listService.getRecentResourceList();
+	}
+	
 	@RequestMapping("/latestInfo")
 	@ResponseBody
 	public List<Map<String, Object>> listNearHost(){

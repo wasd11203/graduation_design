@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class SearchResourceController extends BasicController {
 				+ resourceTopId + "," + resourceSecId + "," + resourceThirdId+","+minTime+","+maxTime);
 
 		JSONObject jobj = new JSONObject();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z",Locale.ENGLISH);
 
 		Integer resourceTop = null;
 		Map<String, Object> map = transforArgs(regionThirdId,venueId, resourceSecId, resourceThirdId, minTime, maxTime, sdf);
@@ -96,10 +97,13 @@ public class SearchResourceController extends BasicController {
 
 		try {
 			if (minTime != null && !minTime.trim().isEmpty()) {
-				min = sdf.parse(minTime);
+//				Wed Apr 12 2017 00:00:00 GMT+0800 (中国标准时间)
+				String minTemp = minTime.substring(0, minTime.lastIndexOf(" ")).replace("GMT+0800", "GMT +08:00").replace("GMT 0800", "GMT +08:00");
+				min = sdf.parse(minTemp);
 			}
 			if (maxTime != null && !maxTime.trim().isEmpty()) {
-				max = sdf.parse(maxTime);
+				String maxTemp = maxTime.substring(0, maxTime.lastIndexOf(" ")).replace("GMT+0800", "GMT +08:00").replace("GMT 0800", "GMT +08:00");
+				max = sdf.parse(maxTemp);
 			}
 		} catch (ParseException e) {
 			e.printStackTrace();

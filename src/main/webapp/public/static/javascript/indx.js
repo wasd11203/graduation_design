@@ -1,7 +1,7 @@
 $(function() {
 	
 	loadResourceTopNavAction();
-	$("#maincontent").load("views/maincontent.html");
+	loadHtmlByPath("views/maincontent.html")
 });
 
 function loadResourceTopNavAction() {
@@ -12,7 +12,8 @@ function loadResourceTopNavAction() {
 		data:{},
 		success:function(data){
 //			console.log(data);
-			m_home.updateResourceNavTop(data);
+			m_header.updateResourceNavTop(data);
+			
 		},
 		error:function(data){
 			alert("fail");
@@ -22,7 +23,7 @@ function loadResourceTopNavAction() {
 }
 
 function listResourceSecNavAction(resourceTopId){
-	console.log(resourceTopId);
+//	console.log(resourceTopId);
 	var param = {"resourceTopId":resourceTopId};
 
 	$.ajax({
@@ -32,13 +33,34 @@ function listResourceSecNavAction(resourceTopId){
 		data:param,
 		success:function(data){
 //			console.log(data);
-			m_home.updateResourceNavSecAndThird(data);
+			m_header.updateResourceNavSecAndThird(data);
 		},
 		error:function(data){
 			alert("fail");
 		}
 			
 	})
+}
+
+function loadRegionSecAndThirdAction(resourceTopId){
+//	console.log(resourceTopId);
+	var param = {"resourceTopId":resourceTopId};
+
+	$.ajax({
+		url : 'nav/region',
+		type : 'POST',
+		dataType : "json",
+		data:param,
+		success:function(data){
+//			console.log(data);
+			m_header.updateRegionNavSecAndThird(data);
+		},
+		error:function(data){
+			alert("fail");
+		}
+			
+	})
+
 }
 
 function loadMainAdvertisingResourceAction(){
@@ -49,7 +71,7 @@ function loadMainAdvertisingResourceAction(){
 		data:{},
 		success:function(data){
 //			console.log(data);
-			m_maincontent.updateAdvertising(data);
+			m_home.updateAdvertising(data);
 		},
 		error:function(data){
 			alert("fail");
@@ -66,7 +88,7 @@ function loadDiscountResourceAction(){
 		data:{},
 		success:function(data){
 //			console.log(data);
-			m_maincontent.updateDiscountList(data);
+			m_home.updateDiscountList(data);
 		},
 		error:function(data){
 			alert("fail");
@@ -76,7 +98,21 @@ function loadDiscountResourceAction(){
 }
 
 function loadRencentHotResourceListAction(){
-	m_maincontent.updateRecentHotList();
+	$.ajax({
+		url : 'list/recent',
+		type : 'POST',
+		dataType : "json",
+		data:{},
+		success:function(data){
+//			console.log(data);
+			m_home.updateRecentHotList(data);
+		},
+		error:function(data){
+			alert("fail");
+		}
+			
+	})
+	
 }
 
 function loadLatestInfoResourceAction(){
@@ -87,7 +123,7 @@ function loadLatestInfoResourceAction(){
 		data:{},
 		success:function(data){
 //			console.log(data);
-			m_maincontent.updateLatestInfoList(data);
+			m_home.updateLatestInfoList(data);
 		},
 		error:function(data){
 			alert("fail");
@@ -106,7 +142,7 @@ function loadRoughlyResourceListAction(resourceTopId,resourceSecId){
 		data:params,
 		success:function(data){
 //			console.log(data.data);
-			m_maincontent.updateCateList(data.data);
+			m_home.updateCateList(data.data);
 		},
 		error:function(data){
 			alert("fail");
@@ -123,7 +159,7 @@ function loadVenueRecommendListAction(){
 		data:{},
 		success:function(data){
 //			console.log(data);
-			m_maincontent.updateVenueList(data);
+			m_home.updateVenueList(data);
 		},
 		error:function(data){
 			alert("fail");
@@ -139,8 +175,8 @@ function loadHotSellListAction(){
 		dataType : "json",
 		data:{},
 		success:function(data){
-			console.log(data);
-			m_maincontent.updateHotSellList(data);
+//			console.log(data);
+			m_home.updateHotSellList(data);
 		},
 		error:function(data){
 			alert("fail");
@@ -149,8 +185,27 @@ function loadHotSellListAction(){
 	})
 }
 
-function loadResourceByTime(){
-	m_maincontent.updateCalendarList();
+function loadResourceByTime(minTime,maxTime){
+	var params = {"minTime":minTime,"maxTime":maxTime};
+	$.ajax({
+		url : 'resource/searchByMark',
+		type : 'POST',
+		dataType : "json",
+		data:params,
+		success:function(data){
+//			console.log(data);
+			m_home.updateCalendarList(data.resourceList);
+		},
+		error:function(data){
+			alert("fail");
+		}
+			
+	})
+	
+
 }
 
-
+function loadHtmlByPath(templatePath){
+	$("#maincontent").empty();
+	$("#maincontent").load(templatePath);
+}

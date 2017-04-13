@@ -195,22 +195,22 @@ function sort(x){
 // });
 
 // todo 主页上图片显示立即购买样式
-function tobuy(){
-    $('.buy-btn').siblings('img').on('mouseenter',function () {
-        $(this).siblings('.buy-btn').show();
-    });
-    $('.buy-btn').siblings('img').on('mouseleave',function () {
-        $(this).siblings('.buy-btn').hide();
-    })
-    $('.buy-btn').on('mouseover',function () {
-        $(this).show();
-    })
-    $('.buy-btn').on('mouseout',function () {
-        $(this).hide();
-    })
-
-
-}
+//function tobuy(){
+//    $('.buy-btn').siblings('img').on('mouseenter',function () {
+//        $(this).siblings('.buy-btn').show();
+//    });
+//    $('.buy-btn').siblings('img').on('mouseleave',function () {
+//        $(this).siblings('.buy-btn').hide();
+//    })
+//    $('.buy-btn').on('mouseover',function () {
+//        $(this).show();
+//    })
+//    $('.buy-btn').on('mouseout',function () {
+//        $(this).hide();
+//    })
+//
+//
+//}
 
 //todo 下面场馆小样式
 // $('.where').on('mouseover',function () {
@@ -219,35 +219,35 @@ function tobuy(){
 
 
 //todo 主页面轮播图异步加载
-function loadadv() {
-    $.getJSON('data/loadadv.php',function (response) {
-        var html='';
-        var htmlbar='';
-        html+=`
-              <div class="item active">
-                     <a href="detail.html?id=${response[0].pid}"><img src="img/adv${response[0].padv}.jpg" alt=""></a>
-              </div>
-        `;
-        htmlbar+=`
-           <li data-slide-to="0" data-target="#advs" class="active"></li>
-        `;
-        for(var i=1,data;i<response.length;i++){
-            data=response[i];
-            html+=`
-              <div class="item">
-                     <a href="detail.html?id=${data.pid}"><img src="img/adv${data.padv}.jpg" alt=""></a>
-              </div>
-           `;
-            htmlbar+=`
-              <li data-slide-to="${i}" data-target="#advs"></li>
-            `;
-        }
-        $('.carousel-inner').html(html);
-        $('.carousel-indicators').html(htmlbar);
-
-    })
-
-}
+//function loadadv() {
+//    $.getJSON('data/loadadv.php',function (response) {
+//        var html='';
+//        var htmlbar='';
+//        html+=`
+//              <div class="item active">
+//                     <a href="detail.html?id=${response[0].pid}"><img src="img/adv${response[0].padv}.jpg" alt=""></a>
+//              </div>
+//        `;
+//        htmlbar+=`
+//           <li data-slide-to="0" data-target="#advs" class="active"></li>
+//        `;
+//        for(var i=1,data;i<response.length;i++){
+//            data=response[i];
+//            html+=`
+//              <div class="item">
+//                     <a href="detail.html?id=${data.pid}"><img src="img/adv${data.padv}.jpg" alt=""></a>
+//              </div>
+//           `;
+//            htmlbar+=`
+//              <li data-slide-to="${i}" data-target="#advs"></li>
+//            `;
+//        }
+//        $('.carousel-inner').html(html);
+//        $('.carousel-indicators').html(htmlbar);
+//
+//    })
+//
+//}
 
 
 

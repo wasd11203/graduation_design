@@ -29,11 +29,11 @@
 				</div>
 				<div class="t2_item type clearfix">
 					<h3>项目类别</h3>
-					<ul class="i1 clearfix ul-1">
+					<ul class="i1 clearfix ul-1" id="resourceSecList">
 						<li class="type-1 " value="" data-he="list_all_main">全部</li>
 						<li class="type-1 on" value="ff8080814a7ad6f1014a7adb6b540002">演唱会</li>
 					</ul>
-					<ul class="i2 clearfix ul-2">
+					<ul class="i2 clearfix ul-2" id="resourceThirdList">
 						<li class="type-2 on" value="" data-he="list_ych_qb">全部</li>
 						<li class="type-2 ">其他</li>
 						<li class="type-2 ">小型现场</li>
@@ -46,28 +46,11 @@
 				</div>
 				<div class="t3_item time clearfix">
 					<h3>演出时间</h3>
-					<ul class="i1 clearfix ul-3" id="yui_3_5_1_1_1491103866993_168">
-						<li class="show-time  on" value="" data-he="show_list_date_all">全部</li>
-						<li class="show-time " value="1" data-he="show_date_today">今天</li>
-						<li class="show-time " value="2" data-he="show_date_mt">明天</li>
-						<li class="show-time " value="3" data-he="show_date_bzn">本周内</li>
-						<li class="show-time " value="4" data-he="show_date_bzm">本周末</li>
-						<li class="show-time " value="5" data-he="show_date_30t">一个月内</li>
-
+					<ul class="i1 clearfix ul-3" id="times">
+						
 					</ul>
-					<ul class="rili">
-						<li value="define" class="">自定义</li>
-						<li class="laydate-icon" id="start"
-							style="width: 200px; margin-right: 10px;"></li>
-						<li>至</li>
-						<li class="laydate-icon" id="end" style="width: 200px;"></li>
-					</ul>
-					<div class="define clearfix">
-
-						<button type="button" id="by-custom-time" data-he="show_date_zdy">确定</button>
-					</div>
 				</div>
-				<div class="concert_list">
+				<div class="concert_list" id="resultList">
 					<dl>
 						<dt>
 							<img src="static/images/concert_1.jpg">
@@ -94,7 +77,9 @@
 					</dl>
 
 				</div>
-				<div id="empty">这里分页没写 不会 你写下吧</div>
+				<div >
+					<ul id="paginator"></ul>
+				</div>
 			</div>
 		</div>
 

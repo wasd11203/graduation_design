@@ -12,10 +12,17 @@
 		<version>1.4.0.RELEASE</version>
 	</parent>
 
+	<!-- 使用内嵌的tomcat -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -84,41 +91,51 @@
 	</dependencies>
 
 	<!-- Package as an executable JAR -->
-    <build>
-        <finalName>m_ticket</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <plugins>
-             
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-            </plugin>
-            
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-            </plugin>
-            
-            <!-- compiler插件, 设定JDK版本 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>UTF-8</encoding>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+	<build>
+		<finalName>mticket</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/webapp</directory>
+<!-- 				在未指定静态资源文件目录时,需要将需要的资源放在此目录下才能被访问到
+				<targetPath>META-INF/resources</targetPath> -->
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
 
-        </plugins>
-    </build>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+			</plugin>
+
+			<!-- compiler插件, 设定JDK版本 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>UTF-8</encoding>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
 
 </project>

@@ -13,7 +13,8 @@
 	<script type="text/javascript">
 		$(function(){
 			alert(2);
-			loadSearchNav()
+			loadSearchNav();
+			loadLatestAndThematicAndHotSell();
 		});
 	</script>
 </head>
@@ -30,18 +31,8 @@
 				<div class="t2_item type clearfix">
 					<h3>项目类别</h3>
 					<ul class="i1 clearfix ul-1" id="resourceSecList">
-						<li class="type-1 " value="" data-he="list_all_main">全部</li>
-						<li class="type-1 on" value="ff8080814a7ad6f1014a7adb6b540002">演唱会</li>
 					</ul>
 					<ul class="i2 clearfix ul-2" id="resourceThirdList">
-						<li class="type-2 on" value="" data-he="list_ych_qb">全部</li>
-						<li class="type-2 ">其他</li>
-						<li class="type-2 ">小型现场</li>
-						<li class="type-2 ">摇滚</li>
-						<li class="type-2 ">民族</li>
-						<li class="type-2 ">流行</li>
-						<li class="type-2 ">美声</li>
-						<li class="type-2 ">音乐节</li>
 					</ul>
 				</div>
 				<div class="t3_item time clearfix">
@@ -51,30 +42,6 @@
 					</ul>
 				</div>
 				<div class="concert_list" id="resultList">
-					<dl>
-						<dt>
-							<img src="static/images/concert_1.jpg">
-						</dt>
-						<dd>
-							<div class="ddleft">
-								<p class="mtit">
-
-									<a href="#"> [深圳]2017 COCO李玟18世界巡回演唱会-深圳站（预售） </a>
-								</p>
-								<p class="ftit">冠军女神舞台魅力再绽放</p>
-								<p class="time">2017年5月6日 19:30</p>
-								<p class="place">华润深圳湾体育中心"春茧"体育馆</p>
-
-							</div>
-							<div class="ddright flr">
-								<span class="pre_sale wp-icon-all">预售</span>
-								<p class="price">
-									<span>380</span>元起
-								</p>
-								<a class="buy_btn" href="#">立即购买</a>
-							</div>
-						</dd>
-					</dl>
 
 				</div>
 				<div >
@@ -85,66 +52,11 @@
 
 		<div id="right_ct">
 			<div id="hotbar">
-				<div class="col-md-3 hotbar">
-					<ul class="row">
-						<li class="col-md-6 col-xs-12"><a href="#">最新资讯</a></li>
-						<li class="col-md-6 col-xs-12"><a href="#">精彩专题</a></li>
-					</ul>
-					<div class="news">
-						<ul>
-							<li><a href="detail.html?id=3"> <img
-									class="img-responsive" src="img/lirouhao.jpg" alt="">
-									<div>[上海]星际迷航50周年特展</div>
-							</a></li>
-							<li><a href="#"> <img src="" alt="">
-									<div>[杭州]2016李荣浩「有 理想」世界巡回演唱会</div>
-							</a></li>
-							<li><a href="#"> <img src="" alt="">
-									<div>[北京]陈奕迅 ANOTHER EASON'S LIFE演唱会北京站加场</div>
-							</a></li>
-						</ul>
-						<ul class="unchoseed">
-							<li><a href="#"> <img class="img-responsive"
-									src="img/yanchanghui.jpg" alt="">
-									<div>到乌镇，邂逅文艺</div>
-							</a></li>
-						</ul>
-					</div>
+				<div class="col-md-3 hotbar" id="resoultLatestAndThematic">
 				</div>
 			</div>
 			<div id="hotsale">
-				<ul class="down row ">
-					<li class="hot col-xs-12">热销榜单</li>
-					<li class="all cd col-xs-12">
-						<div class="row ">
-							<div class="pic col-md-3 ">
-								<img src="img/flower.jpg ">
-							</div>
-							<div class="col-md-9 hidden-xs">
-								<p>
-									<a href="#">[成都]风靡亚洲的SAVOUR美食节</a>
-								</p>
-								<p>
-									<a href="#">2016年10月20日~23日</a>
-								</p>
-								<p>
-									<a href="#">成都远洋太古里</a>
-								</p>
-
-								<p class="price">
-									<span class="num">200</span> <span>元起</span>
-								</p>
-								</a>
-							</div>
-						</div>
-					</li>
-					<li class="all col-xs-12"><a href="#">[武汉]朴树"好好地II"2017中国巡回演唱会—武汉站{预订}</a></li>
-					<li class="all col-xs-12"><a href="#">[太原]天空之城-久石让宫崎骏动漫作品视听音乐会</a></li>
-					<li class="all col-xs-12"><a href="#">[北京]陈奕迅 ANOTHER
-							EASON'S LIFE演唱会北京站加场</a></li>
-					<li class="all col-xs-12"><a href="#">[广州]《奇幻积木艺术》展览－广州站</a></li>
-					<li class="all col-xs-12"><a href="#">[沈阳]陈奕迅Another
-							Eason's Life演唱会 沈阳站</a></li>
+				<ul class="down row " id="resoultHotSell">
 				</ul>
 			</div>
 		</div>

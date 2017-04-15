@@ -16,6 +16,8 @@ public interface ResourceSearchOperationService {
 	 */
 	public List<Map<String, Object>> searchResourceByMark(Map<String, Object> map);
 
+	public int getAllCounts(Map<String, Object> map);
+	
 	/**
 	 * 根据不同的条件，查询资源列表(大致信息)
 	 * @param map

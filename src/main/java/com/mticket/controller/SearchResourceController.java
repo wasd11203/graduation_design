@@ -37,10 +37,25 @@ public class SearchResourceController extends BasicController {
 	@RequestMapping("/searchByMark")
 	@ResponseBody
 	public JSONObject searchResourceByMark(String keywords, String regionThirdId,String venueId, String resourceTopId,
-			String resourceSecId, String resourceThirdId, String minTime, String maxTime) {
+			String resourceSecId, String resourceThirdId, String minTime, String maxTime,String curPage) {
 		
+		// 设置每页的数量
+		int pageSize = 4;
+		int cur = 1;
+		int startIndex = 0;
+		
+		int allcounts = 0;
+		int totalPage = 0;
+		
+		if(curPage != null && !curPage.trim().isEmpty()){
+			
+			cur = Integer.parseInt(curPage);
+		}
+		
+		startIndex = (cur-1)*pageSize;
+				
 		logger.debug("CONTROLLER -- 当前访问的url:/resource/searchByMark,params:" + keywords + "," + regionThirdId + "," +venueId+","
-				+ resourceTopId + "," + resourceSecId + "," + resourceThirdId+","+minTime+","+maxTime);
+				+ resourceTopId + "," + resourceSecId + "," + resourceThirdId+","+minTime+","+maxTime+","+curPage);
 
 		JSONObject jobj = new JSONObject();
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z",Locale.ENGLISH);
@@ -51,8 +66,11 @@ public class SearchResourceController extends BasicController {
 		if (resourceTopId != null && !resourceTopId.trim().isEmpty()) {
 			resourceTop = new Integer(resourceTopId);
 		}
+		
 		map.put("resourceTopId", resourceTop);
-
+		map.put("startIndex", startIndex);
+		map.put("pageSize", pageSize);
+		
 		jobj.put("code", 0);
 		List<RegionNavigationThird> regionThirdNav = navigationService.getRegionThirdListByResourceTopId(resourceTop);
 		jobj.put("cityList", regionThirdNav);
@@ -62,7 +80,13 @@ public class SearchResourceController extends BasicController {
 
 		List<Map<String, Object>> resourceList = resourceSearchOperationService.searchResourceByMark(map);
 		jobj.put("resourceList", resourceList);
-
+		
+		allcounts = resourceSearchOperationService.getAllCounts(map);
+		totalPage = (allcounts == 0 || allcounts%pageSize == 0 ) ? (allcounts/pageSize) : (allcounts/pageSize)+1;
+		
+		jobj.put("counts", allcounts);
+		jobj.put("totalPage", totalPage);
+		
 		return jobj;
 	}
 

@@ -19,6 +19,14 @@ public interface ResourceSearchOperationMapper {
 	public List<Map<String, Object>> searchResourceByMark(Map<String, Object> map);
 	
 	/**
+	 * 根据条件获取该条件下的资源总数
+	 * @param map
+	 * @return
+	 */
+	public int getAllCounts(Map<String, Object> map);
+	
+	
+	/**
 	 * 根据传入的条件查询该条件下的资源的大致信息列表
 	 * @param map
 	 * @return

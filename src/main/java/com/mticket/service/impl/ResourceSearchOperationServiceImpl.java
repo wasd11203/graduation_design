@@ -21,8 +21,14 @@ public class ResourceSearchOperationServiceImpl implements ResourceSearchOperati
 	
 	@Override
 	public List<Map<String, Object>> searchResourceByMark(Map<String, Object> map) {
-		logger.debug("SERVICE--根据条件查询 资源的概要信息列表,参数：[{}]",map);
+		logger.debug("SERVICE--根据条件查询 资源的信息列表,参数：[{}]",map);
 		return resourceSearchMapper.searchResourceByMark(map);
+	}
+	
+	@Override
+	public int getAllCounts(Map<String, Object> map) {
+		logger.debug("SERVICE--根据条件查询 资源的信息列表总数,参数：[{}]",map);
+		return resourceSearchMapper.getAllCounts(map);
 	}
 
 	@Override

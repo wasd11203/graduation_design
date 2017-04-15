@@ -16,7 +16,8 @@ var postParams = {
 	resourceSecId:'',
 	resourceThirdId:'',
 	minTime:'',
-	maxTime:''
+	maxTime:'',
+	curPage:''
 };
 
 

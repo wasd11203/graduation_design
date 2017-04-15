@@ -93,7 +93,7 @@ var m_header = {
 					}
 					postParams.resourceTopId = m_header.curResourceNavTop.TOP_ID;
 					postParams.resourceSecId = m_header.curResourceNavSec.secId;
-					
+					postParams.curPage = 1;
 					// 清空内容页，并导入新页
 					loadHtmlByPath("views/resoult.html");
 					return false;
@@ -130,6 +130,7 @@ var m_header = {
 					var j = $(this).data('j');
 					var resourceSec = m_header.resourceNavSecAndThird[i];
 					var resourceThird = m_header.resourceNavSecAndThird[i].navThird[j];
+					
 					postParams = {};
 					if(m_header.curRegionThird){
 						postParams.regionThirdId = m_header.curRegionThird.thirdId;
@@ -137,6 +138,7 @@ var m_header = {
 					postParams.resourceTopId = m_header.curResourceNavTop.TOP_ID;
 					postParams.resourceSecId = resourceSec.secId;
 					postParams.resourceThirdId =resourceThird.thirdId;
+					postParams.curPage = 1;
 					
 					// 清空内容页，并导入新页
 					loadHtmlByPath("views/resoult.html");
@@ -160,12 +162,14 @@ var m_header = {
 //				alert("二级资源去搜索");
 				var index = $(this).data("index");
 				var resourceSec = m_header.resourceNavSecAndThird[index];
+				
 				postParams = {};
 				if(m_header.curRegionThird){
 					postParams.regionThirdId = m_header.curRegionThird.thirdId;
 				}
 				postParams.resourceTopId = m_header.curResourceNavTop.TOP_ID;
 				postParams.resourceSecId = resourceSec.secId;
+				postParams.curPage = 1;
 				
 				// 清空内容页，并导入新页
 				loadHtmlByPath("views/resoult.html");
@@ -240,6 +244,7 @@ var m_header = {
 						postParams = {};
 						postParams.resourceTopId = m_header.curResourceNavTop.TOP_ID;
 						postParams.regionThirdId = m_header.curRegionThird.thirdId;
+						postParams.curPage = 1;
 						
 						// 清空内容页，并导入新页
 						loadHtmlByPath("views/resoult.html");
@@ -282,6 +287,7 @@ var m_header = {
 				postParams.regionThirdId = m_header.curRegionThird.thirdId;
 			}
 			postParams.resourceTopId = m_header.curResourceNavTop.TOP_ID;
+			postParams.curPage = 1;
 			
 			// 清空内容页，并导入新页
 			loadHtmlByPath("views/resoult.html");

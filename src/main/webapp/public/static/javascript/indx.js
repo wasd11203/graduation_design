@@ -1,7 +1,7 @@
 $(function() {
 	
 	loadResourceTopNavAction();
-	loadHtmlByPath("views/maincontent.html")
+	loadHtmlByPath("views/home.html");
 });
 
 function loadResourceTopNavAction() {

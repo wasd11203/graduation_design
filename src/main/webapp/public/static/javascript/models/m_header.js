@@ -95,7 +95,7 @@ var m_header = {
 					postParams.resourceSecId = m_header.curResourceNavSec.secId;
 					postParams.curPage = 1;
 					// 清空内容页，并导入新页
-					loadHtmlByPath("views/resoult.html");
+					loadHtmlByPath("views/result.html");
 					return false;
 				});
 			}
@@ -141,7 +141,7 @@ var m_header = {
 					postParams.curPage = 1;
 					
 					// 清空内容页，并导入新页
-					loadHtmlByPath("views/resoult.html");
+					loadHtmlByPath("views/result.html");
 //					alert("三级级资源去搜索");
 					
 					return false;
@@ -172,7 +172,7 @@ var m_header = {
 				postParams.curPage = 1;
 				
 				// 清空内容页，并导入新页
-				loadHtmlByPath("views/resoult.html");
+				loadHtmlByPath("views/result.html");
 				
 				return false;
 			});
@@ -247,7 +247,7 @@ var m_header = {
 						postParams.curPage = 1;
 						
 						// 清空内容页，并导入新页
-						loadHtmlByPath("views/resoult.html");
+						loadHtmlByPath("views/result.html");
 						
 						m_header.updateRegionNavSecAndThirdView();
 						e.preventDefault();
@@ -290,7 +290,7 @@ var m_header = {
 			postParams.curPage = 1;
 			
 			// 清空内容页，并导入新页
-			loadHtmlByPath("views/resoult.html");
+			loadHtmlByPath("views/result.html");
 			
 			m_header.updateRegionNavSecAndThirdView();
 			e.preventDefault();

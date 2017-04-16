@@ -12,10 +12,10 @@ function loadSearchNav(){
 		data:postParams,
 		success:function(data){
 			console.log(data);
-			m_resoult.updateCityList(data.cityList);
-			m_resoult.updateResourceCateList(data.resourceNav);
-			m_resoult.updateTimeList(timeOptions);
-			m_resoult.updateResultList(data.resourceList);
+			m_result.updateCityList(data.cityList);
+			m_result.updateResourceCateList(data.resourceNav);
+			m_result.updateTimeList(timeOptions);
+			m_result.updateResultList(data.resourceList);
 			
 			if(data.totalPage > 0){
 				options.currentPage = postParams.curPage;
@@ -38,7 +38,7 @@ function loadSearchNav(){
  * 不需要初始化 搜索条件时使用
  * @returns
  */
-function loadSearchResoultList(){
+function loadSearchresultList(){
 
 	$.ajax({
 		url : 'resource/searchByMark',
@@ -47,7 +47,7 @@ function loadSearchResoultList(){
 		data:postParams,
 		success:function(data){
 			console.log(data);
-			m_resoult.updateResultList(data.resourceList);
+			m_result.updateResultList(data.resourceList);
 			
 			if(data.totalPage > 0){
 				options.currentPage = postParams.curPage;
@@ -66,8 +66,8 @@ function loadSearchResoultList(){
 }
 
 function loadLatestAndThematicAndHotSell(){
-	m_resoult.updateLatestInfoList(m_home.latestInfoList);
-	m_resoult.updateHotSellList(m_home.hotSellList);
+	m_result.updateLatestInfoList(m_home.latestInfoList);
+	m_result.updateHotSellList(m_home.hotSellList);
 }
 
 /**
@@ -154,7 +154,7 @@ var options = {
 	    	
 //	    	alert('当前页被修改 --> old: '+oldPage+' new: '+newPage);
 	    	postParams.curPage = newPage;
-	    	loadSearchResoultList();
+	    	loadSearchresultList();
 	    },
 	    pageUrl: function(type, page, current){
 

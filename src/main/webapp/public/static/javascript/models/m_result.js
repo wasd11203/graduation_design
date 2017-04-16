@@ -2,7 +2,7 @@
 var minTimeDate = null;
 var maxTimeDate = null;
 
-var m_resoult = {
+var m_result = {
 
 	cityList:[],
 	curCity:null,
@@ -18,7 +18,15 @@ var m_resoult = {
 		
 		$cityList.append($cityList_default);
 		
+		if(!postParams.regionThirdId){
+			$cityList_default.siblings().find("a").css({"color":"gray"});
+			$cityList_default.find("a").css({"color":"#2ed2c1"});
+			
+			this.curCity = null;
+		}
+		
 		for(var i = 0;i<this.cityList.length;i++){
+
 			var $item_li = $("<li> </li>");
 			var $item_li_a = $('<a href="javascript:void(0);"> </a>');
 			
@@ -26,6 +34,14 @@ var m_resoult = {
 			
 			$item_li_a.append(this.cityList[i].thirdName);
 			$item_li.append($item_li_a);
+			
+			if(postParams.regionThirdId && this.cityList[i].thirdId == postParams.regionThirdId){
+				$item_li.siblings().find("a").css({"color":"gray"});
+				$item_li.find("a").css({"color":"#2ed2c1"});
+				
+				this.curCity = this.cityList[i];
+			}
+			
 			$cityList.append($item_li);
 			
 			$item_li.on("click",function(){
@@ -33,26 +49,27 @@ var m_resoult = {
 				$(this).find("a").css({"color":"#2ed2c1"});
 				
 				var i = $(this).data("index");
-				m_resoult.curCity = m_resoult.cityList[i];
-				postParams.regionThirdId = m_resoult.curCity.thirdId;
+				m_result.curCity = m_result.cityList[i];
+				postParams.regionThirdId = m_result.curCity.thirdId;
 				postParams.curPage = 1;
 				
-				loadSearchResoultList();
+				loadSearchresultList();
 				
 //				alert("重新搜索");
 				return false;
 			});
+			
 		}
 		
 		$cityList_default.on("click",function(){
 			$(this).siblings().find("a").css({"color":"gray"});
 			$(this).find("a").css({"color":"#2ed2c1"});
 			
-			m_resoult.curCity = null;
+			m_result.curCity = null;
 			postParams.regionThirdId = null;
 			postParams.curPage = 1;
 			
-			loadSearchResoultList();
+			loadSearchresultList();
 			
 //			alert("重新搜索");
 			return false;
@@ -71,6 +88,13 @@ var m_resoult = {
 		
 		$resourceSecList.empty();
 		
+		if(!postParams.resourceSecId){
+			$resourceSecList_default.siblings().find("a").css({"color":"gray"});
+			$resourceSecList_default.find("a").css({"color":"#2ed2c1"});
+			
+			this.curResourceSecCate = null ;
+		}
+		
 		$resourceSecList.append($resourceSecList_default);
 		
 		for(var i = 0;i<this.resourceCateList.length;i++){
@@ -79,8 +103,20 @@ var m_resoult = {
 			
 			$item.data("index",i);
 			$item.append($item_a);
+
+			if(postParams.resourceSecId && this.resourceCateList[i].secId == postParams.resourceSecId ){
+				$item.siblings().find("a").css({"color":"gray"});
+				$item.find("a").css({"color":"#2ed2c1"});
+				
+				this.curResourceSecCate = this.resourceCateList[i] ;
+				
+				this.curResourceThirdCate = null,
+				this.updateResourceThirdCateList(m_result.resourceCateList[i].navThird),
+				this.updateResourceThirdCateListView();
+			}
 			
 			$resourceSecList.append($item);
+			
 			$item.on("click",function(){
 				
 				var index = $(this).data("index");
@@ -88,22 +124,24 @@ var m_resoult = {
 				$(this).siblings().find("a").css({"color":"gray"});
 				$(this).find("a").css({"color":"#2ed2c1"});
 				
-				m_resoult.curResourceSecCate = m_resoult.resourceCateList[index];
+				m_result.curResourceSecCate = m_result.resourceCateList[index];
 				
-				m_resoult.curResourceThirdCate = null,
-				m_resoult.updateResourceThirdCateList(m_resoult.resourceCateList[index].navThird),
-				m_resoult.updateResourceThirdCateListView();
+				m_result.curResourceThirdCate = null,
+				m_result.updateResourceThirdCateList(m_result.resourceCateList[index].navThird),
+				m_result.updateResourceThirdCateListView();
 				
-				postParams.resourceSecId = m_resoult.curResourceSecCate.secId;
+				postParams.resourceSecId = m_result.curResourceSecCate.secId;
 				postParams.resourceThirdId = null;
 				postParams.curPage = 1;
 				
-				loadSearchResoultList();
+				loadSearchresultList();
 				
 //				alert("显示三级菜单");
 				return false;
 				
 			});
+			
+			
 		}
 		
 		$resourceSecList_default.on("click",function(){
@@ -111,17 +149,17 @@ var m_resoult = {
 			$(this).siblings().find("a").css({"color":"gray"});
 			$(this).find("a").css({"color":"#2ed2c1"});
 			
-			m_resoult.curResourceSecCate = null;
+			m_result.curResourceSecCate = null;
 			
-			m_resoult.curResourceThirdCate = null;
-			m_resoult.updateResourceThirdCateList([]);
-			m_resoult.updateResourceThirdCateListView();
+			m_result.curResourceThirdCate = null;
+			m_result.updateResourceThirdCateList([]);
+			m_result.updateResourceThirdCateListView();
 			
 			postParams.resourceSecId = null;
 			postParams.resourceThirdId = null;
 			postParams.curPage = 1;
 			
-			loadSearchResoultList();
+			loadSearchresultList();
 			
 			// 隐藏 三级菜单并清除 参数中的resourceThirdId
 			
@@ -144,6 +182,14 @@ var m_resoult = {
 		for(var i = 0;i<this.resourceThirdCateList.length;i++){
 			
 			if(i == 0){
+				
+				if(!postParams.resourceThirdId){
+					$resourceThirdList_default.siblings().find("a").css({"color":"gray"});
+					$resourceThirdList_default.find("a").css({"color":"#2ed2c1"});
+					
+					this.curResourceThirdCate = null ;
+				}
+				
 				$resourceThirdList.append($resourceThirdList_default);
 				
 				$resourceThirdList_default.on("click",function(){
@@ -151,12 +197,12 @@ var m_resoult = {
 					$(this).siblings().find("a").css({"color":"gray"});
 					$(this).find("a").css({"color":"#2ed2c1"});
 					
-					m_resoult.curResourceThirdCate = null;
+					m_result.curResourceThirdCate = null;
 					
 					postParams.resourceThirdId = null;
 					postParams.curPage = 1;
 					
-					loadSearchResoultList();
+					loadSearchresultList();
 					return false;
 				});
 			}
@@ -168,6 +214,14 @@ var m_resoult = {
 			
 			$item_a.append(this.resourceThirdCateList[i].thirdName);
 			$item.append($item_a);
+			
+			if(postParams.resourceThirdId && this.resourceThirdCateList[i].thirdId == postParams.resourceThirdId){
+				$item.siblings().find("a").css({"color":"gray"});
+				$item.find("a").css({"color":"#2ed2c1"});
+				
+				this.curResourceThirdCate = this.resourceThirdCateList[i] ;
+			}
+			
 			$resourceThirdList.append($item);
 			$item.on("click",function(){
 //				alert("搜索");
@@ -175,12 +229,12 @@ var m_resoult = {
 				$(this).find("a").css({"color":"#2ed2c1"});
 				
 				var index = $(this).data("index");
-				m_resoult.curResourceThirdCate = m_resoult.resourceThirdCateList[index];
+				m_result.curResourceThirdCate = m_result.resourceThirdCateList[index];
 				
-				postParams.resourceThirdId = m_resoult.curResourceThirdCate.thirdId;
+				postParams.resourceThirdId = m_result.curResourceThirdCate.thirdId;
 				postParams.curPage = 1;
 				
-				loadSearchResoultList();
+				loadSearchresultList();
 				
 				return false;
 				
@@ -200,6 +254,12 @@ var m_resoult = {
 		var $times_default = $('<li> <a href="javascript:void(0);">全部</a></li>');
 
 		$times.empty();
+		
+		if(!postParams.minTime && !postParams.maxTime){
+			$times_default.siblings().find("a").css({"color":"gray"});
+			$times_default.find("a").css({"color":"#2ed2c1"});
+		}
+		
 		$times.append($times_default);
 		for(var i = 0;i<this.timeList.length;i++){
 			var $item = $('<li></li>');
@@ -224,7 +284,7 @@ var m_resoult = {
 				postParams.maxTime = timeOptions[index].maxTime;
 				postParams.curPage = 1;
 				
-				loadSearchResoultList();
+				loadSearchresultList();
 				
 				return false;
 			});
@@ -243,6 +303,11 @@ var m_resoult = {
 		$item_self.append($laydate_max_trigger);
 		$item_self.append($laydate_btn);
 		
+		if(postParams.minTime || postParams.maxTime){
+			$item_self.siblings().find("a").css({"color":"gray"});
+			$item_self.css({"color":"#2ed2c1"});
+		}
+		
 		$times.append($item_self);
 		initSearchCalendar('#minTime');
 		initSearchCalendar('#maxTime');
@@ -257,7 +322,7 @@ var m_resoult = {
 			postParams.maxTime = null;
 			postParams.curPage = 1;
 			
-			loadSearchResoultList();
+			loadSearchresultList();
 			
 //			alert("修改时间");
 			return false;
@@ -268,7 +333,7 @@ var m_resoult = {
 			postParams.maxTime = maxTimeDate.getSelectedDate();
 			postParams.curPage = 1;
 			
-			loadSearchResoultList();
+			loadSearchresultList();
 			
 //			alert("修改时间");
 //			return false;
@@ -312,6 +377,8 @@ var m_resoult = {
 			var $item_dd_body_p_span = $('<span>'+this.resultList[i].MIN_PRICE+'</span><span style="font-size:12px">元起</span>');
 			var $item_dd_body_a = $('<a class="buy_btn" href="javascript:void(0);">立即购买</a>');
 			
+			$item.data("index",i);
+			
 			$item_dt.append($item_dt_img);
 			
 			$item_dd_title_name.append($item_dd_title_name_a);
@@ -333,8 +400,19 @@ var m_resoult = {
 			
 			$result_list.append($item);
 			
-			$item_dd_title_name.on("click",function(){
-				alert("详细");
+			$item.on("click",function(){
+//				alert("资源详细");
+				var index = $(this).data("index");
+				
+				var curClick = m_result.resultList[index];
+				
+				resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+				resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+				
+				// 清空内容页，并导入新页
+				loadHtmlByPath("views/resource_detail.html");
+				
+//				alert("资源详细信息");
 				return false;
 			});
 			
@@ -349,12 +427,15 @@ var m_resoult = {
 	},
 	updateLatestInfoListView:function(){
 		
-		var $latestInfoAndThematic = $("#resoultLatestAndThematic");
+
+		var $latestInfoAndThematic = $("#resultLatestAndThematic");
 		var $latestInfoAndThematic_ul = $('<ul class="row"></ul>');
 		var $latestInfoAndThematic_div = $('<div class="news"></div>');
-		
 		var $latestInfo_ul = $("<ul></ul>");
 		var $thematic_ul = $('<ul class="unchoseed"></ul>');
+		
+		var latest_first = 0;
+		var thematic_first = 0;
 		
 		$latestInfoAndThematic.empty();
 		
@@ -380,39 +461,66 @@ var m_resoult = {
 		}
 		
 		for(var i = 0;i<this.latestInfoList.length;i++){
-			var $latestInfo_ul_li = $('<li></li>');
-			var $latestInfo_ul_li_a = $('<a href="javascript:void(0);"></a>');
-			var $latestInfo_ul_li_a_img = $('<img class="img-responsive" src="'+this.latestInfoList[i].LATEST_PIC+'" alt="">');
-			var $latestInfo_ul_li_a_div = $('<div>['+this.latestInfoList[i].THIRD_NAME+']'+this.latestInfoList[i].RESOURCE_NAME+'</div>');
 			
-			/**
-			 * 在最新资讯列表中只有第一个资源有图
-			 */
-			if(i==0){
-				$latestInfo_ul_li_a.append($latestInfo_ul_li_a_img);
+			var $item = $('<li></li>');
+			var $item_a = $('<a href="javascript:void(0);"></a>');
+			var $item_a_img = $('<img class="img-responsive" src="'+this.latestInfoList[i].LATEST_PIC+'" alt="">');
+			var $item_a_div = $('<div>['+this.latestInfoList[i].THIRD_NAME+']'+this.latestInfoList[i].RESOURCE_NAME+'</div>');
+			
+			$item.data("index",i);
+			
+			if(this.latestInfoList[i].TYPE == 1){
+				
+				/**
+				 * 在最新资讯列表中只有第一个资源有图
+				 */
+				if(latest_first==0){
+					$item_a.append($item_a_img);
+				}
+				
+				$item_a.append($item_a_div);
+				$item.append($item_a);
+				
+				$latestInfo_ul.append($item);
+				latest_first ++;
+			}else{
+				/**
+				 * 在 精彩专题列表 中只有第一个资源有图
+				 */
+				if(thematic_first==0){
+					$item_a.append($item_a_img);
+				}
+				
+				$item_a.append($item_a_div);
+				$item.append($item_a);
+				
+				$thematic_ul.append($item);
+				thematic_first ++;
 			}
-			
-			$latestInfo_ul_li_a.append($latestInfo_ul_li_a_div);
-			$latestInfo_ul_li.append($latestInfo_ul_li_a);
-			
-			$latestInfo_ul.append($latestInfo_ul_li);
-			$latestInfo_ul_li.on("click",function(){
-				alert("最新资讯搜索");
+			$item.on("click",function(){
+				
+				var index = $(this).data("index");
+				
+				var curClick = m_result.latestInfoList[index];
+				
+				resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+				resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+				
+				// 清空内容页，并导入新页
+				loadHtmlByPath("views/resource_detail.html");
+				
+//				alert("精彩资讯--点击资源触发 搜索查看信息内容");
+				return false;
 			});
+			
 		}
-		
-		$thematic_ul.append($('<li>'+
-							  '	<a href="javascript:void(0);">'+
-							  '		<img class="img-responsive" src="static/images/yanchanghui.jpg" alt="">'+
-						      '		<div>到乌镇，邂逅文艺</div>'+
-							  ' </a>'+
-							  '</li>'));
-		
+
 		$latestInfoAndThematic_div.append($latestInfo_ul);
 		$latestInfoAndThematic_div.append($thematic_ul);
 		
 		$latestInfoAndThematic.append($latestInfoAndThematic_ul);
 		$latestInfoAndThematic.append($latestInfoAndThematic_div);
+
 	},
 	hotSellList:[],
 	updateHotSellList:function(hotSellList){
@@ -421,7 +529,7 @@ var m_resoult = {
 	},
 	updateHotSellListView:function(){
 		
-		var $hotSell_container_ul = $("#resoultHotSell");
+		var $hotSell_container_ul = $("#resultHotSell");
 		var $hotSell_container_title = $('<li class="hot col-xs-12">热销榜单</li>');
 		
 		$hotSell_container_ul.empty();
@@ -465,11 +573,23 @@ var m_resoult = {
 				$hotSell_container_li.append($hotSell_container_li_a);
 			}
 			
+			$hotSell_container_li.data("index",i);
+			
 			$hotSell_container_ul.append($hotSell_container_li);
 
 			$hotSell_container_li.on("click",function(e){
-				alert("资源详细");
 				
+				var index = $(this).data("index");
+				
+				var curClick = m_result.hotSellList[index];
+				
+				resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+				resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+				
+				// 清空内容页，并导入新页
+				loadHtmlByPath("views/resource_detail.html");
+				
+//				alert("资源详细信息");
 				return false;
 			});
 		}

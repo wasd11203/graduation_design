@@ -20,6 +20,7 @@ var m_home = {
 			if(this.advertisingList[i].ISTOP == 1){
 				var $advs_main_div_item = $('<div class="item"></div>');
 				$advs_main_div_item.data("index",i);
+				$advs_main_div_item.data("i",mainadv_counts);
 				var $advs_main_div_item_a = $('<a href="javascript:void(0);"></a>');
 				var $advs_main_div_item_a_img = $('<img src='+this.advertisingList[i].ADV_PIC+' alt="" />');
 				
@@ -28,7 +29,20 @@ var m_home = {
 				$advs_main_div.append($advs_main_div_item);
 				
 				$advs_main_div_item.on("click",function(){
-					alert("点击主要广告 搜索");
+					
+					var index = $(this).data("index");
+					var i = $(this).data("i");
+					
+					m_home.curAdvertising = m_home.advertisingList[index];
+					m_home.curAdvertising.index = i;
+					resourceDetailParams.resourceId = m_home.curAdvertising.RESOURCE_ID;
+					resourceDetailParams.regionThirdId = m_home.curAdvertising.THIRD_ID;
+					
+					// 清空内容页，并导入新页
+					loadHtmlByPath("views/resource_detail.html");
+					
+					//alert("点击主要广告 搜索");
+					return false;
 				});
 				
 				if(this.curAdvertising){
@@ -53,7 +67,18 @@ var m_home = {
 				$adv_isNotTop.append($adv_isNotTop_a);
 				
 				$adv_isNotTop_a.on("click",function(){
-					alert("点击辅助广告 搜索");
+					var index = $(this).data("index");
+					
+					m_home.curAdvertising = m_home.advertisingList[index];
+					
+					resourceDetailParams.resourceId = m_home.curAdvertising.RESOURCE_ID;
+					resourceDetailParams.regionThirdId = m_home.curAdvertising.THIRD_ID;
+					
+					// 清空内容页，并导入新页
+					loadHtmlByPath("views/resource_detail.html");
+					
+//					alert("点击辅助广告 搜索");
+					return false;
 				});
 			}
 			
@@ -108,6 +133,9 @@ var m_home = {
 				var $ad_right_discount_top_name_a = $('<a href="javascript:void(0);"></a>');
 				var $ad_right_discount_top_name_a_span = $('<span></span>');
 				
+				$ad_right_discount_top_a.data("index",i);
+				$ad_right_discount_top_name_a.data("index",i);
+				
 				$ad_right_discount_top_a.append($ad_right_discount_top_a_img);
 				
 				$ad_right_discount_top_name_a.append($ad_right_discount_top_name_a_span);
@@ -119,11 +147,35 @@ var m_home = {
 				$ad_right_discount_top.append($ad_right_discount_top_name_a);
 				
 				$ad_right_discount_top_a.on("click",function(){
-					alert("特惠看--Top 搜索");
+					
+					var index = $(this).data("index");
+					
+					var curClick = m_home.discountList[index];
+					
+					resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+					resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+					
+					// 清空内容页，并导入新页
+					loadHtmlByPath("views/resource_detail.html");
+					
+//					alert("特惠看--Top 搜索 ----图片 触发 搜索");
+					return false;
 				});
 				
 				$ad_right_discount_top_name_a.on("click",function(){
-					alert("特惠看--Top_a 搜索");
+					
+					var index = $(this).data("index");
+					
+					var curClick = m_home.discountList[index];
+					
+					resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+					resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+					
+					// 清空内容页，并导入新页
+					loadHtmlByPath("views/resource_detail.html");
+					
+//					alert("特惠看--Top 搜索 ----名称  触发 搜索");
+					return false;
 				});
 				
 			}else{
@@ -131,12 +183,26 @@ var m_home = {
 				var $ad_right_discount_bottom_ul_li = $('<li></li>');
 				var $ad_right_discount_bottom_ul_li_a = $('<a href="javascript:void(0);"></a>');
 				
+				$ad_right_discount_bottom_ul_li.data("index",i);
+				
 				$ad_right_discount_bottom_ul_li_a.append('['+this.discountList[i].THIRD_NAME+']'+this.discountList[i].RESOURCE_NAME);
 				$ad_right_discount_bottom_ul_li.append($ad_right_discount_bottom_ul_li_a);
 				$ad_right_discount_bottom_ul.append($ad_right_discount_bottom_ul_li);
 				
 				$ad_right_discount_bottom_ul_li.on("click",function(){
-					alert("特惠看--Bottom 搜索");
+					
+					var index = $(this).data("index");
+					
+					var curClick = m_home.discountList[index];
+					
+					resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+					resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+					
+					// 清空内容页，并导入新页
+					loadHtmlByPath("views/resource_detail.html");
+					
+//					alert("特惠看--Bottom 搜索 ---- 名称 触发搜索");
+					return false;
 				});
 			}
 		}
@@ -165,6 +231,8 @@ var m_home = {
 			$hotList_item_div = $('<div></div>');
 			$hotList_item_div_a = $('<a href="javascript:void(0);">['+this.recentHotList[i].THIRD_NAME+']'+this.recentHotList[i].RESOURCE_NAME+'</a>');
 			
+			$hotList_item.data("index",i);
+			
 			$hotList_item_a.append($hotList_item_a_img);
 			$hotList_item_div.append($hotList_item_div_a);
 			
@@ -172,7 +240,19 @@ var m_home = {
 			$hotList_item.append($hotList_item_div);
 			$hotList.append($hotList_item);
 			$hotList_item.on("click",function(){
-				alert("查看详细内容");
+				
+				var index = $(this).data("index");
+				
+				var curClick = m_home.recentHotList[index];
+				
+				resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+				resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+				
+				// 清空内容页，并导入新页
+				loadHtmlByPath("views/resource_detail.html");
+				
+//				alert("近期热门  点击资源触发 搜索查看信息内容");
+				return false;
 			});
 		}
 		
@@ -190,6 +270,9 @@ var m_home = {
 		var $latestInfoAndThematic_div = $('<div class="news"></div>');
 		var $latestInfo_ul = $("<ul></ul>");
 		var $thematic_ul = $('<ul class="unchoseed"></ul>');
+		
+		var latest_first = 0;
+		var thematic_first = 0;
 		
 		$latestInfoAndThematic.empty();
 		
@@ -215,34 +298,60 @@ var m_home = {
 		}
 		
 		for(var i = 0;i<this.latestInfoList.length;i++){
-			var $latestInfo_ul_li = $('<li></li>');
-			var $latestInfo_ul_li_a = $('<a href="javascript:void(0);"></a>');
-			var $latestInfo_ul_li_a_img = $('<img class="img-responsive" src="'+this.latestInfoList[i].LATEST_PIC+'" alt="">');
-			var $latestInfo_ul_li_a_div = $('<div>['+this.latestInfoList[i].THIRD_NAME+']'+this.latestInfoList[i].RESOURCE_NAME+'</div>');
 			
-			/**
-			 * 在最新资讯列表中只有第一个资源有图
-			 */
-			if(i==0){
-				$latestInfo_ul_li_a.append($latestInfo_ul_li_a_img);
+			var $item = $('<li></li>');
+			var $item_a = $('<a href="javascript:void(0);"></a>');
+			var $item_a_img = $('<img class="img-responsive" src="'+this.latestInfoList[i].LATEST_PIC+'" alt="">');
+			var $item_a_div = $('<div>['+this.latestInfoList[i].THIRD_NAME+']'+this.latestInfoList[i].RESOURCE_NAME+'</div>');
+			
+			$item.data("index",i);
+			
+			if(this.latestInfoList[i].TYPE == 1){
+				
+				/**
+				 * 在最新资讯列表中只有第一个资源有图
+				 */
+				if(latest_first==0){
+					$item_a.append($item_a_img);
+				}
+				
+				$item_a.append($item_a_div);
+				$item.append($item_a);
+				
+				$latestInfo_ul.append($item);
+				latest_first ++;
+			}else{
+				/**
+				 * 在 精彩专题列表 中只有第一个资源有图
+				 */
+				if(thematic_first==0){
+					$item_a.append($item_a_img);
+				}
+				
+				$item_a.append($item_a_div);
+				$item.append($item_a);
+				
+				$thematic_ul.append($item);
+				thematic_first ++;
 			}
-			
-			$latestInfo_ul_li_a.append($latestInfo_ul_li_a_div);
-			$latestInfo_ul_li.append($latestInfo_ul_li_a);
-			
-			$latestInfo_ul.append($latestInfo_ul_li);
-			$latestInfo_ul_li.on("click",function(){
-				alert("最新资讯搜索");
+			$item.on("click",function(){
+				
+				var index = $(this).data("index");
+				
+				var curClick = m_home.latestInfoList[index];
+				
+				resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+				resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+				
+				// 清空内容页，并导入新页
+				loadHtmlByPath("views/resource_detail.html");
+				
+//				alert("精彩资讯--点击资源触发 搜索查看信息内容");
+				return false;
 			});
+			
 		}
-		
-		$thematic_ul.append($('<li>'+
-							  '	<a href="javascript:void(0);">'+
-							  '		<img class="img-responsive" src="static/images/yanchanghui.jpg" alt="">'+
-						      '		<div>到乌镇，邂逅文艺</div>'+
-							  ' </a>'+
-							  '</li>'));
-		
+
 		$latestInfoAndThematic_div.append($latestInfo_ul);
 		$latestInfoAndThematic_div.append($thematic_ul);
 		
@@ -288,7 +397,7 @@ var m_home = {
 			$cateListContainer_bar_containter_ul.append($cateListContainer_bar_containter_ul_li);
 			
 			$cateListContainer_bar_containter_ul_li.on("click",function(){
-				alert("搜索前8个资源");
+//				alert("搜索前8个资源");
 				var index = $(this).data("index");
 				
 				m_home.curResourceSec = m_home.resourceSecNav[index];
@@ -330,6 +439,8 @@ var m_home = {
 			var $item_div_dl_a_dd_p = $('<p></p>');
 			var $item_div_dl_a_dd_p_span = $('<span class="price">'+this.cateList[i].MIN_PRICE+'</span><span>元起</span>');
 			
+			$item_div.data("index",i);
+			
 			$item_div_dl_a_dd_p.append($item_div_dl_a_dd_p_span);
 			$item_div_dl_a_dd.append($item_div_dl_a_dd_p);
 
@@ -352,14 +463,23 @@ var m_home = {
 				$(this).find('.buy-btn').fadeOut(500).siblings().find('.buy-btn').fadeOut(500);
 		    });
 			
-			$item_div_dl_a_div.on("click",function(){
-				alert("立即购买");
-				
-				return false;
-			});
+//			$item_div_dl_a_div.on("click",function(){
+//				alert("立即购买");
+//				
+//				return false;
+//			});
 			$item_div.on("click",function(){
-				alert("查看详细");
+				var index = $(this).data("index");
 				
+				var curClick = m_home.cateList[index];
+				
+				resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+				resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+				
+				// 清空内容页，并导入新页
+				loadHtmlByPath("views/resource_detail.html");
+				
+//				alert("查看详细");
 				return false;
 			});
 			
@@ -416,13 +536,27 @@ var m_home = {
 				var $item_resource = $('<p></p>');
 				var $item_resource_a = $('<a href="javascript:void(0);">['+this.venueList[i].resourceList[j].THIRD_NAME+']'+this.venueList[i].resourceList[j].RESOURCE_NAME+'</a>');
 				
+				$item_resource.data("i",i);
+				$item_resource.data("j",j);
+				
 				$item_resource.append($item_resource_a);
 				
 				$item_div_venue_resource_container.append($item_resource);
 				
 				$item_resource.on("click",function(){
-					alert("资源详细信息");
+
+					var i = $(this).data("i");
+					var j = $(this).data("j");
 					
+					var curClick = m_home.venueList[i].resourceList[j];
+					
+					resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+					resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+					
+					// 清空内容页，并导入新页
+					loadHtmlByPath("views/resource_detail.html");
+					
+//					alert("资源详细信息");
 					return false;
 				});
 				
@@ -481,6 +615,8 @@ var m_home = {
 			
 			var $hotSell_container_li = $('<li class="all col-xs-12" ></li>');
 			
+			$hotSell_container_li.data("index",i);
+			
 			if(i==0){
 				$hotSell_container_li.addClass("cd");
 				var $li_first = $('<a href="javascript:void(0);"></a>');
@@ -517,8 +653,18 @@ var m_home = {
 			$hotSell_container_ul.append($hotSell_container_li);
 
 			$hotSell_container_li.on("click",function(e){
-				alert("资源详细");
+//				alert("资源详细");
+				var index = $(this).data("index");
 				
+				var curClick = m_home.hotSellList[index];
+				
+				resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+				resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+				
+				// 清空内容页，并导入新页
+				loadHtmlByPath("views/resource_detail.html");
+				
+//				alert("资源详细信息");
 				return false;
 			});
 		}
@@ -551,6 +697,8 @@ var m_home = {
 			var $list_item_ul_li_venue = $('<li>'+this.calendarList[i].VENUE_NAME+'</li>');
 			var $list_item_ul_li_price = $('<li><span>'+this.calendarList[i].MIN_PRICE+'</span>元起</li>');
 			
+			$list_item.data("index",i);
+			
 			$list_item_a.append($list_item_a_img);
 			
 			$list_item_ul_li_name.append($list_item_ul_li_name_a);
@@ -565,7 +713,18 @@ var m_home = {
 			
 			$list_all.append($list_item);
 			$list_item.on("click",function(){
-				alert("查看详细");
+				var index = $(this).data("index");
+				
+				var curClick = m_home.calendarList[index];
+				
+				resourceDetailParams.resourceId = curClick.RESOURCE_ID;
+				resourceDetailParams.regionThirdId = curClick.THIRD_ID;
+				
+				// 清空内容页，并导入新页
+				loadHtmlByPath("views/resource_detail.html");
+				
+//				alert("资源详细信息");
+				return false;
 			});
 		}
 		

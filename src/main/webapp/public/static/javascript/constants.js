@@ -6,8 +6,9 @@ var timeOptions = [
 		{"id":5,"name":"一个月内","minTime":parseDate(5,true),"maxTime":parseDate(5,false)}
 	];
 
-
-
+/**
+ * 搜索资源时向后台发送的参数
+ */
 var postParams = {
 	keywords:'',
 	regionThirdId:'',
@@ -20,6 +21,62 @@ var postParams = {
 	curPage:''
 };
 
+var resourceDetailParams = {
+	resourceId : '',
+	regionThirdId:''
+}
+
+var confirmOrderParams = {
+	thirdId:'',
+	venueId:'',
+	siteId:'',
+	ticketId:'',
+	resourceId:'',
+	counts:''
+};
+
+var confirmOrderCityList = [
+	{
+		"prov_name":'北京市',
+		"prov_value":'北京市',
+		"cityList":[{
+			"city_name":'北京市',
+			"city_value":'北京市',
+			"areaList":[
+				{
+					'area_name':'东城区',
+					'area_value':'东城区'
+				},
+				{
+					'area_name':'西城区',
+					'area_value':'西城区'
+				},{
+					'area_name':'崇文区',
+					'area_value':'崇文区'
+				}]
+		}]
+	},
+	{
+		"prov_name":'天津市',
+		"prov_value":'天津市',
+		"cityList":[{
+			"city_name":'天津市',
+			"city_value":'天津市',
+			"areaList":[
+				{
+					'area_name':'和平区',
+					'area_value':'和平区'
+				},
+				{
+					'area_name':'河东区',
+					'area_value':'河东区'
+				},{
+					'area_name':'河西区',
+					'area_value':'河西区'
+				}]
+		}]
+	}
+];
 
 function parseDate(type,minFlag){
 	var now = new Date();
@@ -75,3 +132,4 @@ function parseDate(type,minFlag){
 	return temp;
 	
 }
+

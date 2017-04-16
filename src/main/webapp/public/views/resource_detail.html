@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>wepiao</title>
+    
+    <link href="static/styles/resource_detail.css" rel="stylesheet">
+	
+	<script type="text/javascript">
+		$(function(){
+			loadResourceDetailAction();
+			loadHotSellAction();
+			$("#btn-submit").on("click",toConfirmOrder);
+		});
+	</script>
+	
+</head>
+<body>
+
+<div id="banner_warp">
+    <div class="container banner_main">
+        <div class="row">
+            <div class="col-md-4 banner-left" id="r_pic">
+            
+            </div>
+            <ul class="col-md-8 banner-right">
+                <li class="title" id="r_name"></li>
+                <li class="sub_title" id="r_short_desc"></li>
+                <li class="time" id="r_time"></li>
+                <li class="bottom">
+                    <span class="price" id="r_min_price"></span>
+                   	 元起
+                    <!-- <span class="seat">选座</span> -->
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container chose_container">
+    <div class="row">
+        <div class="col-md-9 chose_left">
+            <div class="col-md-12 top_bar">
+                    <ul>
+                        <li class="col-md-2"><a href="#" class="buy">购买<span></span></a></li>
+                        <li class="col-md-3"><a href="#">演出介绍</a></li>
+                    </ul>
+                </div>
+            <div class="col-md-12 ticked_box">
+                    <div class="col-md-2 tab_l">
+                        <span>选择场次</span>
+                    </div>
+                    <div class="col-md-10">
+                        <ul class="row times" id="sites">
+                            <li class="col-md-2">
+                                <a href="#" class="">
+                                    10月29日 <br>周六 19:30
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            <div class="col-md-12">
+                    <div class="col-md-2 tab_l"><span>选择票价</span></div>
+                    <div class="col-md-10">
+                        <ul class="row ticked_detial" id="tickets">
+                            
+                        </ul>
+                    </div>
+                </div>
+            <div class="col-md-12 ticked_own">
+                <div class="col-md-2 tab_l"><span>你已经选择</span></div>
+                <div class="col-md-10 tab_r">
+                        <p><label id="siteTime"></label></p>
+                        <ul>
+                            <li>
+                                <div class="num">
+                                    <small>¥</small><span class="f30" id="ticketPrice"></span>
+                                    <big>X</big>
+                                    <span class="pro-inpNum">
+                                        <a href="javascript:changeTicketCounts(-1);" class="sub" ></a>
+                                        <b id="counts"></b>
+                                        <a href="javascript:changeTicketCounts(1);" class="add" id="add"></a>
+                                    </span>
+                                    小计：<span class="t"><big class="green" id="subtotalPrice"></big>元</span>
+                                    <img class="fr del-ticket" src="">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="col-md-12">
+                            <div class="pay_box">
+                                <a href="javascript:void(0);" class="btn" id="btn-submit">立即购买</a>
+                                &nbsp;&nbsp;
+                                <span>合计：<big id="total-price"></big>元</span>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-3 chise_right">
+            <div class="sider">
+                <div class="code_r">
+                    <span class="t">手机专享更多优惠</span>
+                    <span class="b">微信扫一扫 快速购票</span>
+                    <span class="codebg wp-icon-all"></span>
+                    <div class="ercode" style="display: none;">
+                        <img src="http://static.show.wepiao.com/pc/img/wepiaoer_detail.jpg" alt="" title="">
+                    </div>
+                </div>
+            </div>
+            <div class="box_warp stadium">
+                <div class="hd">
+                    <div class="title_h3">演出场馆</div>
+                </div>
+                <div class="bd ">
+                    <div class="thumbnail stadium_thumbnail" id="venue">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="box_warp hot_top">
+                <div class="hd">
+                    <div class="title_h3">热销榜单</div>
+                </div>
+                <div class="bd" id="hotSell">
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

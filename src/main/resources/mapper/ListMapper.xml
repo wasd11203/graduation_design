@@ -49,6 +49,7 @@
 		SELECT
 			latest_info_resource.LATEST_ID,
 			latest_info_resource.LATEST_PIC,
+			latest_info_resource.TYPE,
 			resource_info.RESOURCE_ID,
 			resource_info.RESOURCE_NAME,
 			region_third_category.THIRD_ID,

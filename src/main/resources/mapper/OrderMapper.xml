@@ -7,6 +7,7 @@
 			resource_info.RESOURCE_ID,
 			resource_info.RESOURCE_NAME,
 			resource_info.ISENABLE,
+			resource_info.RESOURCE_PIC,
 			ass_region_venue.*, ass_site_ticket.*
 		FROM
 			resource_info

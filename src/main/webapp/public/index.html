@@ -11,25 +11,35 @@
 		<link href="static/bower_components/styles/bootstrap.css" rel="stylesheet">
 		<link href="static/styles/common.css" rel="stylesheet">
 		<link href="static/styles/index.css" rel="stylesheet">
-		<!-- 分页插件 样式支持 -->
-		<link href="static/plugins/styles/bootstrap-paginator/qunit-1.11.0.css" rel="stylesheet">
-
+		
+		<!-- 下拉列表插件支持 -->
+		<link href="static/plugins/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+		
 		<script src="static/bower_components/javascript/jquery-1.11.3.js"></script>
 		<script src="static/bower_components/javascript/bootstrap.min.js"></script>
 		<script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
-		<!-- 分页 -插件支持 -->
-		<script type="text/javascript" src="static/plugins/javascript/bootstrap-paginator.js"></script>
-		<script type="text/javascript" src="static/plugins/javascript/bootstrap-paginator-lib/qunit-1.11.0.js"></script>
 		
+		<!-- 下拉列表插件 支持 -->
+		<script type="text/javascript" src="static/plugins/bootstrap-select/dist/js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="static/plugins/bootstrap-select/dist/js/i18n/defaults-zh_CN.js"></script>
+		
+		<!-- 分页 插件支持 -->
+		<script type="text/javascript" src="static/plugins/javascript/bootstrap-paginator.js"></script>
+		<!-- 常量 -->
 		<script type="text/javascript" src="static/javascript/constants.js"></script>
 		
 		<!-- 引入model js -->
-		<!-- 头部相关 -->
+		<!-- header 相关 -->
 		<script type="text/javascript" src="static/javascript/models/m_header.js"></script>
-		<!-- maincontent--home 相关 -->
+		<!-- home 相关 -->
 		<script type="text/javascript" src="static/javascript/models/m_home.js"></script>
-		<!-- maincontent--搜索结果相关  -->
-		<script type="text/javascript" src="static/javascript/models/m_resoult.js"></script>
+		<!-- result 相关  -->
+		<script type="text/javascript" src="static/javascript/models/m_result.js"></script>
+		<!-- resource detail 相关  -->
+		<script type="text/javascript" src="static/javascript/models/m_r_detail.js"></script>
+		<!-- order confirm 相关  -->
+		<script type="text/javascript" src="static/javascript/models/m_confirm.js"></script>
+		
 	</head>
 
 	<body>
@@ -239,7 +249,12 @@
 		<!-- maincontent  -->
 		<script type="text/javascript" src="static/javascript/miancontent.js"></script>
 		<!-- 搜索结果页 -->
-		<script type="text/javascript" src="static/javascript/resoult.js"></script>
+		<script type="text/javascript" src="static/javascript/result.js"></script>
+		<!-- 详情页 -->
+		<script type="text/javascript" src="static/javascript/dtl.js"></script>
+		<!-- 预订单页  -->
+		<script type="text/javascript" src="static/javascript/confirm.js"></script>
+		
 	</body>
 
 </html>

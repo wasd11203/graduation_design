@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>确认购票</title>
+	
+	    <link href="static/styles/confirm.css" rel="stylesheet">
+		
+		<script>
+			$(function(){
+				settimes();
+				toConfirmOrderAction();
+				
+				$('#province').on("change",function(){
+					alert("刷新下级列表:"+$('#province').selectpicker('val'));
+					m_confirm.updataCitys();
+					return false;
+				});
+				
+				initSelect();
+				$('#city').selectpicker({});
+				$('#area').selectpicker({});
+			});
+		
+		</script>
+		
+	</head>
+	<body>
+	
+		<div class="ticket_infor container">
+		    <h1>确认购票信息</h1>
+		    <ul class="focus cont">
+		        <li class="pull-left"><span class="titag wp-icon-all"></span>请在 10 分钟内提交订单，否则就被别的票友抢走了喔</li>
+		       <li class="pull-conter">
+		
+		       </li>
+		        <li class="pull-right">
+		            <div>
+		                <span class="tip"><img src="static/images/sign/errorIcon.png"><cite>剩余时间</cite></span>
+		            </div>
+		            <div id="time_container">
+		
+		            </div>
+		        </li>
+		    </ul>
+		    <div class="infor cont">
+		        <div class="media">
+		            <div class="media-left">
+		                <a href="javascript:void(0);" id="re_img">
+		                    
+		                </a>
+		            </div>
+		            <div class="media-body row">
+		                <ul class="col-md-6  col-sm-6 pull-left">
+		                    <li>演&nbsp;出：<span id="re_name"></span></li>
+		                    <li>场&nbsp;馆：<span id="re_venue"></span></li>
+		                    <li>场&nbsp;次：<span id="re_time"></span></li>
+		                    <li class="ticketNum">数&nbsp;量：<span id="re_counts"></span></li>
+		
+		                    <!-- <li>座&nbsp;位：<span> 无座票</span></li> -->
+		
+		                </ul>
+		                <ul class="col-md-6 col-sm-6 pull-right">
+		                    <li>原&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<span id="or_old_price"></span></li>
+		                    <li>优&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;惠：<span id="reduce-amount"></span></li>
+		                    <li>快&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;递：<span id="or_express"></span></li>
+		                    <li class="need_pay_num">需&nbsp;支&nbsp;付：<span class="total-amount" id="or_pay"></span><span>元</span></li>
+		                </ul>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="way container paystep paystyle">
+		    <h1>选择配送方式</h1>
+		    <div class="row delivery-list">
+		        <div class="col-md-4 way3" id="receive_types">
+		           
+		        </div>
+		    </div>
+		    <div class="way_first uphone">
+		        <div class="row">
+		            <div class="col-md-5">
+		                <label>购票人手机号</label>
+		                <input type="text" name="buyUserMobile" value="" id="buyUserMobile" class="required" placeholder="11位手机号码" aria-required="true">
+		            </div>
+		            <div class="col-md-7">
+		                <span class="tip"><b></b>*&nbsp;&nbsp;<span class="content">购票通知短信将发送到该手机上</span></span>
+		            </div>
+		        </div>
+		    </div>
+		    <div id="delivery-method">
+		        <div class="way_first mar-top"><h1>收票人信息</h1></div>
+		        <div class="piaoer_info">
+		            <ul>
+		                <li class="row">
+		                	<span > 所在区域：</span>
+		                	<select id="province" class="selectpicker show-tick" >
+			                </select>
+			                <select id="city" class="selectpicker show-tick" >
+			                    <option selected>省</option>
+			                    <option>市</option>
+			                </select>
+			                <select id="area" class="selectpicker show-tick" >
+			                    <option selected>省</option>
+			                    <option>市</option>
+			                </select>
+		                </li>
+		                <li class="row">
+		                    <div class="col-md-1 txt">详细地址</div>
+		                    <div class="col-md-10">
+		                        <input type="text"  id="deliveryAddress" name="deliveryAddress" placeholder="街道详细地址" value="" required="" aria-required="true">
+		                    </div>
+		                </li>
+		                <li class="row">
+		                    <div class="col-md-1 txt">收货人</div>
+		                    <div class="col-md-10">
+		                        <input type="text" placeholder="姓名" class="information" id="receiveDeliveryPerson" name="receiveDeliveryPerson" value="" required="" aria-required="true">
+		                        <span class="tip">*&nbsp;&nbsp;请填写收票人姓名</span>
+		                    </div>
+		                </li>
+		                <li class="row">
+		                    <div class="col-md-1 txt">手机号码</div>
+		                    <div class="col-md-10">
+		                        <input type="text" placeholder="11位手机号码"  class="information"  id="receiveDeliveryMobile" name="receiveDeliveryMobile" value=" " required="" aria-required="true">
+		                            <span class="tip">
+		                                <input type="checkbox" class="same-to-phone" name="same-to-phone">&nbsp;&nbsp;同购票人
+		                                <span class="tipTxt"></span>
+		                            </span>
+		                    </div>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		</div>
+		<div class="pay-ways container paystep">
+		    <div class="go-pay">
+		        <input name="payWay" type="hidden" value="wechat">
+		        <input class="submit btn pull-right" type="submit" id="btn-payment" value="确认去支付" data-he="order_conf_pay">
+		        <div class="pull-right">需支付：<big class="green"><span class="total-amount">580</span></big> 元</div>
+		    </div>
+		</div>
+	
+	</body>
+</html>

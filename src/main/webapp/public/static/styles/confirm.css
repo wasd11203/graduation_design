@@ -1,0 +1,153 @@
+.container h1 {
+    font-weight: bold;
+    font-size: 18px;
+    color: #565656;
+    /* font-weight: bold; */
+    line-height: 2em;
+}
+body{
+    font-family: "Hiragino Sans GB",Helvetica,Arial,sans-serif,"微软雅黑";
+}
+/*todo 购票信息*/
+.ticket_infor .focus {
+    padding: 15px 28px;
+    border: 1px solid #ccc;
+    padding: 15px 5px;
+    height: auto;
+    overflow: hidden;
+}
+
+.ticket_infor .focus .pull-left {
+    font-weight: normal;
+    color: #a2a2a2;
+    font-size: 14px;
+}
+.ticket_infor .focus .pull-left .titag {
+    background:url(../images/sign/icon-wepiaoer.png) 0 -1277px;
+    width: 27px;
+    height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.ticket_infor .focus .pull-right{
+    font-size:18px;
+}
+.ticket_infor .focus .pull-right span{
+    display:inline-block;
+    width:150px;
+
+}
+.ticket_infor .focus .pull-right cite{
+    margin:10px 0 0 20px;
+}
+.ticket_infor .focus .pull-right div{
+    float:left;
+    margin-left:30px;
+}
+.ticket_infor .infor{
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    height: 240px;
+    padding: 30px 20px;
+}
+
+.ticket_infor .infor li{
+    line-height: 200%;
+    color: #a2a2a2;
+    /* font-weight: bold; */
+    height: auto;
+}
+.ticket_infor .infor span{
+    font-weight: normal;
+    color: #565656;
+}
+.ticket_infor .infor .media .pull-right{
+    border-left: 1px dotted #ccc;
+    padding-left: 140px;
+}
+.ticket_infor .infor .media .total-amount{
+    font-size: 30px;
+    color: #4acbd6;
+}
+
+.way .delivery-list{
+    height:165px;
+    border-bottom:1px solid #ccc;
+}
+.way .way_first{
+    margin-top:30px;
+}
+.paystep .uphone label {
+    font-size: 16px;
+    font-weight: normal;
+    margin-right: 20px;
+}
+.uphone input[type=text] {
+    min-height: 35px;
+    min-width: 50px;
+    padding: 0 10px;
+}
+.paystep .uphone input{
+    width: 310px;
+    height: 35px;
+}
+#delivery-method .piaoer_info li{
+    margin-top:20px;
+    height:35px;
+}
+#delivery-method .piaoer_info li .txt{
+    float: left;
+    font-size: 16px;
+    color: #565656;
+    font-weight: normal;
+    text-align: right;
+    width: 115px;
+    line-height: 35px;
+}
+#delivery-method .piaoer_info li input{
+    padding-left:8px;
+}
+#deliveryAddress {
+    width: 454px;
+    height:35px;
+}
+#delivery-method .piaoer_info li .information{
+    width:200px;
+    height:35px;
+}
+#delivery-method .piaoer_info li .tip{
+    color: #999;
+    margin-left: 20px;
+    font-weight: normal;
+    font-size: 14px;
+}
+.pay-ways .go-pay {
+    background: #F5F5F5;
+    margin: 40px 0;
+    padding: 20px 0;
+    height: auto;
+    overflow: hidden;
+}
+.pay-ways .go-pay .pull-right {
+    margin-right: 20px;
+    font-size: 16px;
+    line-height: 42px;
+}
+.pay-ways .go-pay .btn {
+    color: #fff;
+    font-weight: normal;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0 60px;
+    background:  #4acbd6;
+}
+.pay-ways .go-pay .pull-right {
+    margin-right: 20px;
+    font-size: 16px;
+    line-height: 42px;
+}
+.pay-ways .go-pay big {
+    font-size: 30px;
+    color: #2ed2c1;
+}

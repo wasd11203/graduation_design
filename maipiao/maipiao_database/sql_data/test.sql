@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-04-13 18:57:08
+Date: 2017-04-17 20:21:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,8 +33,6 @@ CREATE TABLE `association_order_resource` (
 -- ----------------------------
 -- Records of association_order_resource
 -- ----------------------------
-INSERT INTO `association_order_resource` VALUES ('1116547133', '1', null, '1', '1', '1', null, null);
-INSERT INTO `association_order_resource` VALUES ('1116666934', '1', '1', '1', '1', '1', '2', '100');
 
 -- ----------------------------
 -- Table structure for `association_region_resource`
@@ -217,8 +215,6 @@ CREATE TABLE `association_user_order` (
 -- ----------------------------
 -- Records of association_user_order
 -- ----------------------------
-INSERT INTO `association_user_order` VALUES (null, '1116547133');
-INSERT INTO `association_user_order` VALUES ('1', '1116666934');
 
 -- ----------------------------
 -- Table structure for `discount_resource`
@@ -255,7 +251,7 @@ CREATE TABLE `hot_sell_resource` (
 -- Records of hot_sell_resource
 -- ----------------------------
 INSERT INTO `hot_sell_resource` VALUES ('1', '1', '1', '1', '1');
-INSERT INTO `hot_sell_resource` VALUES ('2', '2', '2', '2', '2');
+INSERT INTO `hot_sell_resource` VALUES ('2', '1', '2', '2', '2');
 
 -- ----------------------------
 -- Table structure for `latest_info_resource`
@@ -266,14 +262,16 @@ CREATE TABLE `latest_info_resource` (
   `RESOURCE_ID` int(11) DEFAULT NULL,
   `REGION_THIRD_ID` int(11) DEFAULT NULL,
   `LATEST_PIC` varchar(128) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
   PRIMARY KEY (`LATEST_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of latest_info_resource
 -- ----------------------------
-INSERT INTO `latest_info_resource` VALUES ('1', '1', '1', 'static/images/lirouhao.jpg');
-INSERT INTO `latest_info_resource` VALUES ('2', '2', '1', '');
+INSERT INTO `latest_info_resource` VALUES ('1', '1', '1', 'static/images/lirouhao.jpg', '1');
+INSERT INTO `latest_info_resource` VALUES ('2', '2', '1', '', '1');
+INSERT INTO `latest_info_resource` VALUES ('3', '2', '1', 'static/images/lirouhao.jpg', '2');
 
 -- ----------------------------
 -- Table structure for `order_base_info`
@@ -301,8 +299,6 @@ CREATE TABLE `order_base_info` (
 -- ----------------------------
 -- Records of order_base_info
 -- ----------------------------
-INSERT INTO `order_base_info` VALUES ('1116547133', null, null, null, null, null, null, null, null, null, null, null, '2017-04-06 17:16:39', null, null);
-INSERT INTO `order_base_info` VALUES ('1116666934', '1', '1', '200', '123465778', '浙江', '杭州', '西湖', '天堂软件园', 'AA', '15727575679', '0', '2017-04-06 17:25:29', '1', '1');
 
 -- ----------------------------
 -- Table structure for `order_type`
@@ -490,8 +486,8 @@ CREATE TABLE `resource_advertising` (
 -- Records of resource_advertising
 -- ----------------------------
 INSERT INTO `resource_advertising` VALUES ('1', '1', '1', 'static/images/wp1.jpg', '1');
-INSERT INTO `resource_advertising` VALUES ('2', '2', '2', 'static/images/wp2.jpg', '1');
-INSERT INTO `resource_advertising` VALUES ('3', '3', '3', 'static/images/advbar.jpg', '0');
+INSERT INTO `resource_advertising` VALUES ('2', '2', '1', 'static/images/wp2.jpg', '1');
+INSERT INTO `resource_advertising` VALUES ('3', '3', '1', 'static/images/advbar.jpg', '0');
 
 -- ----------------------------
 -- Table structure for `resource_info`
@@ -703,18 +699,18 @@ CREATE TABLE `ticket_info` (
 -- ----------------------------
 -- Records of ticket_info
 -- ----------------------------
-INSERT INTO `ticket_info` VALUES ('1', 'aa', '14', '100', null, null);
-INSERT INTO `ticket_info` VALUES ('2', null, '100', '180', null, null);
-INSERT INTO `ticket_info` VALUES ('3', null, '100', '280', null, null);
+INSERT INTO `ticket_info` VALUES ('1', 'aa', '0', '100', null, null);
+INSERT INTO `ticket_info` VALUES ('2', null, '72', '180', null, null);
+INSERT INTO `ticket_info` VALUES ('3', null, '80', '280', null, null);
 INSERT INTO `ticket_info` VALUES ('4', null, '100', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('5', null, '100', '480', null, null);
 INSERT INTO `ticket_info` VALUES ('6', null, '0', '177', null, null);
-INSERT INTO `ticket_info` VALUES ('7', null, '100', '277', null, null);
-INSERT INTO `ticket_info` VALUES ('8', null, '100', '377', null, null);
-INSERT INTO `ticket_info` VALUES ('9', null, '100', '520', null, null);
-INSERT INTO `ticket_info` VALUES ('10', 'VIP 877元', '100', '877', null, null);
-INSERT INTO `ticket_info` VALUES ('11', '套票1000元（520 * 2）', '100', '1000', null, '1');
-INSERT INTO `ticket_info` VALUES ('12', '套票1314元(877 * 2)', '100', '1314', null, '1');
+INSERT INTO `ticket_info` VALUES ('7', null, '89', '277', null, null);
+INSERT INTO `ticket_info` VALUES ('8', null, null, '377', null, null);
+INSERT INTO `ticket_info` VALUES ('9', null, '95', '520', null, null);
+INSERT INTO `ticket_info` VALUES ('10', 'VIP 877元', '99', '877', null, null);
+INSERT INTO `ticket_info` VALUES ('11', '套票1000元（520 * 2）', '99', '1000', null, '1');
+INSERT INTO `ticket_info` VALUES ('12', '套票1314元(877 * 2)', '92', '1314', null, '1');
 INSERT INTO `ticket_info` VALUES ('13', '普通票120元(含一杯赠酒)', '100', '120', null, null);
 INSERT INTO `ticket_info` VALUES ('14', 'VIP票180元(可上二层)', '0', '180', null, null);
 INSERT INTO `ticket_info` VALUES ('15', null, '0', '380', null, null);
@@ -723,7 +719,7 @@ INSERT INTO `ticket_info` VALUES ('17', '980元(场地)', '100', '980', null, nu
 INSERT INTO `ticket_info` VALUES ('18', '980元(看台)', '100', '980', null, null);
 INSERT INTO `ticket_info` VALUES ('19', '套票1600元(看台980*2)', '100', '1600', null, null);
 INSERT INTO `ticket_info` VALUES ('20', '看台280元', '0', '280', null, null);
-INSERT INTO `ticket_info` VALUES ('21', '看台380元', '100', '380', null, null);
+INSERT INTO `ticket_info` VALUES ('21', '看台380元', '99', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('22', '看台580元', '100', '580', null, null);
 INSERT INTO `ticket_info` VALUES ('23', '看台680元', '100', '680', null, null);
 INSERT INTO `ticket_info` VALUES ('24', '内场980元', '100', '980', null, null);
@@ -792,8 +788,7 @@ CREATE TABLE `user_base_info` (
 -- ----------------------------
 -- Records of user_base_info
 -- ----------------------------
-INSERT INTO `user_base_info` VALUES ('1', 'b', '1111111111', '11111', '1111', '2017-04-06 17:32:38', '1');
-INSERT INTO `user_base_info` VALUES ('1191237191', null, null, null, '1111', null, null);
+INSERT INTO `user_base_info` VALUES ('2077615322', null, null, null, '1', null, null);
 
 -- ----------------------------
 -- Table structure for `user_bind_info`
@@ -807,7 +802,7 @@ CREATE TABLE `user_bind_info` (
 -- ----------------------------
 -- Records of user_bind_info
 -- ----------------------------
-INSERT INTO `user_bind_info` VALUES ('1', '18257155845');
+INSERT INTO `user_bind_info` VALUES ('2077615322', '1');
 
 -- ----------------------------
 -- Table structure for `user_concerns`
@@ -829,4 +824,3 @@ CREATE TABLE `user_concerns` (
 -- ----------------------------
 -- Records of user_concerns
 -- ----------------------------
-INSERT INTO `user_concerns` VALUES ('1117348849', '1', '1', '1', '1', '1', '1', '2017-04-06 17:30:46', '1');

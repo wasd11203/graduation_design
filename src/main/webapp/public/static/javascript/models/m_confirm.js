@@ -3,7 +3,7 @@ var m_confirm = {
 	order : {},
 	updateOrder : function(order) {
 		
-		createOrderParams.userId = user.USER_ID;
+		createOrderParams.userId = JSON.parse(user).USER_ID;
 		createOrderParams.resourceId = order.orderInfo.RESOURCE_ID;
 		createOrderParams.resourceName = order.orderInfo.RESOURCE_NAME;
 		createOrderParams.isEnable = order.orderInfo.ISENABLE;

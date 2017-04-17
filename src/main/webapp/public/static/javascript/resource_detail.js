@@ -23,7 +23,7 @@ function loadHotSellAction(){
 
 function toConfirmOrder(){
 	alert("去确认订单");
-	loadHtmlByPath("views/confirm.html")
+	loadHtmlByPath("views/confirm.html");
 	
 	return false;
 }

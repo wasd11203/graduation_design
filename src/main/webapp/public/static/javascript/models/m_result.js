@@ -50,6 +50,8 @@ var m_result = {
 				
 				var i = $(this).data("index");
 				m_result.curCity = m_result.cityList[i];
+				
+				postParams.keywords = null;
 				postParams.regionThirdId = m_result.curCity.thirdId;
 				postParams.curPage = 1;
 				
@@ -65,6 +67,7 @@ var m_result = {
 			$(this).siblings().find("a").css({"color":"gray"});
 			$(this).find("a").css({"color":"#2ed2c1"});
 			
+			postParams.keywords = null;
 			m_result.curCity = null;
 			postParams.regionThirdId = null;
 			postParams.curPage = 1;
@@ -130,6 +133,7 @@ var m_result = {
 				m_result.updateResourceThirdCateList(m_result.resourceCateList[index].navThird),
 				m_result.updateResourceThirdCateListView();
 				
+				postParams.keywords = null;
 				postParams.resourceSecId = m_result.curResourceSecCate.secId;
 				postParams.resourceThirdId = null;
 				postParams.curPage = 1;
@@ -155,6 +159,7 @@ var m_result = {
 			m_result.updateResourceThirdCateList([]);
 			m_result.updateResourceThirdCateListView();
 			
+			postParams.keywords = null;
 			postParams.resourceSecId = null;
 			postParams.resourceThirdId = null;
 			postParams.curPage = 1;
@@ -198,7 +203,8 @@ var m_result = {
 					$(this).find("a").css({"color":"#2ed2c1"});
 					
 					m_result.curResourceThirdCate = null;
-					
+				
+					postParams.keywords = null;
 					postParams.resourceThirdId = null;
 					postParams.curPage = 1;
 					
@@ -231,6 +237,7 @@ var m_result = {
 				var index = $(this).data("index");
 				m_result.curResourceThirdCate = m_result.resourceThirdCateList[index];
 				
+				postParams.keywords = null;
 				postParams.resourceThirdId = m_result.curResourceThirdCate.thirdId;
 				postParams.curPage = 1;
 				
@@ -280,6 +287,8 @@ var m_result = {
 				
 //				alert("根据时间查询");
 				var index = $(this).data("index");
+				
+				postParams.keywords = null;
 				postParams.minTime = timeOptions[index].minTime;
 				postParams.maxTime = timeOptions[index].maxTime;
 				postParams.curPage = 1;
@@ -318,6 +327,7 @@ var m_result = {
 			$(this).siblings().find("span").css({"color":"gray"});
 			$(this).find("a").css({"color":"#2ed2c1"});
 			
+			postParams.keywords = null;
 			postParams.minTime = null;
 			postParams.maxTime = null;
 			postParams.curPage = 1;
@@ -329,6 +339,8 @@ var m_result = {
 		});
 		
 		$laydate_btn.on("click",function(){
+			
+			postParams.keywords = null;
 			postParams.minTime = minTimeDate.getSelectedDate();
 			postParams.maxTime = maxTimeDate.getSelectedDate();
 			postParams.curPage = 1;

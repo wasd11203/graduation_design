@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>user_detail</title>
+
+    <link href="static/styles/user_detail.css" rel="stylesheet">
+	<script type="text/javascript">
+		$(function(){
+			loadUserDetailInfo();
+			initEvents();
+		});
+	</script>
+</head>
+<body>
+
+<div class="banner_warp my_warp_container">
+    <div class="user-top container">
+            <div class="row">
+                <div class="thumbnail">
+                    <img id="icon" width="100" height="100" src="" class="img-thumbnail img-circle">
+                    <div class="caption text-center">
+                        <h3 class="un">
+                            <span class=""><img src=""></span>
+                        </h3>
+                        <p>
+                            <a href="javascript:void(0);" class="btn btn-default btn-lg" role="button">修改个人资料</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div>
+
+
+</div>
+<div class="my_center">
+        <div class="my_center" id="user_center_box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <nav class="my_center_sidenav">
+                            <ul class="nav text-right" id="dtl-nav">
+                                <li class="active"><a href="javascript:void(0);" data-he="user_me_order">我的订单</a></li>
+                                <li><a href="javascript:void(0);" data-he="user_me_attention">我的关注</a></li>
+                                <li><a href="javascript:void(0);" data-he="user_me_set">个人信息</a></li>
+                                <li><a href="javascript:void(0);" data-he="user_me_add">收货地址</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-10">
+	                    <div class="r-show col-md-10" style="display:none;">
+	                        <div class="ucentertab row">
+	                            <ul>
+	                                <li class="on"><a href="#">全部</a></li>
+	                                <li class=""><a href="#">待付款</a></li>
+	                                <li class=""><a href="#">已完成</a></li>
+	                            </ul>
+	                        </div>
+	                        <div  id="ucenterbox">
+								订单列表
+	                        </div>
+	                        <!--<div class="infobox order_list" data="817">-->
+	                            <!--<div class="row info_header">-->
+	                                <!--<div class="col-md-3">-->
+	                                    <!--<p>订单编号：<span>14758195239556</span></p>-->
+	                                <!--</div>-->
+	                                <!--<div class="col-md-3">-->
+	                                    <!--<p>时间：<span>2016-10-07 13:52:04</span></p>-->
+	                                <!--</div>-->
+	                                <!--<div class="col-md-2">-->
+	                                    <!--<p>取票类型：<span>快递</span></p>-->
+	                                <!--</div>-->
+	                                <!--<div class="col-md-2 uploadCard"></div>-->
+	                                <!--<div class="col-md-2 stu">-->
+	                                    <!--<p>状态：<span>待支付</span></p>-->
+	                                <!--</div>-->
+	                            <!--</div>-->
+	                            <!--<div class="row order_info">-->
+	                                <!--<div class="col-md-8 o_i_des">-->
+	                                    <!--<dl>-->
+	                                        <!--<dt>-->
+	                                            <!--<img src="img/sing_8.jpg">-->
+	                                        <!--</dt>-->
+	                                        <!--<dd>-->
+	                                            <!--<p class="t n">[青岛]梁咏琪2016好时辰巡回演唱会 青岛站</p>-->
+	                                            <!--<p class="t p">青岛体育中心国信体育馆钻石馆</p>-->
+	                                            <!--<p class="t t">10月22日 周六 19:30</p>-->
+	                                            <!--<div class="t s clearfix">-->
+	                                                <!--<p class="l"><span>1</span>张</p>-->
+	                                                <!--<p class="r"><label>订单金额：</label><span>480</span>元</p>-->
+	                                            <!--</div>-->
+	                                            <!--<ul class="arealist clearfix">-->
+	                                                <!--<li></li>-->
+	                                            <!--</ul>-->
+	                                        <!--</dd>-->
+	                                    <!--</dl>-->
+	                                <!--</div>-->
+	                                <!--<div class="col-md-4 o_i_piao">-->
+	                                    <!--<ul>-->
+	                                        <!--<li><label>手机号码：</label>15727575790</li>-->
+	                                        <!--<li><label>收票人姓名：</label>gah</li>-->
+	                                        <!--<li><label>收票人手机：</label>15758689453</li>-->
+	                                        <!--<li><label>地址：</label>江西省景德镇市珠山区sadfvas</li>-->
+	
+	                                    <!--</ul>-->
+	                                    <!--<div class="op">-->
+	                                        <!--<a class="opbtn">取消订单</a>-->
+	                                        <!--<a class="opbtn">已超时</a>-->
+	                                    <!--</div>-->
+	                                <!--</div>-->
+	                            <!--</div>-->
+	                        <!--</div>-->
+	                        <!--<div class="infobox order_list" data="767">-->
+	                            <!--<div class="row info_header">-->
+	                                <!--<div class="col-md-3">-->
+	                                    <!--<p>订单编号：<span>14758194734249</span></p>-->
+	                                <!--</div>-->
+	                                <!--<div class="col-md-3">-->
+	                                    <!--<p>时间：<span>2016-10-07 13:51:14</span></p>-->
+	                                <!--</div>-->
+	                                <!--<div class="col-md-2">-->
+	                                    <!--<p>取票类型：<span>快递</span></p>-->
+	                                <!--</div>-->
+	                                <!--<div class="col-md-2 uploadCard"></div>-->
+	                                <!--<div class="col-md-2 stu">-->
+	                                    <!--<p>状态：<span>待支付</span></p>-->
+	                                <!--</div>-->
+	                            <!--</div>-->
+	                            <!--<div class="row order_info">-->
+	                                <!--<div class="col-md-8 o_i_des">-->
+	                                    <!--<dl>-->
+	                                        <!--<dt>-->
+	                                            <!--<img src="http://static.show.wepiao.com/thumb/auto/120/160/http://static.show.wepiao.com/upload/d/5d9/b7485/d5d9cb7485405cbe0b2ba226eccc1314.jpg?v=cd221">-->
+	                                        <!--</dt>-->
+	                                        <!--<dd>-->
+	                                            <!--<p class="t n">[杭州]2016李荣浩「有 理想」世界巡回演唱会-轻爱·轻酸奶杭州站</p>-->
+	                                            <!--<p class="t p">杭州黄龙体育中心</p>-->
+	                                            <!--<p class="t t">11月06日 周日 19:30</p>-->
+	                                            <!--<div class="t s clearfix">-->
+	                                                <!--<p class="l"><span>1</span>张</p>-->
+	                                                <!--<p class="r"><label>订单金额：</label><span>680</span>元</p>-->
+	                                            <!--</div>-->
+	                                            <!--<ul class="arealist clearfix">-->
+	                                                <!--<li></li>-->
+	                                            <!--</ul>-->
+	                                        <!--</dd>-->
+	                                    <!--</dl>-->
+	                                <!--</div>-->
+	                                <!--<div class="col-md-4 o_i_piao">-->
+	                                    <!--<ul>-->
+	                                        <!--<li><label>手机号码：</label>15727575790</li>-->
+	                                        <!--<li><label>收票人姓名：</label>fasg</li>-->
+	                                        <!--<li><label>收票人手机：</label>15725585964</li>-->
+	                                        <!--<li><label>地址：</label>河南省三门峡市陕县fsdfsdg</li>-->
+	
+	                                    <!--</ul>-->
+	                                    <!--<div class="op">-->
+	                                        <!--<a class="opbtn cancel btnDisabled"  >取消订单</a>-->
+	                                        <!--<a class="opbtn pay btnDisabled" >已超时</a>-->
+	                                    <!--</div>-->
+	                                <!--</div>-->
+	                            <!--</div>-->
+	                        <!--</div>-->
+	                        <div>
+	                        </div>
+	                    </div>
+	                	<div class="r-show col-md-10" style="display:none;">
+	                		关注列表
+	                	</div>
+	                	<div class="r-show col-md-10" style="display:none;">
+	                		个人信息
+	                	</div>
+	                	<div class="r-show col-md-10" style="display:none;">
+	                		收货地址
+	                	</div>
+                	</div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="footer"></div>
+
+</body>
+</html>

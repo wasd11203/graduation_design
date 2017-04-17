@@ -1,3 +1,6 @@
+var storage=window.sessionStorage;
+var user = storage.user;
+
 var timeOptions = [
 		{"id":1,"name":"今天","minTime":parseDate(1,true),"maxTime":parseDate(1,false)},
 		{"id":2,"name":"明天","minTime":parseDate(2,true),"maxTime":parseDate(2,false)},
@@ -26,6 +29,9 @@ var resourceDetailParams = {
 	regionThirdId:''
 }
 
+/**
+ * 去确认订单时向后台发送的参数
+ */
 var confirmOrderParams = {
 	thirdId:'',
 	venueId:'',
@@ -35,48 +41,77 @@ var confirmOrderParams = {
 	counts:''
 };
 
+var createOrderParams = {
+		userId:'',
+		orderType:1,
+		receiveType:1,
+		resourceId:'',
+		resourceName:'',
+		isEnable:'',
+		regionThirdId:'',
+		regionThirdName:'',
+		venueId:'',
+		siteId:'',
+		ticketId:'',
+		ticketCounts:'',
+		ticketPrice:'',
+		total:'',
+		buyerPhone:'',
+		province:'',
+		city:'',
+		area:'',
+		more:'',
+		receiveName:'',
+		receivePhone:'',
+		disCountCode:''
+};
+
 var confirmOrderCityList = [
 	{
 		"prov_name":'北京市',
-		"prov_value":'北京市',
+		"prov_value":'1',
 		"cityList":[{
 			"city_name":'北京市',
-			"city_value":'北京市',
+			"city_value":'1',
 			"areaList":[
 				{
 					'area_name':'东城区',
-					'area_value':'东城区'
+					'area_value':'1'
 				},
 				{
 					'area_name':'西城区',
-					'area_value':'西城区'
+					'area_value':'2'
 				},{
 					'area_name':'崇文区',
-					'area_value':'崇文区'
+					'area_value':'3'
 				}]
 		}]
 	},
 	{
 		"prov_name":'天津市',
-		"prov_value":'天津市',
+		"prov_value":'2',
 		"cityList":[{
 			"city_name":'天津市',
-			"city_value":'天津市',
+			"city_value":'1',
 			"areaList":[
 				{
 					'area_name':'和平区',
-					'area_value':'和平区'
+					'area_value':'1'
 				},
 				{
 					'area_name':'河东区',
-					'area_value':'河东区'
+					'area_value':'2'
 				},{
 					'area_name':'河西区',
-					'area_value':'河西区'
+					'area_value':'3'
 				}]
 		}]
 	}
 ];
+
+var userDetailParams = {
+	userId:''
+};
 
 function parseDate(type,minFlag){
 	var now = new Date();

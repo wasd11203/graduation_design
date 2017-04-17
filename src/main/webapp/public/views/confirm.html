@@ -8,18 +8,7 @@
 		
 		<script>
 			$(function(){
-				settimes();
-				toConfirmOrderAction();
 				
-				$('#province').on("change",function(){
-					alert("刷新下级列表:"+$('#province').selectpicker('val'));
-					m_confirm.updataCitys();
-					return false;
-				});
-				
-				initSelect();
-				$('#city').selectpicker({});
-				$('#area').selectpicker({});
 			});
 		
 		</script>
@@ -97,12 +86,8 @@
 		                	<select id="province" class="selectpicker show-tick" >
 			                </select>
 			                <select id="city" class="selectpicker show-tick" >
-			                    <option selected>省</option>
-			                    <option>市</option>
 			                </select>
 			                <select id="area" class="selectpicker show-tick" >
-			                    <option selected>省</option>
-			                    <option>市</option>
 			                </select>
 		                </li>
 		                <li class="row">

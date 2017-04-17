@@ -11,7 +11,7 @@ function loadSearchNav(){
 		dataType : "json",
 		data:postParams,
 		success:function(data){
-			console.log(data);
+//			console.log(data);
 			m_result.updateCityList(data.cityList);
 			m_result.updateResourceCateList(data.resourceNav);
 			m_result.updateTimeList(timeOptions);
@@ -46,7 +46,7 @@ function loadSearchresultList(){
 		dataType : "json",
 		data:postParams,
 		success:function(data){
-			console.log(data);
+//			console.log(data);
 			m_result.updateResultList(data.resourceList);
 			
 			if(data.totalPage > 0){

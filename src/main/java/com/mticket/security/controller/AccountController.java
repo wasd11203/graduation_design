@@ -69,4 +69,28 @@ public class AccountController extends BasicController{
 		return jobj;
 	}
 	
+	@RequestMapping("/check")
+	@ResponseBody
+	public JSONObject checkAccount(String phone){
+		logger.debug("CONTROLLER-- 判断号码是否已被使用:[{}],[{}]",phone);
+		JSONObject jobj = new JSONObject();
+		Map<String, Object> map = new HashMap<String, Object>(); 
+		
+		if(phone != null && !phone.trim().isEmpty()){
+			map.put("phone", phone.trim());
+		}
+		Map<String, Object> res =accountService.loadUser(map);
+		
+		if(res == null || res.size() <= 0){
+			jobj.put("code", 0);
+			jobj.put("data", "号码可以使用");
+		}else{
+			jobj.put("code",1);
+			jobj.put("msg", "号码已被使用，请更换号码");
+		}
+		
+		return jobj;
+	}
+	
+	
 }

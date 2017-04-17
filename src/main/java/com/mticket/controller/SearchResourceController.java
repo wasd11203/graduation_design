@@ -61,7 +61,7 @@ public class SearchResourceController extends BasicController {
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z",Locale.ENGLISH);
 
 		Integer resourceTop = null;
-		Map<String, Object> map = transforArgs(regionThirdId,venueId, resourceSecId, resourceThirdId, minTime, maxTime, sdf);
+		Map<String, Object> map = transforArgs(keywords,regionThirdId,venueId, resourceSecId, resourceThirdId, minTime, maxTime, sdf);
 
 		if (resourceTopId != null && !resourceTopId.trim().isEmpty()) {
 			resourceTop = new Integer(resourceTopId);
@@ -90,9 +90,9 @@ public class SearchResourceController extends BasicController {
 		return jobj;
 	}
 
-	private Map<String, Object> transforArgs(String regionThirdId,String venueId, String resourceSecId, String resourceThirdId,
+	private Map<String, Object> transforArgs(String keywords,String regionThirdId,String venueId, String resourceSecId, String resourceThirdId,
 			String minTime, String maxTime, SimpleDateFormat sdf) {
-		logger.debug("CONTROLLER -- 当前访问的方法:com.mticket.controller.nav.NavigationController.transforArgs,params:" + regionThirdId + ","
+		logger.debug("CONTROLLER -- 当前访问的方法:com.mticket.controller.nav.NavigationController.transforArgs,params:" +keywords+","+ regionThirdId + ","
 				+ "," + resourceSecId + "," + resourceThirdId+","+minTime+","+maxTime);
 		Integer regionThird = null;
 		Integer resourceSec = null;
@@ -103,6 +103,10 @@ public class SearchResourceController extends BasicController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
+		if(keywords != null && !keywords.trim().isEmpty()){
+			keywords = keywords.trim();
+		}
+		
 		if (regionThirdId != null && !regionThirdId.trim().isEmpty()) {
 			regionThird = new Integer(regionThirdId);
 		}
@@ -139,6 +143,7 @@ public class SearchResourceController extends BasicController {
 		map.put("resourceThirdId", resourceThird);
 		map.put("minTime", min);
 		map.put("maxTime", max);
+		map.put("keywords", keywords);
 		return map;
 	}
 	

@@ -70,6 +70,12 @@
 			<if test="maxTime != null and maxTime != ''">
 				AND DATE_FORMAT(MIN_Time, '%Y年%c月%d日') &lt;= DATE_FORMAT(#{maxTime,jdbcType=DECIMAL},'%Y年%c月%d日')
 			</if>
+			<if test="keywords != null and keywords != ''">
+				AND (ass_resource_site_venue.RESOURCE_NAME like '%${keywords}%'
+					 OR 
+					 ass_regoin_venue.VENUE_NAME like '%${keywords}%'
+				) 
+			</if>
 		</where>
 		LIMIT #{startIndex},#{pageSize}
 	</select>
@@ -140,6 +146,12 @@
 			</if>
 			<if test="maxTime != null and maxTime != ''">
 				AND DATE_FORMAT(MIN_Time, '%Y年%c月%d日') &lt;= DATE_FORMAT(#{maxTime,jdbcType=DECIMAL},'%Y年%c月%d日')
+			</if>
+			<if test="keywords != null and keywords != ''">
+				AND (ass_resource_site_venue.RESOURCE_NAME like '%${keywords}%'
+					 OR 
+					 ass_regoin_venue.VENUE_NAME like '%${keywords}%'
+				) 
 			</if>
 		</where>
 	</select>

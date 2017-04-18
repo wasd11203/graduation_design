@@ -1,9 +1,9 @@
 
 $(function() {
 	// todo 判断是否已经登录
-
-    if(user){
-        loginsucc(JSON.parse(user).NICKNAME ? JSON.parse(user).NICKNAME : 'noName');
+	var account = storage.account;
+    if(account){
+        loginsucc(JSON.parse(account).NICKNAME ? JSON.parse(account).NICKNAME : 'noName');
     }
 	loadResourceTopNavAction();
 	loadHtmlByPath("views/home.html");
@@ -41,7 +41,7 @@ function loginsucc(name) {
     html='<div id="user-nav">'+
 		 '	    <a href="javascript:void(0);">欢迎回来'+name+'<span class="caret"></span></a>'+
 		 '	    <ul class="myul">'+
-		 '	        <li><a href="index.html">我的娱票儿</a></li>'+
+		 '	        <li class="info-detail"><a href="javascript:void(0);">我的娱票儿</a></li>'+
 		 '	        <li class="info-order"><a href="javascript:void(0);">我的订单</a></li>'+
 		 '	        <li class="info-concerns"><a href="javascript:void(0);">我的关注</a></li>'+
 		 '	        <li class="info-base"><a href="javascript:void(0);">个人信息</a></li>'+
@@ -50,6 +50,11 @@ function loginsucc(name) {
 		 '	    </ul>'+
 		 '   </div>';
     $('.user').html(html);
+    
+    $(".info-detail").on("click",function(){
+    	loadHtmlByPath("views/user_detail.html");
+    	m_u_detail.index = 0;
+    });
     
     $(".info-order").on("click",function(){
     	loadHtmlByPath("views/user_detail.html");

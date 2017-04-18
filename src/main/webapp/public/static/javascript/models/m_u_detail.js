@@ -9,8 +9,8 @@ var m_u_detail = {
 	},
 	updateUserView:function(){
 		var $icon = $("#icon");
-		if(user.icon){
-			$icon.attr("src",user.icon);
+		if(this.user.icon){
+			$icon.attr("src",this.user.icon);
 		}else{
 			$icon.attr("src","static/images/defaultpic.gif");
 		}

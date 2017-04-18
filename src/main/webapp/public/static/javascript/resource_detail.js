@@ -23,7 +23,14 @@ function loadHotSellAction(){
 
 function toConfirmOrder(){
 	alert("去确认订单");
-	loadHtmlByPath("views/confirm.html");
+	var account = storage.account;
+	if(account){
+		loadHtmlByPath("views/confirm.html");
+	}else{
+		// 没有用户时。触发登录按钮点击事件 == 提醒去登录
+		$('#login').trigger("click");
+		loadHtmlByPath("views/resource_detail.html");
+	}
 	
 	return false;
 }

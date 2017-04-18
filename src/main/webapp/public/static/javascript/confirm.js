@@ -81,7 +81,6 @@ function toConfirmOrderAction(){
 				m_confirm.updateOrder(data.data);
 			}else{
 				alert("无法下单！");
-				confirmOrderParams = {};
 				loadHtmlByPath("views/resource_detail.html");
 			}
 		},

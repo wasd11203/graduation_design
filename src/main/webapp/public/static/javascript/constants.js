@@ -1,5 +1,4 @@
 var storage=window.sessionStorage;
-var user = storage.user;
 
 var timeOptions = [
 		{"id":1,"name":"今天","minTime":parseDate(1,true),"maxTime":parseDate(1,false)},

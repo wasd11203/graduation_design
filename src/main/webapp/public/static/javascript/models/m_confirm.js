@@ -2,8 +2,8 @@ var m_confirm = {
 
 	order : {},
 	updateOrder : function(order) {
-		
-		createOrderParams.userId = JSON.parse(user).USER_ID;
+		var account = storage.account;
+		createOrderParams.userId = JSON.parse(account).USER_ID;
 		createOrderParams.resourceId = order.orderInfo.RESOURCE_ID;
 		createOrderParams.resourceName = order.orderInfo.RESOURCE_NAME;
 		createOrderParams.isEnable = order.orderInfo.ISENABLE;
@@ -35,7 +35,7 @@ var m_confirm = {
 
 		$re_img.append($img);
 
-		$re_name.text('[' + this.order.THIRD_NAME + ']'
+		$re_name.text('[' + this.order.orderInfo.THIRD_NAME + ']'
 				+ this.order.orderInfo.RESOURCE_NAME);
 		$re_venue.text(this.order.orderInfo.VENUE_NAME);
 		$re_time.text(this.order.orderInfo.SITE_TIME);

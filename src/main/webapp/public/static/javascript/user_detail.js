@@ -1,6 +1,6 @@
 
 function initEvents(){
-	$(".nav li").on("click",function(){
+	$(".my_center_sidenav .nav li").on("click",function(){
 //		alert($(this).index());
 		
 		$(this).find("a").css(

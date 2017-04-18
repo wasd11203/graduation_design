@@ -131,7 +131,7 @@ function loginAndRegister() {
 //						console.log('登录成功');
 						var user = data.data;
 						userDetailParams.userId = user.USER_ID;
-						storage.setItem('user', JSON.stringify(user));
+						storage.setItem('account', JSON.stringify(user));
 						loginsucc(user.NICKNAME ? user.NICKNAME : 'noName');
 						$('#loginR').modal('hide');
 					} else {
@@ -158,7 +158,7 @@ function loginAndRegister() {
 						var user = data.data;
 						
 						userDetailParams.userId = user.USER_ID;
-						storage.setItem('user', JSON.stringify(user));
+						storage.setItem('account', JSON.stringify(account));
 						
 						loginsucc(user.NAME ? user.NAME : 'noName');
 						

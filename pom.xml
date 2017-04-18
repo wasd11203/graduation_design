@@ -4,7 +4,7 @@
 	<groupId>com.mticket</groupId>
 	<artifactId>spring_boot_mybatis_durid</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -12,13 +12,13 @@
 		<version>1.4.0.RELEASE</version>
 	</parent>
 
-	<!-- 使用内嵌的tomcat -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- 使用spring boot 中内嵌的tomcat -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -28,6 +28,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<dependency>
@@ -96,8 +101,7 @@
 		<resources>
 			<resource>
 				<directory>src/main/webapp</directory>
-<!-- 				在未指定静态资源文件目录时,需要将需要的资源放在此目录下才能被访问到
-				<targetPath>META-INF/resources</targetPath> -->
+				<!-- 在未指定静态资源文件目录时,需要将需要的资源放在此目录下才能被访问到 <targetPath>META-INF/resources</targetPath> -->
 				<includes>
 					<include>**/**</include>
 				</includes>

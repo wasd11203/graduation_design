@@ -45,7 +45,9 @@ public class OrderController extends BasicController {
 
 		Map<String, Object> map = transforArgs(thirdId, venueId, siteId, ticketId, resourceId);
 
-		int allCounts = (Integer) orderService.getTicketCountsById((Integer) map.get("ticketId")).get("TICKET_COUNTS");
+		Map<String, Object> res = orderService.getTicketCountsById((Integer) map.get("ticketId"));
+		
+		int allCounts = (Integer) (res.get("TICKET_COUNTS"));
 		if (allCounts >= buyCounts) {
 			map.put("counts", buyCounts*(-1));
 			int update_res = orderService.updateTicketById(map);

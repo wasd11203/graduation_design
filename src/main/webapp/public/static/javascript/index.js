@@ -15,11 +15,14 @@ $(function() {
     }).on('mouseout',function () {
         $('.myul').hide();
     }).on('click','.exit a',function (e) {
+    	var storage=window.sessionStorage;
+    	var account = storage.account;
+    	var userId = JSON.parse(account).USER_ID;
+
         e.preventDefault();
-        var storage=window.sessionStorage;
         userDetailParams.userId = null;
         storage.clear();
-        window.location.href='index.html';
+        window.location.href='account/logout?userId='+userId;
     });
 	
 });

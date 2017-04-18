@@ -112,39 +112,27 @@ function loginAndRegister() {
 
 	var phone = $('#uname').val();
 	var password = $('#upwd').val();
-	var param = {
-		'phone' : phone,
-		'password' : password
-	};
-
+	
 	if (phone != '' && password != '') {
 
 		if ($(this).html() == "登录") {
 
-			$.ajax({
-				url : 'account/login',
-				type : 'POST',
-				dataType : "json",
-				data : param,
-				success : function(data) {
-					if (data.code == '0') {
-//						console.log('登录成功');
-						var user = data.data;
-						userDetailParams.userId = user.USER_ID;
-						storage.setItem('account', JSON.stringify(user));
-						loginsucc(user.NICKNAME ? user.NICKNAME : 'noName');
-						$('#loginR').modal('hide');
-					} else {
-//						console.log('用户名或密码错误');
-						$('.submit').show();
-					}
-				},
-				error : function(data) {
-					alert("fail");
+			$_ajaxAuth('account/login',phone,password).then(function(data){
+				if (data.code == '0') {
+//					console.log('登录成功');
+					var user = data.data;
+					userDetailParams.userId = user.USER_ID;
+					storage.setItem('account', JSON.stringify(user));
+					loginsucc(user.NICKNAME ? user.NICKNAME : 'noName');
+					$('#loginR').modal('hide');
+				} else {
+//					console.log('用户名或密码错误');
+					$('.submit').show();
 				}
-
+			},function(res){
+				alert("fail");
 			});
-
+			
 		} else {
 
 			$.ajax({

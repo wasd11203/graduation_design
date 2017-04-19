@@ -292,7 +292,7 @@
 			<if test="birth != null and birth != ''">
 				BIRTH = #{birth,jdbcType=DECIMAL},
 			</if>
-			<if test="gender != null and gender != ''">
+			<if test="gender != null">
 				GENDER = #{gender,jdbcType=VARCHAR},
 			</if>
 			

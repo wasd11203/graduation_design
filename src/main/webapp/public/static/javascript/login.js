@@ -112,7 +112,7 @@ function loginAndRegister() {
 
 	var phone = $('#uname').val();
 	var password = $('#upwd').val();
-	
+	var param = {"phone":phone,"passwrod":password};
 	if (phone != '' && password != '') {
 
 		if ($(this).html() == "登录") {
@@ -146,7 +146,7 @@ function loginAndRegister() {
 						var user = data.data;
 						
 						userDetailParams.userId = user.USER_ID;
-						storage.setItem('account', JSON.stringify(account));
+						storage.setItem('account', JSON.stringify(user));
 						
 						loginsucc(user.NAME ? user.NAME : 'noName');
 						

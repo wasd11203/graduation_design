@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,7 @@ public class UserController extends BasicController {
 		Integer user = null;
 		Date birthDate = null;
 		Integer gend = null;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss z",Locale.ENGLISH);
 
 		if (userId != null && !userId.trim().isEmpty()) {
 			user = new Integer(userId);
@@ -71,6 +72,7 @@ public class UserController extends BasicController {
 			gend = new Integer(gender);
 		}
 		if (birth != null && !birth.trim().isEmpty()) {
+			birth = birth.substring(0, birth.lastIndexOf(" ")).replace("GMT+0800", "GMT +08:00").replace("GMT 0800", "GMT +08:00");
 			try {
 				birthDate = sdf.parse(birth);
 			} catch (ParseException e) {

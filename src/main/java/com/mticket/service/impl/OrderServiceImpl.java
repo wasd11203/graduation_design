@@ -83,9 +83,11 @@ public class OrderServiceImpl implements OrderService {
 		if (res > 0) {
 			if (baseInfo.get("ISFINISH") != null && (Integer) baseInfo.get("ISFINISH") == 1) {
 				logger.debug("退款中... ... ");
-				map.put("isFinish", 0);
-				orderMapper.updateOrderSta(map);
 			}
+			
+			map.put("isFinish", 2);
+			orderMapper.updateOrderSta(map);
+			
 			jobj.put("code", 0);
 			jobj.put("msg", "取消订单成功");
 		} else {

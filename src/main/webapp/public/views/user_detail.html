@@ -1,188 +1,287 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>user_detail</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>user_detail</title>
 
-    <link href="static/styles/user_detail.css" rel="stylesheet">
-	<script type="text/javascript">
-		$(function(){
-			loadUserDetailInfo();
-			initEvents();
-		});
-	</script>
+<link href="static/styles/user_detail.css" rel="stylesheet">
+<script type="text/javascript">
+	$(function() {
+		loadUserDetailInfo();
+		initEvents();
+	});
+</script>
 </head>
 <body>
 
-<div class="banner_warp my_warp_container">
-    <div class="user-top container">
-            <div class="row">
-                <div class="thumbnail">
-                    <img id="icon" width="100" height="100" src="" class="img-thumbnail img-circle">
-                    <div class="caption text-center">
-                        <h3 class="un">
-                            <span class=""><img src=""></span>
-                        </h3>
-                        <p>
-                            <a href="javascript:void(0);" class="btn btn-default btn-lg" role="button">修改个人资料</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
-<div>
+	<div class="banner_warp my_warp_container">
+		<div class="user-top container">
+			<div class="row">
+				<div class="thumbnail">
+					<img id="icon" width="100" height="100" src=""
+						class="img-thumbnail img-circle">
+					<div class="caption text-center">
+						<h3 class="un">
+							<span class=""><img src=""></span>
+						</h3>
+						<p>
+							<a href="javascript:void(0);" class="btn btn-default btn-lg"
+								role="button">修改个人资料</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div></div>
+	<div class="my_center">
+		<div class="my_center" id="user_center_box">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2">
+						<nav class="my_center_sidenav">
+							<ul class="nav text-right" id="dtl-nav">
+								<li class="active"><a href="javascript:void(0);"
+									data-he="user_me_order">我的订单</a></li>
+								<li><a href="javascript:void(0);"
+									data-he="user_me_attention">我的关注</a></li>
+								<li><a href="javascript:void(0);" data-he="user_me_set">个人信息</a></li>
+								<li><a href="javascript:void(0);" data-he="user_me_add">收货地址</a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="col-md-10">
+						<div id="r-show0" class="r-show col-md-10" style="display: none;">
+							<div class=" row box_top">
+								<div class="ucentertab row">
+									<ul>
+										<li class="on"><a href="javascript:void(0);">全部</a></li>
+										<li class=""><a href="javascript:void(0);">待付款</a></li>
+										<li class=""><a href="javascript:void(0);">已完成</a></li>
+									</ul>
+								</div>
+							</div>
 
+							<ul id="orders">
+								<li>
+									
+								</li>
+							</ul>
+						</div>
 
-</div>
-<div class="my_center">
-        <div class="my_center" id="user_center_box">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
-                        <nav class="my_center_sidenav">
-                            <ul class="nav text-right" id="dtl-nav">
-                                <li class="active"><a href="javascript:void(0);" data-he="user_me_order">我的订单</a></li>
-                                <li><a href="javascript:void(0);" data-he="user_me_attention">我的关注</a></li>
-                                <li><a href="javascript:void(0);" data-he="user_me_set">个人信息</a></li>
-                                <li><a href="javascript:void(0);" data-he="user_me_add">收货地址</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-md-10">
-	                    <div class="r-show col-md-10" style="display:none;">
-	                        <div class="ucentertab row">
-	                            <ul>
-	                                <li class="on"><a href="#">全部</a></li>
-	                                <li class=""><a href="#">待付款</a></li>
-	                                <li class=""><a href="#">已完成</a></li>
-	                            </ul>
-	                        </div>
-	                        <div  id="ucenterbox">
-								订单列表
-	                        </div>
-	                        <!--<div class="infobox order_list" data="817">-->
-	                            <!--<div class="row info_header">-->
-	                                <!--<div class="col-md-3">-->
-	                                    <!--<p>订单编号：<span>14758195239556</span></p>-->
-	                                <!--</div>-->
-	                                <!--<div class="col-md-3">-->
-	                                    <!--<p>时间：<span>2016-10-07 13:52:04</span></p>-->
-	                                <!--</div>-->
-	                                <!--<div class="col-md-2">-->
-	                                    <!--<p>取票类型：<span>快递</span></p>-->
-	                                <!--</div>-->
-	                                <!--<div class="col-md-2 uploadCard"></div>-->
-	                                <!--<div class="col-md-2 stu">-->
-	                                    <!--<p>状态：<span>待支付</span></p>-->
-	                                <!--</div>-->
-	                            <!--</div>-->
-	                            <!--<div class="row order_info">-->
-	                                <!--<div class="col-md-8 o_i_des">-->
-	                                    <!--<dl>-->
-	                                        <!--<dt>-->
-	                                            <!--<img src="img/sing_8.jpg">-->
-	                                        <!--</dt>-->
-	                                        <!--<dd>-->
-	                                            <!--<p class="t n">[青岛]梁咏琪2016好时辰巡回演唱会 青岛站</p>-->
-	                                            <!--<p class="t p">青岛体育中心国信体育馆钻石馆</p>-->
-	                                            <!--<p class="t t">10月22日 周六 19:30</p>-->
-	                                            <!--<div class="t s clearfix">-->
-	                                                <!--<p class="l"><span>1</span>张</p>-->
-	                                                <!--<p class="r"><label>订单金额：</label><span>480</span>元</p>-->
-	                                            <!--</div>-->
-	                                            <!--<ul class="arealist clearfix">-->
-	                                                <!--<li></li>-->
-	                                            <!--</ul>-->
-	                                        <!--</dd>-->
-	                                    <!--</dl>-->
-	                                <!--</div>-->
-	                                <!--<div class="col-md-4 o_i_piao">-->
-	                                    <!--<ul>-->
-	                                        <!--<li><label>手机号码：</label>15727575790</li>-->
-	                                        <!--<li><label>收票人姓名：</label>gah</li>-->
-	                                        <!--<li><label>收票人手机：</label>15758689453</li>-->
-	                                        <!--<li><label>地址：</label>江西省景德镇市珠山区sadfvas</li>-->
-	
-	                                    <!--</ul>-->
-	                                    <!--<div class="op">-->
-	                                        <!--<a class="opbtn">取消订单</a>-->
-	                                        <!--<a class="opbtn">已超时</a>-->
-	                                    <!--</div>-->
-	                                <!--</div>-->
-	                            <!--</div>-->
-	                        <!--</div>-->
-	                        <!--<div class="infobox order_list" data="767">-->
-	                            <!--<div class="row info_header">-->
-	                                <!--<div class="col-md-3">-->
-	                                    <!--<p>订单编号：<span>14758194734249</span></p>-->
-	                                <!--</div>-->
-	                                <!--<div class="col-md-3">-->
-	                                    <!--<p>时间：<span>2016-10-07 13:51:14</span></p>-->
-	                                <!--</div>-->
-	                                <!--<div class="col-md-2">-->
-	                                    <!--<p>取票类型：<span>快递</span></p>-->
-	                                <!--</div>-->
-	                                <!--<div class="col-md-2 uploadCard"></div>-->
-	                                <!--<div class="col-md-2 stu">-->
-	                                    <!--<p>状态：<span>待支付</span></p>-->
-	                                <!--</div>-->
-	                            <!--</div>-->
-	                            <!--<div class="row order_info">-->
-	                                <!--<div class="col-md-8 o_i_des">-->
-	                                    <!--<dl>-->
-	                                        <!--<dt>-->
-	                                            <!--<img src="http://static.show.wepiao.com/thumb/auto/120/160/http://static.show.wepiao.com/upload/d/5d9/b7485/d5d9cb7485405cbe0b2ba226eccc1314.jpg?v=cd221">-->
-	                                        <!--</dt>-->
-	                                        <!--<dd>-->
-	                                            <!--<p class="t n">[杭州]2016李荣浩「有 理想」世界巡回演唱会-轻爱·轻酸奶杭州站</p>-->
-	                                            <!--<p class="t p">杭州黄龙体育中心</p>-->
-	                                            <!--<p class="t t">11月06日 周日 19:30</p>-->
-	                                            <!--<div class="t s clearfix">-->
-	                                                <!--<p class="l"><span>1</span>张</p>-->
-	                                                <!--<p class="r"><label>订单金额：</label><span>680</span>元</p>-->
-	                                            <!--</div>-->
-	                                            <!--<ul class="arealist clearfix">-->
-	                                                <!--<li></li>-->
-	                                            <!--</ul>-->
-	                                        <!--</dd>-->
-	                                    <!--</dl>-->
-	                                <!--</div>-->
-	                                <!--<div class="col-md-4 o_i_piao">-->
-	                                    <!--<ul>-->
-	                                        <!--<li><label>手机号码：</label>15727575790</li>-->
-	                                        <!--<li><label>收票人姓名：</label>fasg</li>-->
-	                                        <!--<li><label>收票人手机：</label>15725585964</li>-->
-	                                        <!--<li><label>地址：</label>河南省三门峡市陕县fsdfsdg</li>-->
-	
-	                                    <!--</ul>-->
-	                                    <!--<div class="op">-->
-	                                        <!--<a class="opbtn cancel btnDisabled"  >取消订单</a>-->
-	                                        <!--<a class="opbtn pay btnDisabled" >已超时</a>-->
-	                                    <!--</div>-->
-	                                <!--</div>-->
-	                            <!--</div>-->
-	                        <!--</div>-->
-	                        <div>
-	                        </div>
-	                    </div>
-	                	<div class="r-show col-md-10" style="display:none;">
-	                		关注列表
-	                	</div>
-	                	<div class="r-show col-md-10" style="display:none;">
-	                		个人信息
-	                	</div>
-	                	<div class="r-show col-md-10" style="display:none;">
-	                		收货地址
-	                	</div>
-                	</div>
-                
-                </div>
-            </div>
-        </div>
-    </div>
-    
+						<div id="r-show1" class="r-show col-md-10" style="display: none;">
+							<div class="infobox">
+								<div class="row info_header">
+									<div class="col-md-12">
+										<h5 class="tit">个人关注</h5>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="r-show2" class="r-show col-md-10" style="display: none;">
+							<div class="infobox">
+								<div class="row info_header">
+									<div class="col-md-12">
+										<h5 class="tit">个人信息</h5>
+									</div>
+								</div>
+								<div class="row binfo">
+									<div class="col-md-12">
+										<dl>
+											<dt>登陆密码：</dt>
+											<dd>
+												<span class="c">**************</span> 
+												<a id="password-change-button" class="op" href="javascript:void(0);">「修改」</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>绑定手机：</dt>
+											<dd>
+												<span class="c"><span> <span class="st">已验证</span>
+														<!--<a id="mobile-button" class="op" href="javascript:;">「修改」</a> -->
+												</span></span>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<form id="profileForm" >
+									<div class="row minfo">
+										<div class="col-md-12">
+											<dl>
+												<dt>昵称</dt>
+												<dd>
+													<input type="text" name="username" id="username"
+														class="form-control" maxlength="20" palceholder="请输入您的昵称" value="">
+												</dd>
+											</dl>
+											<dl>
+												<dt>姓名</dt>
+												<dd>
+													<input type="text" name="name" id="name"
+														class="form-control" palceholder="请输入您的真实姓名" value="">
+												</dd>
+											</dl>
+											<dl>
+												<dt>生日</dt>
+												<dd>
+													<div class="sl year">
+														<select name="birth_year" id="birth_year" class="form-control">
+
+														</select> <span>年</span>
+													</div>
+													<div class="sl month">
+														<select name="birth_month" id="birth_month" class="form-control">
+
+														</select> <span>月</span>
+													</div>
+													<div class="sl day">
+														<select name="birth_day" id="birth_day" class="form-control">
+
+														</select> <span>日</span>
+													</div>
+												</dd>
+											</dl>
+											<dl>
+												<dt>性别</dt>
+												<dd>
+													<div class="radio">
+														<label class="radio-inline"> 
+															<input type="radio" name="gender" id="male" value="1" />
+															<span>男性</span>
+														</label> 
+														<label class="radio-inline">
+															<input type="radio" name="gender" id="female" value="0" checked />
+															<span>女性</span>
+														</label>
+													</div>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="row minfo">
+										<div class="col-md-12">
+											<dl class="add_adr_btn">
+												<dt>&nbsp;</dt>
+												<dd>
+													<button type="button" class="btn btn-default" id="update_user_base_bind">确认</button>
+												</dd>
+											</dl>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+
+						<div id="r-show3" class="r-show col-md-10" style="display: none;">
+							<div class="infobox adr_list">
+								<div class="row info_header">
+									<div class="col-md-12">
+										<h5 class="tit">收货地址</h5>
+									</div>
+								</div>
+								<div class="row binfo">
+									<div class="table-responsive">
+										<table class="table">
+											<tbody class="tbd">
+												<tr id="address">
+													<th class="c1">收货人</th>
+													<th class="c2">电话/手机</th>
+													<th class="c3">收货地址</th>
+													<th class="c4">操作</th>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="infobox add_adr">
+									<div class="row info_header">
+										<div class="col-md-12">
+											<h5 class="tit">新增收货地址</h5>
+										</div>
+									</div>
+
+									<form id="addressForm" >
+										<div class="row minfo">
+											<div class="col-md-12">
+												<dl>
+													<dt>所在区域</dt>
+													<dd id="location-container" class="row">
+														<div class="row">
+															<div class="sl province col-md-4">
+																<select id="addr_pro" name="addr_pro"
+																	class="form-control">
+																	<option value="">省/市直辖市</option>
+
+																</select>
+															</div>
+															<div class="sl city col-md-4">
+																<select id="addr_city" name="addr_city"
+																	class="form-control">
+																	<option value="">选择城市</option>
+																</select>
+															</div>
+															<div class="sl county col-md-4">
+																<select id="addr_area" name="addr_area"
+																	class="form-control">
+																	<option value="">区县</option>
+																</select>
+															</div>
+														</div>
+
+													</dd>
+												</dl>
+												<dl>
+													<dt>详细地址</dt>
+													<dd>
+														<input name="addr_more" id="addr_more"
+															class="detail_add form-control" placeholder="街道详细地址"
+															type="text">
+													</dd>
+												</dl>
+												<dl>
+													<dt>收货人</dt>
+													<dd>
+														<input name="addr_receiveName" id="addr_receiveName"
+															class="uname form-control" type="text">
+													</dd>
+												</dl>
+												<dl>
+													<dt>手机号码</dt>
+													<dd>
+														<input name="addr_receivePhone" id="addr_receivePhone"
+															class="uphone form-control" type="text">
+													</dd>
+												</dl>
+												<dl class="default_shr">
+													<dt>&nbsp;</dt>
+													<dd>
+														<input name="addr_isDefault" value="1" id="setDefault"
+															type="checkbox" /> <label for="setDefault">设为默认收票人</label>
+													</dd>
+												</dl>
+											</div>
+											<dl class="add_adr_btn">
+												<dt>&nbsp;</dt>
+												<dd>
+													<button type="button" class="btn btn-default" id="addr_confirm">确认</button>
+												</dd>
+											</dl>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	</div>
 </body>
 </html>

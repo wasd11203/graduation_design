@@ -112,7 +112,7 @@ function toExitOrderAction(){
 }
 
 function initSelect(){
-	m_confirm.updataProvinces(confirmOrderCityList);
+	m_confirm.updataProvinces(cityList);
 	m_confirm.updataCitys([]);
 	m_confirm.updateAreas([]);
 }

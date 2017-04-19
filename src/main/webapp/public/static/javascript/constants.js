@@ -8,6 +8,28 @@ var timeOptions = [
 		{"id":5,"name":"一个月内","minTime":parseDate(5,true),"maxTime":parseDate(5,false)}
 	];
 
+var baseAndBindParams = {
+	userId:'',
+	password:'',
+	nickname:'',
+	name:'',
+	birth:'',
+	gender:'',
+	icon:''
+};
+
+var addressParams = {
+		addressId:'',
+		userId:'',
+		province:'',
+		city:'',
+		area:'',
+		more:'',
+		receiveName:'',
+		receivePhone:'',
+		isDefault:''
+}
+
 /**
  * 搜索资源时向后台发送的参数
  */
@@ -65,7 +87,7 @@ var createOrderParams = {
 		disCountCode:''
 };
 
-var confirmOrderCityList = [
+var cityList = [
 	{
 		"prov_name":'北京市',
 		"prov_value":'1',
@@ -106,6 +128,7 @@ var confirmOrderCityList = [
 				}]
 		}]
 	}
+	
 ];
 
 var userDetailParams = {

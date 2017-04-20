@@ -380,14 +380,19 @@ var m_result = {
 			var $item_dd_title_name = $('<p class="mtit"></p>');
 			var $item_dd_title_name_a = $('<a href="javascript:void(0);"> ['+this.resultList[i].THIRD_NAME+']'+this.resultList[i].RESOURCE_NAME+' </a>');
 			var $item_dd_title_desc = $('<p class="ftit">'+this.resultList[i].RESOURCE_SHORT_DESC+'</p>');
-			var $item_dd_title_site = $('<p class="time">'+this.resultList[i].MIN_Time+'</p>');
+			var $item_dd_title_site = $('<p class="time">'+$.formatDate(new Date(this.resultList[i].MIN_Time),"yyyy-MM-dd HH:mm:ss")+'</p>');
 			var $item_dd_title_venue = $('<p class="place">'+this.resultList[i].VENUE_NAME+'</p>');
 			
 			var $item_dd_body = $('<div class="ddright flr"></div>');
-			var $item_dd_body_span = $('<span class="pre_sale wp-icon-all">预售</span>');
+			var $item_dd_body_span = '';
 			var $item_dd_body_p = $('<p class="price"></p>');
 			var $item_dd_body_p_span = $('<span>'+this.resultList[i].MIN_PRICE+'</span><span style="font-size:12px">元起</span>');
 			var $item_dd_body_a = $('<a class="buy_btn" href="javascript:void(0);">立即购买</a>');
+			
+			// this.resultList[i].ISENABLE == 2 是指的预售
+			if(this.resultList[i].ISENABLE == 2){
+				$item_dd_body_span = $('<span class="pre_sale wp-icon-all">预售</span>')
+			}
 			
 			$item.data("index",i);
 			
@@ -562,7 +567,7 @@ var m_result = {
 				
 				var $li_first_info = $('<div class="col-md-9 hidden-xs"></div>');
 				var $li_first_info_name = $('<p>['+this.hotSellList[i].THIRD_NAME+']'+this.hotSellList[i].RESOURCE_NAME+'</p>');
-				var $li_first_info_playTime = $('<p>'+this.hotSellList[i].SITE_TIME+'</p>');
+				var $li_first_info_playTime = $('<p>'+$.formatDate(new Date(this.hotSellList[i].SITE_TIME),"yyyy-MM-dd HH:mm:ss")+'</p>');
 				var $li_first_info_venue = $('<p>'+this.hotSellList[i].VENUE_NAME+'</p>');
 				var $li_first_info_price = $('<p><span class="num">'+this.hotSellList[i].MIN_PRICE+'</span><span>元起</span></p>');
 				

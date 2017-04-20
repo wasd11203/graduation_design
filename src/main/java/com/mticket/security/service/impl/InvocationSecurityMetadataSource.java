@@ -1,19 +1,16 @@
 package com.mticket.security.service.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+//import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Service;
 
-import com.mticket.security.util.UrlMatcher;
-import com.mticket.security.util.impl.AntUrlPathMatcher;
+//import com.mticket.security.util.UrlMatcher;
+//import com.mticket.security.util.impl.AntUrlPathMatcher;
 
 
 /**
@@ -26,8 +23,8 @@ public class InvocationSecurityMetadataSource implements FilterInvocationSecurit
 	
 	public static Logger logger = LoggerFactory.getLogger(InvocationSecurityMetadataSource.class);
 	
-	private UrlMatcher urlMatcher = new AntUrlPathMatcher();
-	private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
+//	private UrlMatcher urlMatcher = new AntUrlPathMatcher();
+//	private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
 	
 	// 在 tomcat启动时 通过构造方法实例化一次角色资源关系
 	public InvocationSecurityMetadataSource() {

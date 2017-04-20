@@ -22,7 +22,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDetail getUserDetailInfo(Integer userId) {
 		logger.debug("SERVICE -- 获取 指定用户的详细信息:[{}]",userId);
-		return userMapper.getUserDetailInfo(userId);
+		UserDetail u = userMapper.getUserDetailInfo(userId) ;
+		return u;
 	}
 
 	@Override

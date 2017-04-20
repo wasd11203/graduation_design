@@ -627,7 +627,7 @@ var m_home = {
 				
 				var $li_first_info = $('<div class="col-md-9 hidden-xs"></div>');
 				var $li_first_info_name = $('<p>['+this.hotSellList[i].THIRD_NAME+']'+this.hotSellList[i].RESOURCE_NAME+'</p>');
-				var $li_first_info_playTime = $('<p>'+this.hotSellList[i].SITE_TIME+'</p>');
+				var $li_first_info_playTime = $('<p>'+$.formatDate(new Date(this.hotSellList[i].SITE_TIME),"yyyy-MM-dd HH:mm:ss")+'</p>');
 				var $li_first_info_venue = $('<p>'+this.hotSellList[i].VENUE_NAME+'</p>');
 				var $li_first_info_price = $('<p><span class="num">'+this.hotSellList[i].MIN_PRICE+'</span><span>元起</span></p>');
 				
@@ -693,7 +693,7 @@ var m_home = {
 			var $list_item_ul_li_name = $('<li></li>');
 			var $list_item_ul_li_name_a = $('<a href="javascript:void(0);">['+this.calendarList[i].THIRD_NAME+']'+this.calendarList[i].RESOURCE_NAME+'</a>');
 			
-			var $list_item_ul_li_time = $('<li>'+this.calendarList[i].MIN_Time+'</li>');
+			var $list_item_ul_li_time = $('<li>'+$.formatDate(new Date(this.calendarList[i].MIN_Time),"yyyy-MM-dd HH:mm:ss")+'</li>');
 			var $list_item_ul_li_venue = $('<li>'+this.calendarList[i].VENUE_NAME+'</li>');
 			var $list_item_ul_li_price = $('<li><span>'+this.calendarList[i].MIN_PRICE+'</span>元起</li>');
 			

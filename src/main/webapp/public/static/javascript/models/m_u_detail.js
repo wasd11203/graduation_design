@@ -36,20 +36,7 @@ var m_u_detail = {
 		this.updateBaseAndBindInfo(use_baseInfoAndBindInfo);
 		this.updateAddre(this.user.addresses);
 		
-		$("#dtl-nav li").eq(this.index).find("a").css({
-			"color" : "#4acbd6",
-			"font-weight" : "700"
-		});
-		$("#dtl-nav li").eq(this.index).siblings().find("a").css({
-			"color" : "gray",
-			"position" : "relative",
-			"display" : "block",
-			"padding" : "10px 15px",
-			"font-weight" : "normal"
-		});
-		
-		$(".r-show").eq(this.index).show();
-		$(".r-show").eq(this.index).siblings().hide();
+		$("#dtl-nav  li").eq(this.index).trigger("click");
 	},
 	
 	addresses:[],
@@ -96,7 +83,7 @@ var m_u_detail = {
 			$address_containter.append($adr_item_tr);
 			
 			$option_update.on("click",function(){
-				alert("修改");
+				alert("弹出修改框");
 				
 				return false;
 			});
@@ -120,10 +107,10 @@ var m_u_detail = {
 		this.updateBaseAndBindInfoView();
 	},
 	updateBaseAndBindInfoView:function(){
-		var $username = $("#username");
+		var $nickname = $("#nickname");
 		var $name = $("#name");
 		
-		$username.val(this.baseAndBindInfo.nickname);
+		$nickname.val(this.baseAndBindInfo.nickname);
 		$name.val(this.baseAndBindInfo.name);
 		
 		baseAndBindParams = {
@@ -201,9 +188,9 @@ var m_u_detail = {
 			
 			if(this.orders[i].isFinish == 1){
 				$header_div4_p_span = $('<span>已支付</span>');
-			}else{
+			}else if(this.orders[i].isFinish == 2){
 				// to do ... 其他状态
-//				$header_div4_p_span = $('<span>已支付</span>')
+				$header_div4_p_span = $('<span>已取消</span>');
 			}
 			
 			// 订单相关信息
@@ -222,7 +209,7 @@ var m_u_detail = {
 			var $resource_dl_dd_time = $('<p class="t t">'+this.orders[i].resources[0].siteTime+'</p>');
 			
 			var $resource_dl_dd_div = $('<div class="t s clearfix"></div>');
-			var $resource_dl_dd_div_counts = $('<p class="l"><span>'+1+'</span>张</p>');
+			var $resource_dl_dd_div_counts = $('<p class="l"><span>数量：</span><span>'+this.orders[i].resources[0].ticketCounts+'</span>张</p>');
 			var $resource_dl_dd_div_total = $('<p class="r"><label>订单金额：</label><span>'+this.orders[i].total+'</span>元</p>');
 			
 			var $resource_dl_dd_clearfix = $('<ul class="arealist clearfix"><li></li></ul>');
@@ -254,38 +241,18 @@ var m_u_detail = {
 				$option_cancel.on("click",function(){
 					var index = $(this).data("index");
 					var params = {"orderId":m_u_detail.orders[index].orderId};
-					$.ajax({
-						url:'order/cancel',
-						type:'POST',
-						dataType:'JSON',
-						data:params,
-						success:function(data){
-							alert("取消订单成功");
-							loadHtmlByPath("views/user_detail.html");
-						},
-						error:function(res){
-							console.log(res);
-						}
-					});
+					
+					cancelOrderAction (params);
+					
+					return false;
 				});
 				
 				$option_continue.on("click",function(){
 					var index = $(this).data("index");
 					var params = {"orderId":m_u_detail.orders[index].orderId};
-					$.ajax({
-						url:'order/pay',
-						type:'POST',
-						dataType:'JSON',
-						data:params,
-						success:function(data){
-							alert("支付订单成功");
-							// to do ... ... 去支付页面
-							loadHtmlByPath("views/user_detail.html");
-						},
-						error:function(res){
-							console.log(res);
-						}
-					});
+					continuePayAction(params);
+					
+					return false;
 				});
 				
 			}else if(this.orders[i].isFinish == 1){

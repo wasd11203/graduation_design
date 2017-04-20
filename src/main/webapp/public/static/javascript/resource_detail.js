@@ -6,7 +6,7 @@ function loadResourceDetailAction(){
 		dataType : "json",
 		data:resourceDetailParams,
 		success:function(data){
-//			console.log(data);
+			console.log(data);
 			m_r_detail.updateResource(data);
 		},
 		error:function(data){

@@ -13,6 +13,7 @@ var m_r_detail = {
 		var $r_short_desc = $("#r_short_desc");
 		var $r_time = $("#r_time");
 		var $r_min_price = $("#r_min_price");
+		var $r_introduce = $("");
 		
 		$r_pic.empty();
 		$r_name.empty();
@@ -37,7 +38,7 @@ var m_r_detail = {
 				
 				var venue = this.curVenue;
 				var minPrice = this.curSite.tickets[0].ticketPrice;
-				var siteTime = this.curSite.siteTime;
+				var siteTime = $.formatDate(new Date(this.curSite.siteTime),"yyyy-MM-dd HH:mm:ss");
 				
 				confirmOrderParams.thirdId = this.curRegion.regionThirdId;
 				confirmOrderParams.venueId = this.curVenue.venueId;
@@ -108,7 +109,7 @@ var m_r_detail = {
 			
 			$item.data("index",i);
 			
-			$item_a.append(this.sites[i].siteTime);
+			$item_a.append($.formatDate(new Date(this.sites[i].siteTime),"yyyy-MM-dd HH:mm:ss"));
 			$item.append($item_a);
 			
 			$sites.append($item);
@@ -147,7 +148,7 @@ var m_r_detail = {
 //				alert("刷新 票种列表");
 				var index = $(this).data("index");
 				m_r_detail.curSite = m_r_detail.sites[index];
-				m_r_detail.updateTicket(m_r_detail.curSite.tickets);
+				m_r_detail.updateTickets(m_r_detail.curSite.tickets);
 				
 				confirmOrderParams.siteId = m_r_detail.curSite.siteId;
 				
@@ -201,7 +202,7 @@ var m_r_detail = {
 		var $ticketCounts = $("#counts");
 		var $ticketSubTotalPrice = $("#subtotalPrice");
 
-		$siteTime.text(this.curSite.siteTime);
+		$siteTime.text($.formatDate(new Date(this.curSite.siteTime),"yyyy-MM-dd HH:mm:ss"));
 		$ticketPrice.text(this.curTicket.ticketPrice);
 		$ticketCounts.text(1);
 		
@@ -252,7 +253,7 @@ var m_r_detail = {
 				
 				var $first_item_dd = $('<dd class="media-body txt"></dd>');
 				var $first_item_dd_name = $('<p class="tt"><a href="javascript:void(0);">['+this.hotSellList[i].THIRD_NAME+']'+this.hotSellList[i].RESOURCE_NAME+'</a></p>');
-				var $first_item_dd_time = $(' <p class="ti f12">'+this.hotSellList[i].SITE_TIME+'</p>');
+				var $first_item_dd_time = $(' <p class="ti f12">'+$.formatDate(new Date(this.hotSellList[i].SITE_TIME),"yyyy-MM-dd HH:mm:ss")+'</p>');
 				var $first_item_dd_venue = $('<p class="pl f12">'+this.hotSellList[i].VENUE_NAME+'</p>');
 				var $first_item_dd_minPrice = $('<p class="pr f12"><big class="green">'+this.hotSellList[i].MIN_PRICE+'</big>元起</p>');
 			

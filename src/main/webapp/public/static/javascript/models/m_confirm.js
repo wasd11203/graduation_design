@@ -38,7 +38,7 @@ var m_confirm = {
 		$re_name.text('[' + this.order.orderInfo.THIRD_NAME + ']'
 				+ this.order.orderInfo.RESOURCE_NAME);
 		$re_venue.text(this.order.orderInfo.VENUE_NAME);
-		$re_time.text(this.order.orderInfo.SITE_TIME);
+		$re_time.text($.formatDate(new Date(this.order.orderInfo.SITE_TIME),"yyyy-MM-dd HH:mm:ss"));
 		$re_counts.text(this.order.orderInfo.TICKET_REAL_COUNTS);
 		$or_old_price.text(this.order.orderInfo.TOTAL_PRICE + "元");
 		$reduce_amount.text("0元");

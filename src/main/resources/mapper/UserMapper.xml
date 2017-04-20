@@ -61,7 +61,7 @@
 
 		<id column="CONCERN_ID" property="concernId" jdbcType="DECIMAL"/>
 		<result column="USER_ID" property="userId" jdbcType="DECIMAL" />
-		<result column="INTIME" property="inTime" jdbcType="DECIMAL" />
+		<result column="CONCERN_INTIME" property="inTime" jdbcType="DECIMAL" />
 
 		<result column="CONCERN_RESOURCE_ID" property="resourceId" jdbcType="DECIMAL" />
 		<result column="CONCERN_RESOURCE_NAME" property="resourceName"
@@ -140,7 +140,7 @@
 		
 		user_concerns.USER_ID,
 		user_concerns.CONCERN_ID,
-		user_concerns.INTIME,
+		user_concerns.INTIME AS CONCERN_INTIME,
 		user_concerns.RESOURCE_ID AS CONCERN_RESOURCE_ID,
 		user_concerns.RESOURCE_NAME AS CONCERN_RESOURCE_NAME,
 		user_concerns.RESOURCE_PIC AS CONCERN_RESOURCE_PIC,

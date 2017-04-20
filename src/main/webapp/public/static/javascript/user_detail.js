@@ -1,6 +1,6 @@
 function initEvents() {
 	
-	$(".my_center_sidenav .nav li").on("click", function() {
+	$("#dtl-nav  li").on("click", function() {
 		// alert($(this).index());
 
 		$(this).find("a").css({
@@ -72,32 +72,7 @@ function initEvents() {
 		return false;
 	});
 
-	$("#update_user_base_bind").on("click", function() {
-
-		var account = JSON.parse(storage.account);
-
-		var nickname = $("#username").val();
-		var name = $("#name").val();
-
-		var year = $("#birth_year").val();
-		var month = $("#birth_month").val() - 1;
-		var day = $("#birth_day").val();
-
-		var birth = new Date(year, month, day);
-
-		baseAndBindParams.userId = account.USER_ID;
-		baseAndBindParams.nickname = nickname;
-		baseAndBindParams.name = name;
-		baseAndBindParams.birth = birth;
-		if($(this).prop('checked')){
-			baseAndBindParams.gender = 1;
-		}else{
-			baseAndBindParams.gender = 0;
-		}
-		updateUserBaseAndBindAction();
-
-		return false;
-	});
+	$("#update_user_base_bind").on("click", updateUserBaseOrBindInfo);
 	
 	$("#addr_pro").on("change",function(){
 		var pro_value = $("#addr_pro").val();
@@ -127,25 +102,62 @@ function initEvents() {
 		return false;
 	});
 	
-	$("#addr_confirm").on("click",function(){
-		var account = JSON.parse(storage.account);
-		var more = $("#addr_more").val();
-		var receiveName = $("#addr_receiveName").val();
-		var receivePhone = $("#addr_receivePhone").val();
-		var isDefault = $("#setDefault").prop("checked")?1:0;
-		
-		addressParams.userId = account.USER_ID;
-		addressParams.more = more;
-		addressParams.receiveName = receiveName;
-		addressParams.receivePhone = receivePhone;
-		addressParams.isDefault = isDefault;
-		
-		addAddressAction();
-		
-		return false;
-	});
+	$("#addr_confirm").on("click",createAddress);
 
 }
+
+/**
+ * 更新 用户的 基础信息或者绑定信息 -- 点击事件
+ * @returns
+ */
+function updateUserBaseOrBindInfo(){
+	var account = JSON.parse(storage.account);
+
+	var nickname = $("#nickname").val();
+	var name = $("#name").val();
+
+	var year = $("#birth_year").val();
+	var month = $("#birth_month").val() - 1;
+	var day = $("#birth_day").val();
+
+	var birth = new Date(year, month, day);
+
+	baseAndBindParams.userId = account.USER_ID;
+	baseAndBindParams.nickname = nickname;
+	baseAndBindParams.name = name;
+	baseAndBindParams.birth = birth;
+	if($(this).prop('checked')){
+		baseAndBindParams.gender = 1;
+	}else{
+		baseAndBindParams.gender = 0;
+	}
+	updateUserBaseAndBindAction();
+
+	return false;
+}
+
+/**
+ * 用户新增 收货地址 -- 点击事件
+ * @returns
+ */
+function createAddress(){
+	var account = JSON.parse(storage.account);
+	var more = $("#addr_more").val();
+	var receiveName = $("#addr_receiveName").val();
+	var receivePhone = $("#addr_receivePhone").val();
+	var isDefault = $("#setDefault").prop("checked")?1:0;
+	
+	addressParams.userId = account.USER_ID;
+	addressParams.more = more;
+	addressParams.receiveName = receiveName;
+	addressParams.receivePhone = receivePhone;
+	addressParams.isDefault = isDefault;
+	
+	addAddressAction();
+	
+	return false;
+}
+
 
 /**
  * 加载 个人详细信息
@@ -170,6 +182,44 @@ function loadUserDetailInfo() {
 		}
 
 	})
+}
+
+function continuePayAction(params){
+	$.ajax({
+		url:'order/pay',
+		type:'POST',
+		dataType:'JSON',
+		data:params,
+		success:function(data){
+			alert("支付订单成功");
+			// to do ... ... 去支付页面
+			loadHtmlByPath("views/user_detail.html");
+		},
+		error:function(res){
+			console.log(res);
+		}
+	});
+}
+
+/**
+ * 取消订单
+ * @param params
+ * @returns
+ */
+function cancelOrderAction (params){
+	$.ajax({
+		url:'order/cancel',
+		type:'POST',
+		dataType:'JSON',
+		data:params,
+		success:function(data){
+			alert("取消订单成功");
+			loadHtmlByPath("views/user_detail.html");
+		},
+		error:function(res){
+			console.log(res);
+		}
+	});
 }
 
 /**
@@ -222,7 +272,11 @@ function addAddressAction(){
 	});
 }
 
-function updateAddressAction(){
+/**
+ * 更新 收货地址 
+ * @returns
+ */
+function updateAddressAction(params){
 	
 }
 
@@ -391,7 +445,7 @@ function changeBirthDate(curYear, curMonth, curDate) {
 }
 /*个人用户 的生日下拉列表控制  end */
 
-/* 用户自定义的收货地址 下拉列表种植 start */
+/* 用户自定义的收货地址 下拉列表  start */
 function initProvinceSelectOptions(){
 	
 	var $addr_pro = $("#addr_pro");
@@ -513,5 +567,5 @@ function getCityOptionList(topValue, secValue, thirdValue) {
 	}
 
 }
-/* 用户自定义的收货地址 下拉列表种植 end */
+/* 用户自定义的收货地址 下拉列表  end */
 

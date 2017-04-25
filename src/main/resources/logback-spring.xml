@@ -30,9 +30,12 @@
         </triggeringPolicy>
     </appender>
 
+	<logger name="com.mticket" level="debug">  
+	    <appender-ref ref="FILE" />  
+	</logger> 
 
     <!-- * 通配符 设置log打印级别 对所有类有效TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF-->
-    <root level="DEBUG">
+    <root level="info">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>

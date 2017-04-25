@@ -83,8 +83,30 @@ var m_u_detail = {
 			$address_containter.append($adr_item_tr);
 			
 			$option_update.on("click",function(){
-				alert("弹出修改框");
+//				alert("弹出修改框");
+				var i = $(this).data("index");
+				initProvinceSelectOptions($("#up_addr_pro"),$("#up_addr_city"),$("#up_addr_area"),m_u_detail.addresses[i].province,m_u_detail.addresses[i].city,m_u_detail.addresses[i].area);
+				$("#up_addr_more").val(m_u_detail.addresses[i].more);
+				$("#up_addr_receiveName").val(m_u_detail.addresses[i].receiveName);
+				$("#up_addr_receivePhone").val(m_u_detail.addresses[i].receivePhone);
 				
+				addressParams.userId = JSON.parse(storage.account).USER_ID;
+				addressParams.addressId =  m_u_detail.addresses[i].addressId;
+				addressParams.province =  m_u_detail.addresses[i].province;
+				addressParams.city =  m_u_detail.addresses[i].city;
+				addressParams.area =  m_u_detail.addresses[i].area;
+				addressParams.more =  m_u_detail.addresses[i].more;
+				addressParams.receiveName =  m_u_detail.addresses[i].receiveName;
+				addressParams.receivePhone =  m_u_detail.addresses[i].receivePhone;
+				addressParams.isDefault =  m_u_detail.addresses[i].isDefault;
+				
+				if(m_u_detail.addresses[i].isDefault == 1){	
+					$("#up_setDefault").attr("checked",true);
+				}else{
+					$("#up_setDefault").removeAttr("checked");
+				}
+				
+				$("#update-address").modal("show");
 				return false;
 			});
 			$option_del.on("click",function(){
@@ -97,7 +119,7 @@ var m_u_detail = {
 			
 		}
 		
-		initProvinceSelectOptions();
+		initProvinceSelectOptions($("#addr_pro"),$("#addr_city"),$("#addr_area"));
 		
 	},
 	

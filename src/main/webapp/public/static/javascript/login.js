@@ -75,6 +75,10 @@ function toregister() {
 			"<b><a href='#'>已有账号，去登录</a></b>")
 }
 
+/**
+ * 异步判断 手机号是否被使用
+ * @returns
+ */
 function checkPhone() {
 	var phone = $('#uname').val();
 	var param = {

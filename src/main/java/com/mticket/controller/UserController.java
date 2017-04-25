@@ -1,5 +1,6 @@
 package com.mticket.controller;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +27,9 @@ import com.mticket.service.UserService;
 @RequestMapping("/user")
 public class UserController extends BasicController {
 
+	@Value("${httpRequestPath}")
+	private String httpRequestPath;
+	
 	@Autowired
 	private UserService userService;
 
@@ -85,7 +90,7 @@ public class UserController extends BasicController {
 		map.put("name", name);
 		map.put("birth", birthDate);
 		map.put("gender", gend);
-		map.put("icon", icon);
+		map.put("icon", httpRequestPath+icon);
 		return map;
 	}
 
@@ -131,7 +136,7 @@ public class UserController extends BasicController {
 	@ResponseBody
 	public JSONObject updateAddress(String addressId,String userId,String province,String city,String area,String more,String receiveName,String receivePhone,String isDefault){
 		
-		logger.debug("CONTROLLER -- 更新用户收货地址：[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}]",userId,province,city,area,more,receiveName,receivePhone,isDefault);
+		logger.debug("CONTROLLER -- 更新用户收货地址：[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}],[{}]",addressId,userId,province,city,area,more,receiveName,receivePhone,isDefault);
 		
 		JSONObject jobj = new JSONObject();
 		Map<String, Object> map = transforAddressInfo(addressId, userId, province, city, area, more, receiveName, receivePhone, isDefault);

@@ -254,6 +254,45 @@
     color: #4acbd6;
     margin: 0 15px;
 }
+
+    #change-pwd{
+        border: 1px solid #e2e2e2;
+        background: #FFF;
+        z-index: 1032;
+        position: absolute;
+        border-radius: 10px;
+        padding: 20px;
+        font-size: 16px;
+        font-family: "Microsoft Yahei";
+    }
+    #change-pwd .title-bar{
+        cursor: move;
+    }
+    div.dialog-center {
+        text-align: center;
+    }
+    .ui-widget-content input{
+        width: 330px;
+        height: 45px;
+        border: 1px solid #bababa;
+        padding-left: 10px;
+        line-height: 45px;
+        border-radius: 5px;
+        display: inline;
+    }
+    .ui-widget-content button {
+        width: 150px;
+        border: none;
+        line-height: 30px;
+        background: #4acbd6;
+        padding: 5px 10px;
+        border-radius: 3px;
+        color: #FFF;
+    }
+    #dialog-box div{
+        margin-top:20px;
+    }
+
 .infobox .binfo dd .st {
     display: inline-block;
     font-size: 12px;
@@ -328,6 +367,7 @@
     background: #2ed2c1;
     color: #fff;
 }
+
 
 /*todo 收货地址*/
 

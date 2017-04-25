@@ -69,11 +69,85 @@ function toregister() {
 	$('.succ').hide();
 	$('#mainlogin h1').html('注册娱票儿账号');
 	$('#mainlogin input').eq(2).remove();
+	if($(".verify-code")){
+		$(".verify-code").remove();
+	}
 	$('#mainlogin button').html('注册').before(
-			"<input class='form-control' type='text' placeholder='手机验证码'>");
+			"<div class='row clearfix verify-code' style='margin-bottom:10px;'>" +
+			"	<div class='col-md-8 column'>"+
+			"		<input class='form-control' id='verify-code' type='text' placeholder='手机验证码'>" +
+			"	</div>"+
+			
+			"	<div class='col-md-4 column'>"+
+			"		<button class='btn btn-default' id='send-verify-code'>发送验证码</button>" +
+			"	</div>"+
+			"<div>");
 	$('#mainlogin p').css('margin-top', '55px').html(
-			"<b><a href='#'>已有账号，去登录</a></b>")
+			"<b><a href='#'>已有账号，去登录</a></b>");
+	
+	$("#send-verify-code").on("click",sendVerfiyCode);
 }
+
+/* 发送验证码 start*/
+
+var timeOut = null;
+var counts = 60;
+
+function sendVerfiyCode(){
+	var phone = $('#uname').val();
+	if(!$(this).attr("disabled")){
+		$(this).attr("disabled",true);
+	}
+	
+	if(!timeOut){
+		timeOut = setInterval(function(){
+			if(counts == 0){
+				if($("#send-verify-code").attr("disabled")){
+					$("#send-verify-code").removeAttr("disabled");
+					$("#send-verify-code").text("发送验证码");
+					if(timeOut){
+						clearInterval(timeOut);
+						timeOut = null;
+						counts = 60;
+					}
+				}
+			}else{
+				counts --;
+				$("#send-verify-code").text(counts+"S 后可重发");
+			}
+			console.log("发送");
+		}, 1000);
+	}
+	sendVerfiyCodeAction(phone);
+	
+	alert("发送验证码");
+}
+
+/**
+ * 告知 后台向 指定手机号发送 验证码
+ * @returns
+ */
+function sendVerfiyCodeAction(phone){
+	var params = {"phone":phone};
+	$.ajax({
+		url : 'account/sendVerfiyCode',
+		type : 'POST',
+		dataType : "json",
+		data : params,
+		success : function(data) {
+			if (data.alibaba_aliqin_fc_sms_num_send_response.result.success) {
+				console.log('发送成功');
+			} else {
+				alert("发送失败");
+			}
+		},
+		error : function(data) {
+			alert("fail");
+		}
+
+	});
+}
+/*发送验证码  end*/
 
 /**
  * 异步判断 手机号是否被使用
@@ -112,11 +186,16 @@ function checkPhone() {
 	return false;
 }
 
+/**
+ * 向后台发送注册或者登陆请求
+ * @returns
+ */
 function loginAndRegister() {
 
 	var phone = $('#uname').val();
 	var password = $('#upwd').val();
-	var param = {"phone":phone,"passwrod":password};
+	var verfiyCode = $("#verify-code").val();
+	var param = {"phone":phone,"password":password};
 	if (phone != '' && password != '') {
 
 		if ($(this).html() == "登录") {
@@ -138,7 +217,7 @@ function loginAndRegister() {
 			});
 			
 		} else {
-
+			param.code = verfiyCode;
 			$.ajax({
 				url : 'account/regist',
 				type : 'POST',
@@ -157,6 +236,7 @@ function loginAndRegister() {
 						$(".lsucc").show();
 						$('#loginR').modal('hide');
 					} else {
+						$('.phone').eq(0).text(data.msg);
 						$('.phone').show();
 					}
 				},

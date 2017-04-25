@@ -93,6 +93,30 @@
 			<version>1.2.24</version>
 		</dependency>
 
+		<!-- 添加 阿里大于 sdk 支持 -->
+		<dependency>
+			<groupId>ali</groupId>
+			<artifactId>ali-dayu-sdk</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- 添加 httpclient 支持 -->
+		<dependency>
+			<groupId>org.apache.directory.studio</groupId>
+			<artifactId>org.apache.httpcomponents.httpclient</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.directory.studio</groupId>
+			<artifactId>org.apache.httpcomponents.httpcore</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- Package as an executable JAR -->

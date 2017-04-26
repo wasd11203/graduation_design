@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-04-17 20:21:17
+Date: 2017-04-26 09:53:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -508,7 +508,7 @@ CREATE TABLE `resource_info` (
 -- Records of resource_info
 -- ----------------------------
 INSERT INTO `resource_info` VALUES ('1', 'Priscilla Ahn 普莉西亚 “LALALA 啦啦啦”2017巡回演唱会', 'static/images/hot_1.jpg', '暖心专辑《La La La》', 'b', '1', '1001');
-INSERT INTO `resource_info` VALUES ('2', '华艺星空.我只在乎你-邓丽君经典金曲七夕演唱会', 'static/images/hot_1.jpg ', '让我们一同向经典致敬', null, '1', '1001');
+INSERT INTO `resource_info` VALUES ('2', '华艺星空.我只在乎你-邓丽君经典金曲七夕演唱会', 'static/images/hot_1.jpg ', '让我们一同向经典致敬', null, '2', '1001');
 INSERT INTO `resource_info` VALUES ('3', 'Radio Attack电音派对', 'static/images/hot_1.jpg', '探寻音符深处最原始的欲望', null, '1', '1002');
 INSERT INTO `resource_info` VALUES ('4', '郑钧2017“私奔”全国巡回演唱会北京站', 'static/images/hot_1.jpg', '摇滚男神 温情回归', null, '1', '1003');
 INSERT INTO `resource_info` VALUES ('5', '汪峰2017岁月巡回演唱会-北京鸟巢站', 'static/images/hot_1.jpg', '在时间里记录行走的脚步', null, '1', '1005');
@@ -699,26 +699,26 @@ CREATE TABLE `ticket_info` (
 -- ----------------------------
 -- Records of ticket_info
 -- ----------------------------
-INSERT INTO `ticket_info` VALUES ('1', 'aa', '0', '100', null, null);
+INSERT INTO `ticket_info` VALUES ('1', 'aa', '100', '100', null, null);
 INSERT INTO `ticket_info` VALUES ('2', null, '72', '180', null, null);
 INSERT INTO `ticket_info` VALUES ('3', null, '80', '280', null, null);
 INSERT INTO `ticket_info` VALUES ('4', null, '100', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('5', null, '100', '480', null, null);
-INSERT INTO `ticket_info` VALUES ('6', null, '0', '177', null, null);
-INSERT INTO `ticket_info` VALUES ('7', null, '89', '277', null, null);
-INSERT INTO `ticket_info` VALUES ('8', null, null, '377', null, null);
-INSERT INTO `ticket_info` VALUES ('9', null, '95', '520', null, null);
+INSERT INTO `ticket_info` VALUES ('6', null, '100', '177', null, null);
+INSERT INTO `ticket_info` VALUES ('7', null, '81', '277', null, null);
+INSERT INTO `ticket_info` VALUES ('8', null, '100', '377', null, null);
+INSERT INTO `ticket_info` VALUES ('9', null, '92', '520', null, null);
 INSERT INTO `ticket_info` VALUES ('10', 'VIP 877元', '99', '877', null, null);
 INSERT INTO `ticket_info` VALUES ('11', '套票1000元（520 * 2）', '99', '1000', null, '1');
 INSERT INTO `ticket_info` VALUES ('12', '套票1314元(877 * 2)', '92', '1314', null, '1');
 INSERT INTO `ticket_info` VALUES ('13', '普通票120元(含一杯赠酒)', '100', '120', null, null);
-INSERT INTO `ticket_info` VALUES ('14', 'VIP票180元(可上二层)', '0', '180', null, null);
-INSERT INTO `ticket_info` VALUES ('15', null, '0', '380', null, null);
+INSERT INTO `ticket_info` VALUES ('14', 'VIP票180元(可上二层)', '100', '180', null, null);
+INSERT INTO `ticket_info` VALUES ('15', null, '100', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('16', null, '100', '680', null, null);
 INSERT INTO `ticket_info` VALUES ('17', '980元(场地)', '100', '980', null, null);
 INSERT INTO `ticket_info` VALUES ('18', '980元(看台)', '100', '980', null, null);
 INSERT INTO `ticket_info` VALUES ('19', '套票1600元(看台980*2)', '100', '1600', null, null);
-INSERT INTO `ticket_info` VALUES ('20', '看台280元', '0', '280', null, null);
+INSERT INTO `ticket_info` VALUES ('20', '看台280元', '100', '280', null, null);
 INSERT INTO `ticket_info` VALUES ('21', '看台380元', '99', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('22', '看台580元', '100', '580', null, null);
 INSERT INTO `ticket_info` VALUES ('23', '看台680元', '100', '680', null, null);
@@ -739,18 +739,18 @@ INSERT INTO `ticket_info` VALUES ('37', null, '100', '280', null, null);
 INSERT INTO `ticket_info` VALUES ('38', null, '100', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('39', null, '100', '480', null, null);
 INSERT INTO `ticket_info` VALUES ('40', null, '100', '680', null, null);
-INSERT INTO `ticket_info` VALUES ('41', null, '0', '180', null, null);
-INSERT INTO `ticket_info` VALUES ('42', null, '0', '280', null, null);
-INSERT INTO `ticket_info` VALUES ('43', null, '100', '380', null, null);
+INSERT INTO `ticket_info` VALUES ('41', null, '100', '180', null, null);
+INSERT INTO `ticket_info` VALUES ('42', null, '100', '280', null, null);
+INSERT INTO `ticket_info` VALUES ('43', null, '99', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('44', null, '100', '480', null, null);
 INSERT INTO `ticket_info` VALUES ('45', null, '100', '680', null, null);
-INSERT INTO `ticket_info` VALUES ('46', null, '0', '180', null, null);
-INSERT INTO `ticket_info` VALUES ('47', null, '0', '280', null, null);
+INSERT INTO `ticket_info` VALUES ('46', null, '100', '180', null, null);
+INSERT INTO `ticket_info` VALUES ('47', null, '100', '280', null, null);
 INSERT INTO `ticket_info` VALUES ('48', null, '100', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('49', null, '100', '480', null, null);
 INSERT INTO `ticket_info` VALUES ('50', null, '100', '680', null, null);
-INSERT INTO `ticket_info` VALUES ('51', null, '0', '180', null, null);
-INSERT INTO `ticket_info` VALUES ('52', null, '0', '280', null, null);
+INSERT INTO `ticket_info` VALUES ('51', null, '100', '180', null, null);
+INSERT INTO `ticket_info` VALUES ('52', null, '100', '280', null, null);
 INSERT INTO `ticket_info` VALUES ('53', null, '100', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('54', null, '100', '480', null, null);
 INSERT INTO `ticket_info` VALUES ('55', null, '100', '680', null, null);
@@ -788,7 +788,7 @@ CREATE TABLE `user_base_info` (
 -- ----------------------------
 -- Records of user_base_info
 -- ----------------------------
-INSERT INTO `user_base_info` VALUES ('2077615322', null, null, null, '1', null, null);
+INSERT INTO `user_base_info` VALUES ('2077615322', 'icon/icon/icon/icon/icon/icon/icon/fb528147-1358-4e00-9374-0cfe764ad11f.png', 'aaaa', 'aa', 'a', '1988-01-01 08:00:00', '0');
 
 -- ----------------------------
 -- Table structure for `user_bind_info`

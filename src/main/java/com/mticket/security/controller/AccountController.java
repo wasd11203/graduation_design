@@ -178,7 +178,7 @@ public class AccountController extends BasicController{
 		String code = RandomNum.randomCheckCode(sourcePool);
 		Cookie cookie = new Cookie(phone, code);
 		// 5分钟内有效
-		cookie.setMaxAge(5*60);
+		cookie.setMaxAge(60);
 		res.addCookie(cookie);
 		logger.debug("CONTROLLER-- 向号码:[{}]发送验证码:[{}]",phone,code);
 		

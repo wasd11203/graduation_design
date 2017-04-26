@@ -1,5 +1,0 @@
-mvn install:install-file -Dmaven.repo.local=C:\Users\99\.m2\repository_2 -DgroupId=ali -DartifactId=ali-dayu-sdk -Dversion=1.0.0 -Dpackaging=jar -Dfile=E:\GitHub\graduation_design\src\main\webapp\WEB-INF\lib\taobao-sdk-java-auto_1455552377940-20160607.jar
-
-
-
-mvn install:install-file -Dmaven.repo.local=C:\Users\99\.m2\repository_2 -DgroupId=ali -DartifactId=ali-dayu-sdk -Dversion=1.0.0 -Dpackaging=jar -Dfile=E:\GitHub\graduation_design\src\main\webapp\WEB-INF\lib\taobao-sdk-java-auto_1455552377940-20160607-source.jar

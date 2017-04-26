@@ -240,7 +240,7 @@ function updateUserBaseOrBindInfo() {
 	baseAndBindParams.nickname = nickname;
 	baseAndBindParams.name = name;
 	baseAndBindParams.birth = birth;
-	if ($(this).prop('checked')) {
+	if ($("#male").prop('checked')) {
 		baseAndBindParams.gender = 1;
 	} else {
 		baseAndBindParams.gender = 0;

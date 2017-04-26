@@ -1,8 +1,5 @@
 package com.mticket.http;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.alibaba.fastjson.JSONObject;
 import com.mticket.util.HttpUtil;
 import com.taobao.api.ApiException;

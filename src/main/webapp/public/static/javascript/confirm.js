@@ -15,7 +15,7 @@ function initConfirmPage(){
 	
 	initSelect();
 	$('#province').on("change",function(){
-		alert("刷新下级列表:"+$('#province').selectpicker('val'));
+//		alert("刷新下级列表:"+$('#province').selectpicker('val'));
 		curProValue= $('#province').selectpicker('val');
 		var cityList = m_confirm.getOptionList(curProValue);
 		
@@ -28,7 +28,7 @@ function initConfirmPage(){
 	});
 	
 	$('#city').on("change",function(){
-		alert("刷新下级列表:"+$('#city').selectpicker('val'));
+//		alert("刷新下级列表:"+$('#city').selectpicker('val'));
 		curCityValue= $('#city').selectpicker('val');
 		var areaList = m_confirm.getOptionList(curProValue,curCityValue);
 		
@@ -40,7 +40,7 @@ function initConfirmPage(){
 	});
 	
 	$('#area').on("change",function(){
-		alert("刷新下级列表:"+$('#area').selectpicker('val'));
+//		alert("刷新下级列表:"+$('#area').selectpicker('val'));
 		curAreaValue= $('#area').selectpicker('val');
 		m_confirm.getOptionList(curProValue,curCityValue,curAreaValue);
 		
@@ -48,7 +48,7 @@ function initConfirmPage(){
 	});
 	
 	$("input[type='checkbox']").on("change",function(){
-		alert("checked");
+//		alert("checked");
 		if($("input[type='checkbox']").is(':checked')){
 			$("#receiveDeliveryMobile").val($("#buyUserMobile").val());
 			$("#receiveDeliveryMobile").attr("disabled","true");
@@ -136,7 +136,10 @@ function createOrder(){
 		data:createOrderParams,
 		success:function(data){
 			console.log(data);
-			// to do ... 跳转到支付页 
+			// to do ... 跳转到个人信息中的订单页进行支付
+			m_u_detail.index = 0;
+			
+			loadHtmlByPath("views/user_detail.html");
 		},
 		error:function(data){
 			alert("fail");
@@ -193,7 +196,7 @@ function checktime() {
 }
 
 function expired() {
-	alert("时间到");
+//	alert("时间到");
 	if (id != null) {
 		clearInterval(id);
 	}

@@ -22,7 +22,7 @@ function loadHotSellAction(){
 }
 
 function toConfirmOrder(){
-	alert("去确认订单");
+//	alert("去确认订单");
 	var account = storage.account;
 	if(account){
 		loadHtmlByPath("views/confirm.html");

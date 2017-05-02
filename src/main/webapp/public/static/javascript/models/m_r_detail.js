@@ -167,6 +167,8 @@ var m_r_detail = {
 	updateTicketsView:function(){
 		var $tickets = $("#tickets");
 		
+		$tickets.empty();
+		
 		for(var i = 0;i<this.tickets.length;i++){
 			var $item = $('<li class="col-md-2"></li>');
 			var $item_a = $('<a href="javascript:void(0);">'+this.tickets[i].ticketPrice +'元</a>');

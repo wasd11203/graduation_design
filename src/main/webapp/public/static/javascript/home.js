@@ -2,7 +2,7 @@
 	var oCal = null;
 	
 	$(function() {
-		alert(1);
+//		alert(1);
 		initCalendar();
 		loadMainAdvertisingResourceAction();
 		loadDiscountResourceAction();
@@ -46,7 +46,7 @@
                 var selectedDate = new Date (this.get('selectedDate'));
 //              alert(selectedDate + '\u3010' + this.getDateInfo(selectedDate) + '\u3011');
                 m_home.updateSelectedDate(selectedDate);
-                alert("根据点击的时间查询");
+//                alert("根据点击的时间查询");
                 
             })
 

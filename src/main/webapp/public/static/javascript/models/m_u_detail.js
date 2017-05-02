@@ -9,12 +9,14 @@ var m_u_detail = {
 	},
 	updateUserView:function(){
 		var $icon = $("#icon");
+		var $user_name = $("#user-name");
+		
 		if(this.user.icon){
 			$icon.attr("src",this.user.icon);
 		}else{
 			$icon.attr("src","static/images/defaultpic.gif");
 		}
-		
+		$user_name.text(this.user.name);
 		if(!this.index){
 			this.index = 0;
 		}
@@ -228,7 +230,7 @@ var m_u_detail = {
 			var $resource_dl_dd = $('<dd></dd>');
 			var $resource_dl_dd_name = $('<p class="t n">['+this.orders[i].resources[0].regionThirdName+']'+this.orders[i].resources[0].resourceName+'</p>');
 			var $resource_dl_dd_venue = $('<p class="t p">'+this.orders[i].resources[0].venueName+'</p>');
-			var $resource_dl_dd_time = $('<p class="t t">'+this.orders[i].resources[0].siteTime+'</p>');
+			var $resource_dl_dd_time = $('<p class="t t">'+$.formatDate(new Date(this.orders[i].resources[0].siteTime),"yyyy-MM-dd HH:mm:ss")+'</p>');
 			
 			var $resource_dl_dd_div = $('<div class="t s clearfix"></div>');
 			var $resource_dl_dd_div_counts = $('<p class="l"><span>数量：</span><span>'+this.orders[i].resources[0].ticketCounts+'</span>张</p>');
@@ -252,7 +254,7 @@ var m_u_detail = {
 			var $option_continue = $('<a class="opbtn pay" href="javascript:void(0);" data-he="user_me_gobuy">继续付款 <b id="time_container_0"> </b></a>');
 			var $option_finish = $('<a class="opbtn pay" href="javascript:void(0);" data-he="user_me_gobuy">已完成订单 <b id="time_container_0"> </b></a>');
 			
-			if(this.orders[i].isFinish == 0){
+			if(!this.orders[i].isFinish || this.orders[i].isFinish == 0){
 				
 				$option_cancel = $option_cancel;
 				$option_continue = $option_continue;

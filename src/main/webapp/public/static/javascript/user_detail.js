@@ -455,7 +455,7 @@ function delAddressAction(addressId) {
 		success : function(data) {
 			// console.log(data);
 			if (data.code == 0) {
-				alert("成功");
+//				alert("成功");
 				loadHtmlByPath("views/user_detail.html");
 			} else {
 				alert("新增失败");

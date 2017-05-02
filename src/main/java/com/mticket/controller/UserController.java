@@ -8,7 +8,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,9 +25,6 @@ import com.mticket.service.UserService;
 @RequestMapping("/user")
 public class UserController extends BasicController {
 
-	@Value("${httpRequestPath}")
-	private String httpRequestPath;
-	
 	@Autowired
 	private UserService userService;
 
@@ -89,7 +85,7 @@ public class UserController extends BasicController {
 		map.put("name", name);
 		map.put("birth", birthDate);
 		map.put("gender", gend);
-		map.put("icon", httpRequestPath+icon);
+		map.put("icon", icon);
 		return map;
 	}
 

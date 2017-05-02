@@ -19,10 +19,10 @@ function initAlertDialog() {
 			break;
 		case '忘记账号':
 			// toregister();
-			alert("暂未实现");
+//			alert("暂未实现");
 			break;
 		case '忘记密码':
-			alert("暂未实现");
+//			alert("暂未实现");
 			break;
 		case '没有账号？去注册':
 			toregister();
@@ -120,7 +120,7 @@ function sendVerfiyCode(){
 	}
 	sendVerfiyCodeAction(phone);
 	
-	alert("发送验证码");
+//	alert("发送验证码");
 }
 
 /**
@@ -138,7 +138,7 @@ function sendVerfiyCodeAction(phone){
 			if (data.alibaba_aliqin_fc_sms_num_send_response.result.success) {
 				console.log('发送成功');
 			} else {
-				alert("发送失败");
+//				alert("发送失败");
 			}
 		},
 		error : function(data) {

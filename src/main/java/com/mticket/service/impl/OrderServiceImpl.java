@@ -47,8 +47,8 @@ public class OrderServiceImpl implements OrderService {
 		order.setOrderId(orderId.intValue());
 		order.setInTime(new Date());
 		order.setIsFinish(0);
-		orderMapper.createAssociationOrderWithResource(order);
 		orderMapper.createOrderBaseInfo(order);
+		orderMapper.createAssociationOrderWithResource(order);
 		orderMapper.createAssociationOrderWithUser(order);
 
 		return order.getOrderId();

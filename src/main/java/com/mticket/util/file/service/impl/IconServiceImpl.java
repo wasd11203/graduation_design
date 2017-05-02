@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,6 +14,9 @@ import com.mticket.util.file.service.IconService;
 @Service("iconService")
 public class IconServiceImpl implements IconService{
 
+	@Value("${httpRequestPath}")
+	private String httpRequestPath;
+	
 	@Override
 	public JSONObject delete(String picUidName,String realPath) {
 		JSONObject jobj = new JSONObject();
@@ -39,7 +43,7 @@ public class IconServiceImpl implements IconService{
             File newFile = new File(storageDirectory + "/" + newFilename);
             newFile = new File(newFile.getAbsolutePath());
             picFileMpf.transferTo(newFile);
-            jobj.put("fileName", newFilename);
+            jobj.put("fileName", httpRequestPath+newFilename);
             jobj.put("code", 0);
         } catch (IOException e) {
             jobj.put("code", 1);

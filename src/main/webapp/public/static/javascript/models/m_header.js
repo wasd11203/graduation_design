@@ -280,7 +280,7 @@ var m_header = {
 		$region_list_panel_title_div_a.on("click",function(e){
 			m_header.curRegionThird = null;
 			
-			alert("搜索");
+//			alert("搜索");
 			
 			postParams = {};
 			if(m_header.curRegionThird){

@@ -64,9 +64,11 @@ public class AccountController extends BasicController{
 		String realCode = null ; 
 		
 		Cookie[] cookies = req.getCookies();
-		for(Cookie cookie : cookies){
-			if(cookie.getName().equals(phone)){
-				realCode = cookie.getValue();
+		if(cookies != null){
+			for(Cookie cookie : cookies){
+				if(cookie.getName().equals(phone)){
+					realCode = cookie.getValue();
+				}
 			}
 		}
 		

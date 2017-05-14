@@ -44,7 +44,7 @@ function loginsucc(name) {
     html='<div id="user-nav">'+
 		 '	    <a href="javascript:void(0);">欢迎回来'+name+'<span class="caret"></span></a>'+
 		 '	    <ul class="myul">'+
-		 '	        <li class="info-detail"><a href="javascript:void(0);">我的娱票儿</a></li>'+
+		 '	        <li class="info-detail"><a href="javascript:void(0);">我的</a></li>'+
 		 '	        <li class="info-order"><a href="javascript:void(0);">我的订单</a></li>'+
 		 '	        <li class="info-concerns"><a href="javascript:void(0);">我的关注</a></li>'+
 		 '	        <li class="info-base"><a href="javascript:void(0);">个人信息</a></li>'+

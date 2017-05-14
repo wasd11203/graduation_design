@@ -55,8 +55,11 @@ function tologin() {
 	$('.alert_warning').hide();
 	$('.succ').hide();
 	$('#mainlogin button').html('登录');
-	$('#mainlogin h1').html('娱票儿账户登录');
+	$('#mainlogin h1').html('麦票账户登录');
 	$('#mainlogin input').eq(2).remove();
+	if($(".verify-code")){
+		$(".verify-code").remove();
+	}
 	$('#mainlogin p')
 			.css('margin-top', '120px')
 			.html(
@@ -67,7 +70,7 @@ function tologin() {
 function toregister() {
 	$('.alert_warning').hide();
 	$('.succ').hide();
-	$('#mainlogin h1').html('注册娱票儿账号');
+	$('#mainlogin h1').html('注册麦票账号');
 	$('#mainlogin input').eq(2).remove();
 	if($(".verify-code")){
 		$(".verify-code").remove();
@@ -213,7 +216,8 @@ function loginAndRegister() {
 					$('.submit').show();
 				}
 			},function(res){
-				alert("fail");
+//				alert("fail");
+				$('.submit').show();
 			});
 			
 		} else {

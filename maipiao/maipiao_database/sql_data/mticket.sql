@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : localhost:3306
 Source Server Version : 50716
 Source Host           : localhost:3306
-Source Database       : test
+Source Database       : mticket
 
 Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-04-26 09:53:30
+Date: 2017-05-22 09:02:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,6 +33,9 @@ CREATE TABLE `association_order_resource` (
 -- ----------------------------
 -- Records of association_order_resource
 -- ----------------------------
+INSERT INTO `association_order_resource` VALUES ('-964227009', '2', '1', '2', '2', '8', '1', '377');
+INSERT INTO `association_order_resource` VALUES ('-964086757', '2', '1', '2', '2', '8', '1', '377');
+INSERT INTO `association_order_resource` VALUES ('-963768765', '2', '1', '2', '2', '8', '1', '377');
 
 -- ----------------------------
 -- Table structure for `association_region_resource`
@@ -215,6 +218,9 @@ CREATE TABLE `association_user_order` (
 -- ----------------------------
 -- Records of association_user_order
 -- ----------------------------
+INSERT INTO `association_user_order` VALUES ('2077615322', '-964227009');
+INSERT INTO `association_user_order` VALUES ('2077615322', '-964086757');
+INSERT INTO `association_user_order` VALUES ('2077615322', '-963768765');
 
 -- ----------------------------
 -- Table structure for `discount_resource`
@@ -299,6 +305,9 @@ CREATE TABLE `order_base_info` (
 -- ----------------------------
 -- Records of order_base_info
 -- ----------------------------
+INSERT INTO `order_base_info` VALUES ('-964227009', '1', null, '377', null, null, null, null, null, null, ' ', '2', '2017-05-02 08:28:15', '1', null);
+INSERT INTO `order_base_info` VALUES ('-964086757', '1', null, '377', null, null, null, null, null, null, ' ', null, '2017-05-02 08:22:12', '1', null);
+INSERT INTO `order_base_info` VALUES ('-963768765', '1', null, '377', null, null, null, null, null, null, ' ', null, '2017-05-02 08:27:30', '1', null);
 
 -- ----------------------------
 -- Table structure for `order_type`
@@ -705,8 +714,8 @@ INSERT INTO `ticket_info` VALUES ('3', null, '80', '280', null, null);
 INSERT INTO `ticket_info` VALUES ('4', null, '100', '380', null, null);
 INSERT INTO `ticket_info` VALUES ('5', null, '100', '480', null, null);
 INSERT INTO `ticket_info` VALUES ('6', null, '100', '177', null, null);
-INSERT INTO `ticket_info` VALUES ('7', null, '81', '277', null, null);
-INSERT INTO `ticket_info` VALUES ('8', null, '100', '377', null, null);
+INSERT INTO `ticket_info` VALUES ('7', null, '80', '277', null, null);
+INSERT INTO `ticket_info` VALUES ('8', null, '99', '377', null, null);
 INSERT INTO `ticket_info` VALUES ('9', null, '92', '520', null, null);
 INSERT INTO `ticket_info` VALUES ('10', 'VIP 877元', '99', '877', null, null);
 INSERT INTO `ticket_info` VALUES ('11', '套票1000元（520 * 2）', '99', '1000', null, '1');
@@ -788,7 +797,7 @@ CREATE TABLE `user_base_info` (
 -- ----------------------------
 -- Records of user_base_info
 -- ----------------------------
-INSERT INTO `user_base_info` VALUES ('2077615322', 'icon/icon/icon/icon/icon/icon/icon/fb528147-1358-4e00-9374-0cfe764ad11f.png', 'aaaa', 'aa', 'a', '1988-01-01 08:00:00', '0');
+INSERT INTO `user_base_info` VALUES ('2077615322', 'icon/705b53cf-5837-44bd-8314-245104de6eed.png', 'G', 'Hey你好', 'a', '1988-01-01 08:00:00', '0');
 
 -- ----------------------------
 -- Table structure for `user_bind_info`

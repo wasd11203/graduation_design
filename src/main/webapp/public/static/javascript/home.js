@@ -2,14 +2,21 @@
 	var oCal = null;
 	
 	$(function() {
-//		alert(1);
+//		初始化日历插件
 		initCalendar();
+		// 加载主要轮播广告
 		loadMainAdvertisingResourceAction();
+		// 加载特惠 特惠专题广告
 		loadDiscountResourceAction();
+		// 加载最新资讯资源 以及 精彩专题
 		loadLatestInfoResourceAction();
+		// 加载 各个类别的推荐资源
 		loadRoughlyResourceListAction(1,1);
+		// 加载场馆列表
 		loadVenueRecommendListAction();
+		// 加载热销列表
 		loadHotSellListAction();
+		// 加载近期热门列表
 		loadRencentHotResourceListAction();
 	});
 

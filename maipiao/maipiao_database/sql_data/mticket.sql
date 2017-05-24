@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost:3306
-Source Server Version : 50716
-Source Host           : localhost:3306
+Source Server         : qcloud
+Source Server Version : 50626
+Source Host           : 119.29.167.220:3306
 Source Database       : mticket
 
 Target Server Type    : MYSQL
-Target Server Version : 50716
+Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2017-05-22 09:02:48
+Date: 2017-05-24 17:46:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,9 +33,20 @@ CREATE TABLE `association_order_resource` (
 -- ----------------------------
 -- Records of association_order_resource
 -- ----------------------------
-INSERT INTO `association_order_resource` VALUES ('-964227009', '2', '1', '2', '2', '8', '1', '377');
-INSERT INTO `association_order_resource` VALUES ('-964086757', '2', '1', '2', '2', '8', '1', '377');
-INSERT INTO `association_order_resource` VALUES ('-963768765', '2', '1', '2', '2', '8', '1', '377');
+INSERT INTO `association_order_resource` VALUES ('-962800562', '2', '1', '2', '2', '10', '1', '877');
+INSERT INTO `association_order_resource` VALUES ('-961298391', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('-961294885', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('-961293729', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('-961293484', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('-961286501', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('-961286243', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('-961286005', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('-961285816', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('-959722969', '1', '1', '1', '1', '4', '2', '380');
+INSERT INTO `association_order_resource` VALUES ('-949695208', null, null, null, null, null, null, null);
+INSERT INTO `association_order_resource` VALUES ('35417755', '1', '1', '1', '1', '1', '2', '100');
+INSERT INTO `association_order_resource` VALUES ('84572594', '8', '1', '8', '9', '47', '1', '280');
+INSERT INTO `association_order_resource` VALUES ('97426258', null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `association_region_resource`
@@ -218,9 +229,20 @@ CREATE TABLE `association_user_order` (
 -- ----------------------------
 -- Records of association_user_order
 -- ----------------------------
-INSERT INTO `association_user_order` VALUES ('2077615322', '-964227009');
-INSERT INTO `association_user_order` VALUES ('2077615322', '-964086757');
-INSERT INTO `association_user_order` VALUES ('2077615322', '-963768765');
+INSERT INTO `association_user_order` VALUES ('2077615322', '-962800562');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-961298391');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-961294885');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-961293729');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-961293484');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-961286501');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-961286243');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-961286005');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-961285816');
+INSERT INTO `association_user_order` VALUES ('-1476208210', '-959722969');
+INSERT INTO `association_user_order` VALUES (null, '-949695208');
+INSERT INTO `association_user_order` VALUES ('35101969', '35417755');
+INSERT INTO `association_user_order` VALUES ('84467469', '84572594');
+INSERT INTO `association_user_order` VALUES (null, '97426258');
 
 -- ----------------------------
 -- Table structure for `discount_resource`
@@ -305,9 +327,20 @@ CREATE TABLE `order_base_info` (
 -- ----------------------------
 -- Records of order_base_info
 -- ----------------------------
-INSERT INTO `order_base_info` VALUES ('-964227009', '1', null, '377', null, null, null, null, null, null, ' ', '2', '2017-05-02 08:28:15', '1', null);
-INSERT INTO `order_base_info` VALUES ('-964086757', '1', null, '377', null, null, null, null, null, null, ' ', null, '2017-05-02 08:22:12', '1', null);
-INSERT INTO `order_base_info` VALUES ('-963768765', '1', null, '377', null, null, null, null, null, null, ' ', null, '2017-05-02 08:27:30', '1', null);
+INSERT INTO `order_base_info` VALUES ('-962800562', '1', null, '877', null, null, null, null, null, null, ' ', '2', '2017-05-02 08:43:40', '1', null);
+INSERT INTO `order_base_info` VALUES ('-961298391', '1', null, '200', '15707957307', '北京市', '北京市', '西城区', 'sfsdf', 'dongjign', '15707957307', '2', '2017-05-02 09:35:05', '1', null);
+INSERT INTO `order_base_info` VALUES ('-961294885', '1', null, '200', '15707957307', '北京市', '北京市', '西城区', 'sfsdf', 'dongjign', '15707957307', '2', '2017-05-02 09:09:05', '1', null);
+INSERT INTO `order_base_info` VALUES ('-961293729', '1', null, '200', '15707957307', '北京市', '北京市', '西城区', 'sfsdf', 'dongjign', '15707957307', null, '2017-05-02 09:08:45', '1', null);
+INSERT INTO `order_base_info` VALUES ('-961293484', '1', null, '200', '15707957307', '北京市', '北京市', '西城区', 'sfsdf', 'dongjign', '15707957307', '2', '2017-05-02 09:09:09', '1', null);
+INSERT INTO `order_base_info` VALUES ('-961286501', '1', null, '200', '15707957307', '北京市', '北京市', '西城区', 'sfsdf', 'dongjign', '15707957307', null, '2017-05-02 09:08:53', '1', null);
+INSERT INTO `order_base_info` VALUES ('-961286243', '1', null, '200', '15707957307', '北京市', '北京市', '西城区', 'sfsdf', 'dongjign', '15707957307', null, '2017-05-02 09:08:53', '1', null);
+INSERT INTO `order_base_info` VALUES ('-961286005', '1', null, '200', '15707957307', '北京市', '北京市', '西城区', 'sfsdf', 'dongjign', '15707957307', null, '2017-05-02 09:08:53', '1', null);
+INSERT INTO `order_base_info` VALUES ('-961285816', '1', null, '200', '15707957307', '北京市', '北京市', '西城区', 'sfsdf', 'dongjign', '15707957307', null, '2017-05-02 09:08:53', '1', null);
+INSERT INTO `order_base_info` VALUES ('-959722969', '1', null, '760', null, '北京市', '北京市', '东城区', 'sd', 'dong', null, '2', '2017-05-02 09:35:09', '1', null);
+INSERT INTO `order_base_info` VALUES ('-949695208', null, null, null, null, null, null, null, null, null, null, null, '2017-05-02 12:22:04', null, null);
+INSERT INTO `order_base_info` VALUES ('35417755', '1', null, '200', '15707957307', '北京市', '北京市', '东城区', '分隔符', '电脑', null, '2', '2017-05-13 22:00:43', '1', null);
+INSERT INTO `order_base_info` VALUES ('84572594', '1', null, '280', '1312132', '北京市', '北京市', '东城区', '爱的', '问问', '1312132', '2', '2017-05-14 11:40:06', '1', null);
+INSERT INTO `order_base_info` VALUES ('97426258', null, null, null, null, null, null, null, null, null, null, null, '2017-05-14 15:14:05', null, null);
 
 -- ----------------------------
 -- Table structure for `order_type`
@@ -323,6 +356,21 @@ CREATE TABLE `order_type` (
 -- Records of order_type
 -- ----------------------------
 INSERT INTO `order_type` VALUES ('1', '订单');
+
+-- ----------------------------
+-- Table structure for `receive_type`
+-- ----------------------------
+DROP TABLE IF EXISTS `receive_type`;
+CREATE TABLE `receive_type` (
+  `TYPE_ID` int(11) NOT NULL COMMENT '票的接收类型_ID',
+  `TYPE_NAME` varchar(32) DEFAULT NULL COMMENT '类型名称',
+  PRIMARY KEY (`TYPE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收货人取货的方式\r\n如：\r\n 1：快递';
+
+-- ----------------------------
+-- Records of receive_type
+-- ----------------------------
+INSERT INTO `receive_type` VALUES ('1', '快递');
 
 -- ----------------------------
 -- Table structure for `receiveaddresses`
@@ -344,21 +392,11 @@ CREATE TABLE `receiveaddresses` (
 -- ----------------------------
 -- Records of receiveaddresses
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `receive_type`
--- ----------------------------
-DROP TABLE IF EXISTS `receive_type`;
-CREATE TABLE `receive_type` (
-  `TYPE_ID` int(11) NOT NULL COMMENT '票的接收类型_ID',
-  `TYPE_NAME` varchar(32) DEFAULT NULL COMMENT '类型名称',
-  PRIMARY KEY (`TYPE_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收货人取货的方式\r\n如：\r\n 1：快递';
-
--- ----------------------------
--- Records of receive_type
--- ----------------------------
-INSERT INTO `receive_type` VALUES ('1', '快递');
+INSERT INTO `receiveaddresses` VALUES ('-1472635191', '-1472833773', '北京市', '北京市', '西城区', '1112', '111', '11111', '0');
+INSERT INTO `receiveaddresses` VALUES ('-1469830336', null, null, null, null, null, null, null, null);
+INSERT INTO `receiveaddresses` VALUES ('48922365', null, null, null, null, null, null, null, null);
+INSERT INTO `receiveaddresses` VALUES ('64108340', null, null, null, null, null, null, null, null);
+INSERT INTO `receiveaddresses` VALUES ('96763642', null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `recent_hot_resource`
@@ -708,15 +746,15 @@ CREATE TABLE `ticket_info` (
 -- ----------------------------
 -- Records of ticket_info
 -- ----------------------------
-INSERT INTO `ticket_info` VALUES ('1', 'aa', '100', '100', null, null);
+INSERT INTO `ticket_info` VALUES ('1', 'aa', '104', '100', null, null);
 INSERT INTO `ticket_info` VALUES ('2', null, '72', '180', null, null);
 INSERT INTO `ticket_info` VALUES ('3', null, '80', '280', null, null);
-INSERT INTO `ticket_info` VALUES ('4', null, '100', '380', null, null);
-INSERT INTO `ticket_info` VALUES ('5', null, '100', '480', null, null);
-INSERT INTO `ticket_info` VALUES ('6', null, '100', '177', null, null);
-INSERT INTO `ticket_info` VALUES ('7', null, '80', '277', null, null);
-INSERT INTO `ticket_info` VALUES ('8', null, '99', '377', null, null);
-INSERT INTO `ticket_info` VALUES ('9', null, '92', '520', null, null);
+INSERT INTO `ticket_info` VALUES ('4', null, '99', '380', null, null);
+INSERT INTO `ticket_info` VALUES ('5', null, '98', '480', null, null);
+INSERT INTO `ticket_info` VALUES ('6', null, '99', '177', null, null);
+INSERT INTO `ticket_info` VALUES ('7', null, '81', '277', null, null);
+INSERT INTO `ticket_info` VALUES ('8', null, '100', '377', null, null);
+INSERT INTO `ticket_info` VALUES ('9', null, '91', '520', null, null);
 INSERT INTO `ticket_info` VALUES ('10', 'VIP 877元', '99', '877', null, null);
 INSERT INTO `ticket_info` VALUES ('11', '套票1000元（520 * 2）', '99', '1000', null, '1');
 INSERT INTO `ticket_info` VALUES ('12', '套票1314元(877 * 2)', '92', '1314', null, '1');
@@ -797,7 +835,11 @@ CREATE TABLE `user_base_info` (
 -- ----------------------------
 -- Records of user_base_info
 -- ----------------------------
-INSERT INTO `user_base_info` VALUES ('2077615322', 'icon/705b53cf-5837-44bd-8314-245104de6eed.png', 'G', 'Hey你好', 'a', '1988-01-01 08:00:00', '0');
+INSERT INTO `user_base_info` VALUES ('-1476208210', 'icon/409e04d3-071f-48b7-b94f-cc232eee6427.jpg', '456', '123', '123456', '2017-05-04 16:00:00', '0');
+INSERT INTO `user_base_info` VALUES ('-1472833773', 'icon/aff2e7fc-0541-41a9-ab6a-b8785c6d5b35.jpg', '羊羊', '羊羊呆', '123456', '2017-04-26 11:05:30', '1');
+INSERT INTO `user_base_info` VALUES ('35101969', 'icon/a8097e0d-0e0b-48e5-bcb5-e9270e6b2ae0.png', null, null, '123123', '1970-01-01 16:00:00', '0');
+INSERT INTO `user_base_info` VALUES ('84467469', null, null, null, '123123', '1970-01-02 08:00:00', '0');
+INSERT INTO `user_base_info` VALUES ('2077615322', 'icon/1923029d-51bc-42db-850b-18489115c430.png', 'G', 'AAaass', 'a', '1988-01-01 08:00:00', '1');
 
 -- ----------------------------
 -- Table structure for `user_bind_info`
@@ -812,6 +854,10 @@ CREATE TABLE `user_bind_info` (
 -- Records of user_bind_info
 -- ----------------------------
 INSERT INTO `user_bind_info` VALUES ('2077615322', '1');
+INSERT INTO `user_bind_info` VALUES ('-1476208210', '15707957307');
+INSERT INTO `user_bind_info` VALUES ('-1472833773', '18317958960');
+INSERT INTO `user_bind_info` VALUES ('35101969', '15727575208');
+INSERT INTO `user_bind_info` VALUES ('84467469', '15727575900');
 
 -- ----------------------------
 -- Table structure for `user_concerns`
